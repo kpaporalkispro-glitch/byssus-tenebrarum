@@ -5,7 +5,7 @@ window.BYSSUS_PRODUCTS = [
     "category": "Colliers",
     "stone": "Améthyste",
     "price": 72,
-    "image": "collier-nyx.jpg",
+    "image": "collier1.png",
     "tag": "Best-seller",
     "desc": "Ras-de-cou en micro-macramé, pierre centrale et lignes sobres."
   },
