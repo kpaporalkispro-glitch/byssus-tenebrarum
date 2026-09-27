@@ -1,2 +1,2342 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Byssus Tenebrarum — bijoux de corps artisanaux en micro-macramé."><title>Paiement · Byssus Tenebrarum</title><link rel="stylesheet" href="assets/css/style.css"></head><body><div class="topbar"><div class="wrap"><span>Bijoux faits main en micro-macramé · Atelier artisanal à Strasbourg</span><span>Livraison France & Europe · Emballage soigné</span></div></div>
-<header class="site-header"><div class="wrap nav"><a href="index.html"><img class="logo" src="assets/images/logo-byssus.png" alt="Byssus Tenebrarum"></a><nav class="navlinks"><a href="index.html">Accueil</a><a href="shop.html">Boutique</a><a href="collections.html">Collections</a><a href="create.html">Créer mon bijou</a><a href="about.html">À propos</a><a href="faq.html">FAQ</a></nav><div class="actions"><a class="iconbtn desktop-action" href="shop.html">⌕</a><a class="iconbtn desktop-action" href="account.html">♙</a><a class="iconbtn" href="cart.html">Panier <span class="cart-badge" data-cart-count>0</span></a><a class="btn btn-primary desktop-action" href="create.html">Sur-mesure</a></div></div></header><section class="section"><div class="wrap"><div class="eyebrow">Panier → Livraison → Paiement</div><h1 style="font-size:54px">Finaliser ma commande</h1><form id="checkout-form" class="checkout-grid"><div class="content-card"><h2>Informations de livraison</h2><div class="grid" style="grid-template-columns:1fr 1fr"><div class="field"><label>Prénom</label><input class="form-control" required></div><div class="field"><label>Nom</label><input class="form-control" required></div></div><div class="field"><label>E-mail</label><input type="email" class="form-control" required></div><div class="field"><label>Adresse</label><input class="form-control" required></div><div class="grid" style="grid-template-columns:1fr 1fr"><div class="field"><label>Code postal</label><input class="form-control" required></div><div class="field"><label>Ville</label><input class="form-control" required></div></div><h2>Livraison</h2><label class="option selected"><input type="radio" name="ship" checked> Standard suivie</label><label class="option"><input type="radio" name="ship"> Express</label></div><aside class="summary"><h2>Paiement</h2><p>Total à régler</p><div id="checkout-total" class="price">0,00 €</div><label class="option selected"><input type="radio" checked> Carte bancaire</label><label class="option"><input type="radio"> PayPal</label><div class="notice" style="margin:14px 0">Version GitHub Pages : le bouton reste en mode démonstration jusqu’à configuration d’un prestataire de paiement. Voir PAYMENT_SETUP.md.</div><button class="btn btn-primary" type="submit" style="width:100%">Payer en sécurité</button></aside></form></div></section><footer class="footer"><div class="wrap footer-grid"><div><img class="logo" src="assets/images/logo-byssus.png" alt="Byssus Tenebrarum"><p>Bijoux et parures corporelles artisanales en micro-macramé.</p></div><div><h4>Boutique</h4><a href="shop.html">Tous les bijoux</a><a href="collections.html">Collections</a><a href="create.html">Sur-mesure</a><a href="cart.html">Panier</a></div><div><h4>Aide</h4><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="legal.html">CGV & mentions</a><a href="legal.html#returns">Retours</a></div><div><h4>À propos</h4><a href="about.html">Notre histoire</a><a href="about.html#atelier">Notre atelier</a><a href="journal.html">Journal</a></div><div><h4>Rejoignez l’univers</h4><p>Recevez nouveautés, coulisses et inspirations.</p><input class="form-control" placeholder="Votre e-mail"><button class="btn btn-primary" style="margin-top:8px">S’inscrire</button></div></div></footer><script src="assets/js/products.js"></script><script src="assets/js/app.js"></script></body></html>
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Votre panier Byssus Tenebrarum — bijoux et parures artisanales en micro-macramé."
+  >
+
+  <title>
+    Panier · Byssus Tenebrarum
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="assets/css/style.css"
+  >
+
+  <style>
+
+    /* =====================================================
+       CART.HTML
+       ===================================================== */
+
+    .cart-page {
+      padding: 48px 0 85px;
+    }
+
+    .cart-hero {
+      padding-bottom: 30px;
+      margin-bottom: 34px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .cart-hero h1 {
+      margin: 8px 0 10px;
+
+      font-size:
+        clamp(42px, 6vw, 68px);
+
+      line-height: 1;
+    }
+
+    .cart-layout {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.4fr)
+        minmax(320px, .6fr);
+
+      gap: 34px;
+
+      align-items: start;
+    }
+
+    /* =====================================================
+       LISTE PANIER
+       ===================================================== */
+
+    .cart-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .cart-item {
+      display: grid;
+
+      grid-template-columns:
+        135px 1fr auto;
+
+      gap: 18px;
+
+      padding: 16px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(48, 24, 57, .16),
+          rgba(255,255,255,.01)
+        );
+
+      align-items: center;
+    }
+
+    .cart-item-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+
+      overflow: hidden;
+
+      border-radius: 12px;
+
+      background: #0a090c;
+    }
+
+    .cart-item-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .cart-item-content h3 {
+      margin:
+        0 0 6px;
+
+      font-size: 22px;
+    }
+
+    .cart-item-content h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .cart-item-meta {
+      margin-bottom: 10px;
+
+      font-size: 13px;
+      opacity: .68;
+    }
+
+    .cart-item-price {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .cart-item-side {
+      min-width: 145px;
+
+      display: grid;
+      justify-items: end;
+
+      gap: 12px;
+    }
+
+    .cart-item-total {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .quantity-control {
+      display: grid;
+
+      grid-template-columns:
+        36px 44px 36px;
+
+      align-items: center;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 10px;
+
+      overflow: hidden;
+    }
+
+    .quantity-control button {
+      height: 38px;
+
+      border: 0;
+
+      color: inherit;
+
+      background: transparent;
+
+      cursor: pointer;
+    }
+
+    .quantity-control button:hover {
+      background:
+        rgba(110, 53, 127, .22);
+    }
+
+    .quantity-value {
+      height: 38px;
+
+      display: grid;
+      place-items: center;
+
+      border-left:
+        1px solid var(--line);
+
+      border-right:
+        1px solid var(--line);
+    }
+
+    .remove-button {
+      border: 0;
+      background: transparent;
+
+      color: #c59cac;
+
+      cursor: pointer;
+
+      font-size: 12px;
+    }
+
+    .remove-button:hover {
+      text-decoration: underline;
+    }
+
+    /* =====================================================
+       RÉCAPITULATIF
+       ===================================================== */
+
+    .cart-summary {
+      position: sticky;
+      top: 108px;
+
+      padding: 24px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(61, 29, 72, .26),
+          rgba(9, 8, 11, .96)
+        );
+    }
+
+    .cart-summary h2 {
+      margin-top: 0;
+      margin-bottom: 24px;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      margin-bottom: 13px;
+
+      font-size: 14px;
+    }
+
+    .summary-line.total {
+      margin-top: 18px;
+      padding-top: 18px;
+
+      border-top:
+        1px solid var(--line);
+
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .summary-note {
+      padding: 12px 14px;
+
+      border-radius: 12px;
+
+      background:
+        rgba(81, 47, 92, .18);
+
+      font-size: 12px;
+      line-height: 1.6;
+
+      margin:
+        16px 0;
+    }
+
+    .promo-row {
+      display: grid;
+
+      grid-template-columns:
+        1fr auto;
+
+      gap: 8px;
+
+      margin-top: 18px;
+    }
+
+    .gift-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+
+      margin:
+        18px 0;
+
+      font-size: 13px;
+    }
+
+    .gift-option input {
+      margin-top: 3px;
+      accent-color: #7d438e;
+    }
+
+    .checkout-button {
+      width: 100%;
+
+      margin-top: 18px;
+
+      justify-content: center;
+      text-align: center;
+    }
+
+    .continue-link {
+      display: block;
+
+      margin-top: 12px;
+
+      text-align: center;
+      font-size: 13px;
+
+      color: inherit;
+      opacity: .76;
+    }
+
+    /* =====================================================
+       CART VIDE
+       ===================================================== */
+
+    .empty-cart {
+      padding:
+        75px 25px;
+
+      text-align: center;
+
+      border:
+        1px dashed var(--line);
+
+      border-radius: 18px;
+    }
+
+    .empty-cart h2 {
+      margin-top: 0;
+    }
+
+    /* =====================================================
+       RÉASSURANCE
+       ===================================================== */
+
+    .cart-reassurance {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 14px;
+
+      margin-top: 42px;
+    }
+
+    .reassurance-card {
+      padding: 18px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 14px;
+
+      text-align: center;
+    }
+
+    .reassurance-card strong {
+      display: block;
+
+      margin-bottom: 5px;
+    }
+
+    .reassurance-card span {
+      font-size: 12px;
+      opacity: .68;
+    }
+
+    /* =====================================================
+       RECOMMANDATIONS
+       ===================================================== */
+
+    .recommendations {
+      margin-top: 75px;
+    }
+
+    .recommendations-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+
+      gap: 20px;
+
+      margin-bottom: 22px;
+    }
+
+    .recommendations-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 18px;
+    }
+
+    .recommendation-card {
+      overflow: hidden;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 14px;
+
+      background:
+        rgba(12, 10, 15, .88);
+    }
+
+    .recommendation-card img {
+      width: 100%;
+
+      aspect-ratio: 4 / 5;
+
+      object-fit: cover;
+    }
+
+    .recommendation-content {
+      padding: 14px;
+    }
+
+    .recommendation-content h3 {
+      margin:
+        0 0 6px;
+
+      font-size: 18px;
+    }
+
+    .recommendation-meta {
+      margin-bottom: 10px;
+
+      font-size: 12px;
+      opacity: .68;
+    }
+
+    .recommendation-price {
+      margin-bottom: 12px;
+
+      font-weight: 600;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1000px) {
+
+      .cart-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-summary {
+        position: static;
+      }
+
+      .recommendations-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      .cart-item {
+        grid-template-columns:
+          95px 1fr;
+      }
+
+      .cart-item-side {
+        grid-column:
+          1 / -1;
+
+        width: 100%;
+
+        grid-template-columns:
+          auto 1fr auto;
+
+        justify-items: stretch;
+
+        align-items: center;
+      }
+
+      .cart-item-total {
+        text-align: center;
+      }
+
+      .cart-reassurance {
+        grid-template-columns: 1fr;
+      }
+
+      .recommendations-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- =====================================================
+       TOPBAR
+       ===================================================== -->
+
+  <div class="topbar">
+
+    <div class="wrap">
+
+      <span>
+        Bijoux faits main en micro-macramé ·
+        Atelier artisanal à Strasbourg
+      </span>
+
+      <span>
+        Livraison France & Europe
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header class="site-header">
+
+    <div class="wrap nav">
+
+      <a href="index.html">
+
+        <img
+          class="logo"
+          src="assets/images/logo-byssus.png"
+          alt="Byssus Tenebrarum"
+        >
+
+      </a>
+
+
+      <nav class="navlinks">
+
+        <a href="index.html">
+          Accueil
+        </a>
+
+        <a href="shop.html">
+          Boutique
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="create.html">
+          Créer mon bijou
+        </a>
+
+        <a href="about.html">
+          À propos
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+      </nav>
+
+
+      <div class="actions">
+
+        <a
+          class="iconbtn desktop-action"
+          href="account.html"
+        >
+          Compte
+        </a>
+
+        <a
+          class="iconbtn active"
+          href="cart.html"
+        >
+
+          Panier
+
+          <span
+            class="cart-badge"
+            data-cart-count
+          >
+            0
+          </span>
+
+        </a>
+
+        <a
+          class="btn btn-primary desktop-action"
+          href="create.html"
+        >
+          Sur-mesure
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       PANIER
+       ===================================================== -->
+
+  <main class="cart-page">
+
+    <div class="wrap">
+
+
+      <!-- HERO -->
+
+      <section class="cart-hero">
+
+        <div class="eyebrow">
+          Votre sélection
+        </div>
+
+        <h1>
+          Panier
+        </h1>
+
+        <p class="lead">
+
+          Retrouvez ici les créations
+          que vous avez sélectionnées.
+
+        </p>
+
+      </section>
+
+
+      <!-- LAYOUT -->
+
+      <div
+        class="cart-layout"
+        id="cart-layout"
+      >
+
+
+        <!-- LISTE -->
+
+        <section>
+
+          <div
+            class="cart-list"
+            id="cart-list"
+          ></div>
+
+        </section>
+
+
+        <!-- RÉCAP -->
+
+        <aside
+          class="cart-summary"
+          id="cart-summary"
+        >
+
+          <h2>
+            Récapitulatif
+          </h2>
+
+
+          <div class="summary-line">
+
+            <span>
+              Sous-total
+            </span>
+
+            <strong
+              id="cart-subtotal"
+            >
+              0,00 €
+            </strong>
+
+          </div>
+
+
+          <div class="summary-line">
+
+            <span>
+              Livraison
+            </span>
+
+            <strong
+              id="cart-shipping"
+            >
+              0,00 €
+            </strong>
+
+          </div>
+
+
+          <div
+            class="summary-line"
+            id="gift-summary-line"
+            style="display:none"
+          >
+
+            <span>
+              Emballage cadeau
+            </span>
+
+            <strong>
+              4,90 €
+            </strong>
+
+          </div>
+
+
+          <div
+            class="summary-line"
+            id="discount-line"
+            style="display:none"
+          >
+
+            <span>
+              Réduction
+            </span>
+
+            <strong
+              id="discount-value"
+            >
+              −0,00 €
+            </strong>
+
+          </div>
+
+
+          <div class="summary-line total">
+
+            <span>
+              Total TTC
+            </span>
+
+            <strong
+              id="cart-total"
+            >
+              0,00 €
+            </strong>
+
+          </div>
+
+
+          <div
+            class="summary-note"
+            id="shipping-message"
+          >
+          </div>
+
+
+          <!-- EMBALLAGE CADEAU -->
+
+          <label class="gift-option">
+
+            <input
+              type="checkbox"
+              id="gift-wrap"
+              onchange="updateCartTotals()"
+            >
+
+            <span>
+
+              <strong>
+                Emballage cadeau
+              </strong>
+
+              <br>
+
+              Écrin soigné et carte
+              personnalisable.
+
+              <strong>
+                +4,90 €
+              </strong>
+
+            </span>
+
+          </label>
+
+
+          <!-- CODE PROMO -->
+
+          <div class="promo-row">
+
+            <input
+              id="promo-code"
+              class="form-control"
+              type="text"
+              placeholder="Code promo"
+            >
+
+            <button
+              class="btn"
+              type="button"
+              onclick="applyPromoCode()"
+            >
+              Appliquer
+            </button>
+
+          </div>
+
+
+          <div
+            id="promo-message"
+            class="muted"
+            style="
+              margin-top:8px;
+              font-size:12px;
+            "
+          ></div>
+
+
+          <!-- CHECKOUT -->
+
+          <a
+            class="btn btn-primary checkout-button"
+            href="checkout.html"
+            id="checkout-link"
+          >
+            Passer à la commande
+          </a>
+
+
+          <a
+            class="continue-link"
+            href="shop.html"
+          >
+            ← Continuer mes achats
+          </a>
+
+        </aside>
+
+      </div>
+
+
+      <!-- RÉASSURANCE -->
+
+      <section class="cart-reassurance">
+
+        <div class="reassurance-card">
+
+          <strong>
+            Paiement sécurisé
+          </strong>
+
+          <span>
+            Paiement protégé lors
+            de la validation finale.
+          </span>
+
+        </div>
+
+
+        <div class="reassurance-card">
+
+          <strong>
+            Fabrication artisanale
+          </strong>
+
+          <span>
+            Chaque pièce est réalisée
+            ou préparée à Strasbourg.
+          </span>
+
+        </div>
+
+
+        <div class="reassurance-card">
+
+          <strong>
+            Livraison suivie
+          </strong>
+
+          <span>
+            Expédition en France
+            et en Europe.
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- RECOMMANDATIONS -->
+
+      <section
+        class="recommendations"
+        id="recommendations-section"
+      ></section>
+
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer class="footer">
+
+    <div class="wrap footer-grid">
+
+
+      <div>
+
+        <img
+          class="logo"
+          src="assets/images/logo-byssus.png"
+          alt="Byssus Tenebrarum"
+        >
+
+        <p>
+          Bijoux et parures corporelles
+          artisanales en micro-macramé.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Boutique
+        </h4>
+
+        <a href="shop.html">
+          Tous les bijoux
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="create.html">
+          Sur-mesure
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Aide
+        </h4>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+        <a href="legal.html">
+          CGV
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          À propos
+        </h4>
+
+        <a href="about.html">
+          Notre histoire
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Newsletter
+        </h4>
+
+        <p>
+          Nouveautés, coulisses
+          et inspirations.
+        </p>
+
+        <input
+          class="form-control"
+          type="email"
+          placeholder="Votre e-mail"
+        >
+
+        <button
+          class="btn btn-primary"
+          style="margin-top:8px"
+        >
+          S’inscrire
+        </button>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       SCRIPTS
+       ===================================================== -->
+
+  <script src="assets/js/products.js"></script>
+
+  <script src="assets/js/app.js"></script>
+
+
+  <script>
+
+    // =====================================================
+    // CONFIGURATION
+    // =====================================================
+
+    const CART_KEY =
+      "byssus-cart";
+
+    const PROMO_KEY =
+      "byssus-promo";
+
+
+    const FREE_SHIPPING_THRESHOLD =
+      90;
+
+    const STANDARD_SHIPPING_PRICE =
+      6.90;
+
+    const GIFT_WRAP_PRICE =
+      4.90;
+
+
+    let activePromo = null;
+
+
+
+    // =====================================================
+    // CHARGEMENT
+    // =====================================================
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        loadPromoFromStorage();
+
+        renderCart();
+
+        renderRecommendations();
+
+      }
+    );
+
+
+
+    // =====================================================
+    // RÉCUPÉRER PANIER
+    // =====================================================
+
+    function getCart() {
+
+      try {
+
+        return JSON.parse(
+          localStorage.getItem(
+            CART_KEY
+          )
+          ||
+          "[]"
+        );
+
+      }
+      catch (error) {
+
+        return [];
+
+      }
+
+    }
+
+
+
+    // =====================================================
+    // SAUVEGARDER PANIER
+    // =====================================================
+
+    function saveCart(cart) {
+
+      localStorage.setItem(
+        CART_KEY,
+        JSON.stringify(cart)
+      );
+
+
+      updateCartBadge();
+
+    }
+
+
+
+    // =====================================================
+    // AFFICHER PANIER
+    // =====================================================
+
+    function renderCart() {
+
+      const cart =
+        getCart();
+
+
+      const container =
+        document.getElementById(
+          "cart-list"
+        );
+
+
+      if (!cart.length) {
+
+        renderEmptyCart();
+
+        updateCartTotals();
+
+        updateCartBadge();
+
+        return;
+
+      }
+
+
+      container.innerHTML = "";
+
+
+      cart.forEach(cartItem => {
+
+        const product =
+          getProductById(
+            cartItem.id
+          );
+
+
+        if (!product) {
+          return;
+        }
+
+
+        const quantity =
+          Math.max(
+            1,
+            Number(
+              cartItem.quantity || 1
+            )
+          );
+
+
+        const total =
+          product.price
+          *
+          quantity;
+
+
+        const article =
+          document.createElement(
+            "article"
+          );
+
+
+        article.className =
+          "cart-item";
+
+
+        article.innerHTML = `
+
+          <a
+            class="cart-item-image"
+            href="product.html?id=${encodeURIComponent(
+              product.id
+            )}"
+          >
+
+            <img
+              src="${product.mainImage}"
+              alt="${escapeHtml(
+                product.name
+              )}"
+              onerror="this.src='assets/images/logo-byssus.png'"
+            >
+
+          </a>
+
+
+          <div class="cart-item-content">
+
+            <h3>
+
+              <a
+                href="product.html?id=${encodeURIComponent(
+                  product.id
+                )}"
+              >
+                ${escapeHtml(
+                  product.name
+                )}
+              </a>
+
+            </h3>
+
+
+            <div class="cart-item-meta">
+
+              ${escapeHtml(
+                product.stone
+              )}
+
+              ·
+
+              ${escapeHtml(
+                product.size
+              )}
+
+              <br>
+
+              ${
+                product.madeToOrder
+                  ? "Fabrication sur commande"
+                  : product.leadTime
+              }
+
+            </div>
+
+
+            <div class="cart-item-price">
+
+              ${formatPrice(
+                product.price
+              )}
+
+              / pièce
+
+            </div>
+
+          </div>
+
+
+          <div class="cart-item-side">
+
+
+            <div class="quantity-control">
+
+              <button
+                type="button"
+                onclick="changeCartQuantity(
+                  '${product.id}',
+                  -1
+                )"
+              >
+                −
+              </button>
+
+
+              <div class="quantity-value">
+
+                ${quantity}
+
+              </div>
+
+
+              <button
+                type="button"
+                onclick="changeCartQuantity(
+                  '${product.id}',
+                  1
+                )"
+              >
+                +
+              </button>
+
+            </div>
+
+
+            <div class="cart-item-total">
+
+              ${formatPrice(
+                total
+              )}
+
+            </div>
+
+
+            <button
+              class="remove-button"
+              type="button"
+              onclick="removeFromCart(
+                '${product.id}'
+              )"
+            >
+              Supprimer
+            </button>
+
+          </div>
+
+        `;
+
+
+        container.appendChild(
+          article
+        );
+
+      });
+
+
+      updateCartTotals();
+
+      updateCartBadge();
+
+    }
+
+
+
+    // =====================================================
+    // PANIER VIDE
+    // =====================================================
+
+    function renderEmptyCart() {
+
+      const container =
+        document.getElementById(
+          "cart-list"
+        );
+
+
+      container.innerHTML = `
+
+        <div class="empty-cart">
+
+          <div class="eyebrow">
+            Votre panier est vide
+          </div>
+
+
+          <h2>
+            L’ombre attend encore
+            sa première pièce.
+          </h2>
+
+
+          <p class="muted">
+
+            Découvrez les bijoux,
+            talismans et parures
+            de Byssus Tenebrarum.
+
+          </p>
+
+
+          <a
+            class="btn btn-primary"
+            href="shop.html"
+          >
+            Découvrir la boutique
+          </a>
+
+        </div>
+
+      `;
+
+
+      document
+        .getElementById(
+          "checkout-link"
+        )
+        .style.pointerEvents =
+        "none";
+
+
+      document
+        .getElementById(
+          "checkout-link"
+        )
+        .style.opacity =
+        ".4";
+
+    }
+
+
+
+    // =====================================================
+    // MODIFIER QUANTITÉ
+    // =====================================================
+
+    function changeCartQuantity(
+      productId,
+      amount
+    ) {
+
+      const cart =
+        getCart();
+
+
+      const item =
+        cart.find(
+          item =>
+            item.id ===
+            productId
+        );
+
+
+      if (!item) {
+        return;
+      }
+
+
+      const product =
+        getProductById(
+          productId
+        );
+
+
+      item.quantity =
+        Number(
+          item.quantity || 1
+        )
+        +
+        amount;
+
+
+      if (
+        item.quantity < 1
+      ) {
+
+        removeFromCart(
+          productId
+        );
+
+        return;
+
+      }
+
+
+      if (
+        product
+        &&
+        !product.madeToOrder
+        &&
+        product.stock > 0
+        &&
+        item.quantity
+        >
+        product.stock
+      ) {
+
+        item.quantity =
+          product.stock;
+
+      }
+
+
+      saveCart(cart);
+
+      renderCart();
+
+    }
+
+
+
+    // =====================================================
+    // SUPPRESSION
+    // =====================================================
+
+    function removeFromCart(
+      productId
+    ) {
+
+      let cart =
+        getCart();
+
+
+      cart =
+        cart.filter(
+          item =>
+            item.id !==
+            productId
+        );
+
+
+      saveCart(cart);
+
+      renderCart();
+
+    }
+
+
+
+    // =====================================================
+    // SOUS-TOTAL
+    // =====================================================
+
+    function getSubtotal() {
+
+      const cart =
+        getCart();
+
+
+      return cart.reduce(
+        (sum, cartItem) => {
+
+          const product =
+            getProductById(
+              cartItem.id
+            );
+
+
+          if (!product) {
+            return sum;
+          }
+
+
+          return (
+            sum
+            +
+            product.price
+            *
+            Number(
+              cartItem.quantity || 1
+            )
+          );
+
+        },
+        0
+      );
+
+    }
+
+
+
+    // =====================================================
+    // LIVRAISON
+    // =====================================================
+
+    function calculateShipping(
+      subtotal
+    ) {
+
+      if (
+        subtotal <= 0
+      ) {
+
+        return 0;
+
+      }
+
+
+      if (
+        subtotal >=
+        FREE_SHIPPING_THRESHOLD
+      ) {
+
+        return 0;
+
+      }
+
+
+      return STANDARD_SHIPPING_PRICE;
+
+    }
+
+
+
+    // =====================================================
+    // PROMO
+    // =====================================================
+
+    function applyPromoCode() {
+
+      const field =
+        document.getElementById(
+          "promo-code"
+        );
+
+
+      const message =
+        document.getElementById(
+          "promo-message"
+        );
+
+
+      const code =
+        field
+          .value
+          .trim()
+          .toUpperCase();
+
+
+      if (!code) {
+
+        activePromo = null;
+
+        localStorage.removeItem(
+          PROMO_KEY
+        );
+
+
+        message.textContent =
+          "Saisissez un code promo.";
+
+
+        updateCartTotals();
+
+        return;
+
+      }
+
+
+      /*
+       * EXEMPLES :
+       *
+       * BIENVENUE10 = -10 %
+       * TENEBRES15  = -15 %
+       *
+       * Tu peux modifier ou supprimer
+       * ces codes plus tard.
+       */
+
+      const promoCodes = {
+
+        BIENVENUE10: {
+          type: "percent",
+          value: 10
+        },
+
+        TENEBRES15: {
+          type: "percent",
+          value: 15
+        }
+
+      };
+
+
+      if (
+        !promoCodes[code]
+      ) {
+
+        activePromo = null;
+
+        localStorage.removeItem(
+          PROMO_KEY
+        );
+
+
+        message.textContent =
+          "Ce code promo n’est pas valide.";
+
+
+        updateCartTotals();
+
+        return;
+
+      }
+
+
+      activePromo = {
+        code,
+        ...promoCodes[code]
+      };
+
+
+      localStorage.setItem(
+        PROMO_KEY,
+        JSON.stringify(
+          activePromo
+        )
+      );
+
+
+      message.textContent =
+        `Code ${code} appliqué.`;
+
+
+      updateCartTotals();
+
+    }
+
+
+
+    // =====================================================
+    // CHARGER PROMO
+    // =====================================================
+
+    function loadPromoFromStorage() {
+
+      try {
+
+        const saved =
+          JSON.parse(
+            localStorage.getItem(
+              PROMO_KEY
+            )
+          );
+
+
+        if (saved) {
+
+          activePromo =
+            saved;
+
+
+          document
+            .getElementById(
+              "promo-code"
+            )
+            .value =
+            saved.code || "";
+
+        }
+
+      }
+      catch (error) {
+
+        activePromo = null;
+
+      }
+
+    }
+
+
+
+    // =====================================================
+    // CALCUL PROMO
+    // =====================================================
+
+    function calculateDiscount(
+      subtotal
+    ) {
+
+      if (!activePromo) {
+
+        return 0;
+
+      }
+
+
+      if (
+        activePromo.type
+        ===
+        "percent"
+      ) {
+
+        return (
+          subtotal
+          *
+          Number(
+            activePromo.value
+          )
+          /
+          100
+        );
+
+      }
+
+
+      return 0;
+
+    }
+
+
+
+    // =====================================================
+    // TOTALS
+    // =====================================================
+
+    function updateCartTotals() {
+
+      const subtotal =
+        getSubtotal();
+
+
+      const shipping =
+        calculateShipping(
+          subtotal
+        );
+
+
+      const giftWrap =
+        document
+          .getElementById(
+            "gift-wrap"
+          )
+          .checked;
+
+
+      const giftPrice =
+        giftWrap
+          ? GIFT_WRAP_PRICE
+          : 0;
+
+
+      const discount =
+        calculateDiscount(
+          subtotal
+        );
+
+
+      const total =
+        Math.max(
+          0,
+          subtotal
+          -
+          discount
+          +
+          shipping
+          +
+          giftPrice
+        );
+
+
+      document
+        .getElementById(
+          "cart-subtotal"
+        )
+        .textContent =
+        formatPrice(
+          subtotal
+        );
+
+
+      document
+        .getElementById(
+          "cart-shipping"
+        )
+        .textContent =
+        shipping === 0
+        && subtotal > 0
+          ? "Offerte"
+          : formatPrice(
+              shipping
+            );
+
+
+      document
+        .getElementById(
+          "cart-total"
+        )
+        .textContent =
+        formatPrice(
+          total
+        );
+
+
+      // CADEAU
+
+      document
+        .getElementById(
+          "gift-summary-line"
+        )
+        .style.display =
+        giftWrap
+          ? "flex"
+          : "none";
+
+
+      // RÉDUCTION
+
+      const discountLine =
+        document.getElementById(
+          "discount-line"
+        );
+
+
+      if (
+        discount > 0
+      ) {
+
+        discountLine.style.display =
+          "flex";
+
+
+        document
+          .getElementById(
+            "discount-value"
+          )
+          .textContent =
+          `−${formatPrice(
+            discount
+          )}`;
+
+      }
+      else {
+
+        discountLine.style.display =
+          "none";
+
+      }
+
+
+      // MESSAGE LIVRAISON
+
+      updateShippingMessage(
+        subtotal
+      );
+
+
+      // ENREGISTRER OPTIONS POUR CHECKOUT
+
+      localStorage.setItem(
+        "byssus-cart-options",
+        JSON.stringify({
+          giftWrap,
+          giftPrice,
+          promo:
+            activePromo,
+          discount,
+          shipping,
+          subtotal,
+          total
+        })
+      );
+
+    }
+
+
+
+    // =====================================================
+    // MESSAGE LIVRAISON
+    // =====================================================
+
+    function updateShippingMessage(
+      subtotal
+    ) {
+
+      const box =
+        document.getElementById(
+          "shipping-message"
+        );
+
+
+      if (
+        subtotal <= 0
+      ) {
+
+        box.textContent =
+          "Ajoutez une création à votre panier.";
+
+        return;
+
+      }
+
+
+      if (
+        subtotal >=
+        FREE_SHIPPING_THRESHOLD
+      ) {
+
+        box.innerHTML =
+          `
+          ✓ Livraison standard offerte
+          en France.
+          `;
+
+        return;
+
+      }
+
+
+      const remaining =
+        FREE_SHIPPING_THRESHOLD
+        -
+        subtotal;
+
+
+      box.innerHTML =
+        `
+        Plus que
+        <strong>
+          ${formatPrice(
+            remaining
+          )}
+        </strong>
+        pour bénéficier de la
+        livraison offerte.
+        `;
+
+    }
+
+
+
+    // =====================================================
+    // BADGE PANIER
+    // =====================================================
+
+    function updateCartBadge() {
+
+      const cart =
+        getCart();
+
+
+      const count =
+        cart.reduce(
+          (sum, item) =>
+            sum
+            +
+            Number(
+              item.quantity || 0
+            ),
+          0
+        );
+
+
+      document
+        .querySelectorAll(
+          "[data-cart-count]"
+        )
+        .forEach(
+          badge => {
+
+            badge.textContent =
+              count;
+
+          }
+        );
+
+    }
+
+
+
+    // =====================================================
+    // RECOMMANDATIONS
+    // =====================================================
+
+    function renderRecommendations() {
+
+      const container =
+        document.getElementById(
+          "recommendations-section"
+        );
+
+
+      const cartIds =
+        new Set(
+          getCart()
+            .map(
+              item =>
+                item.id
+            )
+        );
+
+
+      const recommendations =
+        PRODUCTS
+          .filter(
+            product =>
+              !cartIds.has(
+                product.id
+              )
+          )
+          .sort(
+            (a, b) =>
+              Number(
+                b.featured
+              )
+              -
+              Number(
+                a.featured
+              )
+          )
+          .slice(
+            0,
+            4
+          );
+
+
+      if (
+        !recommendations.length
+      ) {
+
+        container.innerHTML =
+          "";
+
+        return;
+
+      }
+
+
+      container.innerHTML = `
+
+        <div class="recommendations-header">
+
+          <div>
+
+            <div class="eyebrow">
+              Compléter votre sélection
+            </div>
+
+            <h2>
+              Vous pourriez aussi aimer
+            </h2>
+
+          </div>
+
+
+          <a
+            class="btn"
+            href="shop.html"
+          >
+            Voir la boutique
+          </a>
+
+        </div>
+
+
+        <div class="recommendations-grid">
+
+          ${
+            recommendations
+              .map(
+                product => `
+
+                  <article class="recommendation-card">
+
+
+                    <a
+                      href="product.html?id=${encodeURIComponent(
+                        product.id
+                      )}"
+                    >
+
+                      <img
+                        src="${product.mainImage}"
+                        alt="${escapeHtml(
+                          product.name
+                        )}"
+                        loading="lazy"
+                        onerror="this.src='assets/images/logo-byssus.png'"
+                      >
+
+                    </a>
+
+
+                    <div class="recommendation-content">
+
+                      <h3>
+
+                        <a
+                          href="product.html?id=${encodeURIComponent(
+                            product.id
+                          )}"
+                          style="
+                            color:inherit;
+                            text-decoration:none;
+                          "
+                        >
+
+                          ${escapeHtml(
+                            product.name
+                          )}
+
+                        </a>
+
+                      </h3>
+
+
+                      <div class="recommendation-meta">
+
+                        ${escapeHtml(
+                          product.stone
+                        )}
+
+                        ·
+
+                        ${escapeHtml(
+                          product.categoryLabel
+                        )}
+
+                      </div>
+
+
+                      <div class="recommendation-price">
+
+                        ${formatPrice(
+                          product.price
+                        )}
+
+                      </div>
+
+
+                      <button
+                        class="btn btn-primary"
+                        type="button"
+                        onclick="addRecommendation(
+                          '${product.id}'
+                        )"
+                      >
+                        Ajouter au panier
+                      </button>
+
+                    </div>
+
+                  </article>
+
+                `
+              )
+              .join("")
+          }
+
+        </div>
+
+      `;
+
+    }
+
+
+
+    // =====================================================
+    // AJOUT RECOMMANDATION
+    // =====================================================
+
+    function addRecommendation(
+      productId
+    ) {
+
+      const product =
+        getProductById(
+          productId
+        );
+
+
+      if (!product) {
+        return;
+      }
+
+
+      const cart =
+        getCart();
+
+
+      const item =
+        cart.find(
+          item =>
+            item.id ===
+            productId
+        );
+
+
+      if (item) {
+
+        item.quantity += 1;
+
+      }
+      else {
+
+        cart.push({
+          id: productId,
+          quantity: 1
+        });
+
+      }
+
+
+      saveCart(cart);
+
+      renderCart();
+
+      renderRecommendations();
+
+    }
+
+
+
+    // =====================================================
+    // UTILS
+    // =====================================================
+
+    function escapeHtml(value) {
+
+      return String(value)
+        .replaceAll(
+          "&",
+          "&amp;"
+        )
+        .replaceAll(
+          "<",
+          "&lt;"
+        )
+        .replaceAll(
+          ">",
+          "&gt;"
+        )
+        .replaceAll(
+          '"',
+          "&quot;"
+        )
+        .replaceAll(
+          "'",
+          "&#039;"
+        );
+
+    }
+
+  </script>
+
+</body>
+
+</html>
