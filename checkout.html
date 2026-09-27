@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+
   <meta charset="utf-8">
 
   <meta
@@ -11,11 +12,11 @@
 
   <meta
     name="description"
-    content="Votre panier Byssus Tenebrarum — bijoux et parures artisanales en micro-macramé."
+    content="Finalisez votre commande Byssus Tenebrarum — bijoux et parures artisanales en micro-macramé."
   >
 
   <title>
-    Panier · Byssus Tenebrarum
+    Commande · Byssus Tenebrarum
   </title>
 
   <link
@@ -26,23 +27,24 @@
   <style>
 
     /* =====================================================
-       CART.HTML
+       CHECKOUT.HTML
        ===================================================== */
 
-    .cart-page {
-      padding: 48px 0 85px;
+    .checkout-page {
+      padding: 45px 0 90px;
     }
 
-    .cart-hero {
-      padding-bottom: 30px;
-      margin-bottom: 34px;
+    .checkout-hero {
+      padding-bottom: 28px;
+      margin-bottom: 32px;
 
       border-bottom:
         1px solid var(--line);
     }
 
-    .cart-hero h1 {
-      margin: 8px 0 10px;
+    .checkout-hero h1 {
+      margin:
+        8px 0 12px;
 
       font-size:
         clamp(42px, 6vw, 68px);
@@ -50,12 +52,68 @@
       line-height: 1;
     }
 
-    .cart-layout {
+    /* =====================================================
+       ÉTAPES
+       ===================================================== */
+
+    .checkout-progress {
       display: grid;
 
       grid-template-columns:
-        minmax(0, 1.4fr)
-        minmax(320px, .6fr);
+        repeat(4, 1fr);
+
+      gap: 10px;
+
+      margin-bottom: 32px;
+    }
+
+    .checkout-step {
+      position: relative;
+
+      padding:
+        14px 12px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 12px;
+
+      text-align: center;
+
+      font-size: 12px;
+
+      background:
+        rgba(255,255,255,.015);
+    }
+
+    .checkout-step.active {
+      border-color:
+        rgba(145, 79, 165, .7);
+
+      background:
+        rgba(98, 49, 115, .22);
+    }
+
+    .checkout-step.done {
+      opacity: .72;
+    }
+
+    .checkout-step strong {
+      display: block;
+
+      margin-bottom: 3px;
+    }
+
+    /* =====================================================
+       LAYOUT
+       ===================================================== */
+
+    .checkout-layout {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(330px, .75fr);
 
       gap: 34px;
 
@@ -63,161 +121,235 @@
     }
 
     /* =====================================================
-       LISTE PANIER
+       BLOCS FORMULAIRE
        ===================================================== */
 
-    .cart-list {
-      display: grid;
-      gap: 16px;
-    }
+    .checkout-block {
+      margin-bottom: 22px;
 
-    .cart-item {
-      display: grid;
-
-      grid-template-columns:
-        135px 1fr auto;
-
-      gap: 18px;
-
-      padding: 16px;
+      padding: 24px;
 
       border:
         1px solid var(--line);
 
-      border-radius: 16px;
+      border-radius: 18px;
 
       background:
         linear-gradient(
           145deg,
-          rgba(48, 24, 57, .16),
+          rgba(55, 26, 65, .17),
           rgba(255,255,255,.01)
         );
-
-      align-items: center;
     }
 
-    .cart-item-image {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-
-      overflow: hidden;
-
-      border-radius: 12px;
-
-      background: #0a090c;
-    }
-
-    .cart-item-image img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-    .cart-item-content h3 {
+    .checkout-block h2 {
       margin:
-        0 0 6px;
+        0 0 20px;
 
-      font-size: 22px;
+      font-size: 25px;
     }
 
-    .cart-item-content h3 a {
-      color: inherit;
-      text-decoration: none;
+    .checkout-block p {
+      margin-top: 0;
     }
 
-    .cart-item-meta {
-      margin-bottom: 10px;
-
-      font-size: 13px;
-      opacity: .68;
-    }
-
-    .cart-item-price {
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .cart-item-side {
-      min-width: 145px;
-
-      display: grid;
-      justify-items: end;
-
-      gap: 12px;
-    }
-
-    .cart-item-total {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .quantity-control {
+    .form-grid {
       display: grid;
 
       grid-template-columns:
-        36px 44px 36px;
+        1fr 1fr;
 
-      align-items: center;
+      gap: 14px;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 7px;
+    }
+
+    .form-group.full {
+      grid-column:
+        1 / -1;
+    }
+
+    .form-group label {
+      font-size: 13px;
+    }
+
+    .form-control {
+      width: 100%;
+
+      padding:
+        12px 13px;
 
       border:
         1px solid var(--line);
 
       border-radius: 10px;
 
-      overflow: hidden;
-    }
-
-    .quantity-control button {
-      height: 38px;
-
-      border: 0;
+      background:
+        rgba(255,255,255,.025);
 
       color: inherit;
 
-      background: transparent;
-
-      cursor: pointer;
+      font: inherit;
     }
 
-    .quantity-control button:hover {
-      background:
-        rgba(110, 53, 127, .22);
+    .form-control:focus {
+      outline: none;
+
+      border-color:
+        rgba(153, 90, 174, .8);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(108, 55, 126, .14);
     }
 
-    .quantity-value {
-      height: 38px;
+    textarea.form-control {
+      resize: vertical;
 
-      display: grid;
-      place-items: center;
-
-      border-left:
-        1px solid var(--line);
-
-      border-right:
-        1px solid var(--line);
+      min-height: 95px;
     }
 
-    .remove-button {
-      border: 0;
-      background: transparent;
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
 
-      color: #c59cac;
+      gap: 9px;
 
-      cursor: pointer;
+      margin-top: 10px;
 
-      font-size: 12px;
+      font-size: 13px;
     }
 
-    .remove-button:hover {
-      text-decoration: underline;
+    .form-checkbox input {
+      margin-top: 3px;
+
+      accent-color:
+        #7e458f;
     }
 
     /* =====================================================
-       RÉCAPITULATIF
+       LIVRAISON
        ===================================================== */
 
-    .cart-summary {
+    .delivery-options,
+    .payment-options {
+      display: grid;
+
+      gap: 12px;
+    }
+
+    .choice-card {
+      position: relative;
+
+      display: grid;
+
+      grid-template-columns:
+        auto 1fr auto;
+
+      gap: 12px;
+
+      align-items: center;
+
+      padding: 16px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      transition:
+        border-color .2s ease,
+        background .2s ease;
+    }
+
+    .choice-card:hover {
+      border-color:
+        rgba(145, 79, 165, .55);
+    }
+
+    .choice-card.selected {
+      border-color:
+        rgba(154, 88, 176, .82);
+
+      background:
+        rgba(89, 44, 105, .22);
+    }
+
+    .choice-card input {
+      accent-color:
+        #7e458f;
+    }
+
+    .choice-card strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .choice-card small {
+      opacity: .68;
+    }
+
+    .choice-price {
+      font-weight: 600;
+    }
+
+    /* =====================================================
+       PAIEMENT
+       ===================================================== */
+
+    .payment-demo-note {
+      margin-top: 16px;
+
+      padding: 13px;
+
+      border-radius: 10px;
+
+      background:
+        rgba(132, 85, 48, .12);
+
+      border:
+        1px solid rgba(175, 125, 76, .25);
+
+      font-size: 12px;
+
+      line-height: 1.6;
+    }
+
+    .payment-badges {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 12px;
+    }
+
+    .payment-badge {
+      padding:
+        7px 10px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 8px;
+
+      font-size: 11px;
+
+      background:
+        rgba(255,255,255,.02);
+    }
+
+    /* =====================================================
+       RÉCAP
+       ===================================================== */
+
+    .checkout-summary {
       position: sticky;
       top: 108px;
 
@@ -230,23 +362,87 @@
 
       background:
         linear-gradient(
-          160deg,
-          rgba(61, 29, 72, .26),
-          rgba(9, 8, 11, .96)
+          155deg,
+          rgba(61, 29, 72, .27),
+          rgba(8, 7, 10, .97)
         );
     }
 
-    .cart-summary h2 {
+    .checkout-summary h2 {
       margin-top: 0;
-      margin-bottom: 24px;
+    }
+
+    .summary-products {
+      display: grid;
+
+      gap: 12px;
+
+      margin-bottom: 20px;
+    }
+
+    .summary-product {
+      display: grid;
+
+      grid-template-columns:
+        66px 1fr auto;
+
+      gap: 10px;
+
+      align-items: center;
+    }
+
+    .summary-product-image {
+      width: 66px;
+      aspect-ratio: 4 / 5;
+
+      overflow: hidden;
+
+      border-radius: 8px;
+
+      border:
+        1px solid var(--line);
+    }
+
+    .summary-product-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .summary-product-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .summary-product-meta {
+      font-size: 11px;
+      opacity: .65;
+    }
+
+    .summary-product-price {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .summary-divider {
+      height: 1px;
+
+      margin:
+        16px 0;
+
+      background:
+        var(--line);
     }
 
     .summary-line {
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
 
-      margin-bottom: 13px;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 11px;
 
       font-size: 14px;
     }
@@ -262,76 +458,57 @@
       font-weight: 600;
     }
 
-    .summary-note {
-      padding: 12px 14px;
+    .summary-info {
+      margin-top: 16px;
 
-      border-radius: 12px;
+      padding: 12px;
+
+      border-radius: 10px;
 
       background:
-        rgba(81, 47, 92, .18);
+        rgba(92, 48, 107, .16);
 
       font-size: 12px;
+
       line-height: 1.6;
-
-      margin:
-        16px 0;
     }
 
-    .promo-row {
-      display: grid;
+    /* =====================================================
+       CTA
+       ===================================================== */
 
-      grid-template-columns:
-        1fr auto;
-
-      gap: 8px;
-
-      margin-top: 18px;
-    }
-
-    .gift-option {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-
-      margin:
-        18px 0;
-
-      font-size: 13px;
-    }
-
-    .gift-option input {
-      margin-top: 3px;
-      accent-color: #7d438e;
-    }
-
-    .checkout-button {
+    .checkout-submit {
       width: 100%;
 
       margin-top: 18px;
 
       justify-content: center;
       text-align: center;
+
+      font-size: 15px;
     }
 
-    .continue-link {
+    .back-cart {
       display: block;
 
       margin-top: 12px;
 
       text-align: center;
-      font-size: 13px;
 
       color: inherit;
-      opacity: .76;
+
+      font-size: 13px;
+
+      opacity: .7;
     }
 
     /* =====================================================
-       CART VIDE
+       ERREUR
        ===================================================== */
 
-    .empty-cart {
+    .checkout-error {
       padding:
-        75px 25px;
+        70px 20px;
 
       text-align: center;
 
@@ -341,116 +518,18 @@
       border-radius: 18px;
     }
 
-    .empty-cart h2 {
-      margin-top: 0;
+    .field-error {
+      border-color:
+        #b46d7a !important;
     }
 
-    /* =====================================================
-       RÉASSURANCE
-       ===================================================== */
+    .error-message {
+      margin-top: 10px;
 
-    .cart-reassurance {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 14px;
-
-      margin-top: 42px;
-    }
-
-    .reassurance-card {
-      padding: 18px;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 14px;
-
-      text-align: center;
-    }
-
-    .reassurance-card strong {
-      display: block;
-
-      margin-bottom: 5px;
-    }
-
-    .reassurance-card span {
-      font-size: 12px;
-      opacity: .68;
-    }
-
-    /* =====================================================
-       RECOMMANDATIONS
-       ===================================================== */
-
-    .recommendations {
-      margin-top: 75px;
-    }
-
-    .recommendations-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-
-      gap: 20px;
-
-      margin-bottom: 22px;
-    }
-
-    .recommendations-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 18px;
-    }
-
-    .recommendation-card {
-      overflow: hidden;
-
-      border:
-        1px solid var(--line);
-
-      border-radius: 14px;
-
-      background:
-        rgba(12, 10, 15, .88);
-    }
-
-    .recommendation-card img {
-      width: 100%;
-
-      aspect-ratio: 4 / 5;
-
-      object-fit: cover;
-    }
-
-    .recommendation-content {
-      padding: 14px;
-    }
-
-    .recommendation-content h3 {
-      margin:
-        0 0 6px;
-
-      font-size: 18px;
-    }
-
-    .recommendation-meta {
-      margin-bottom: 10px;
+      color:
+        #d49aa5;
 
       font-size: 12px;
-      opacity: .68;
-    }
-
-    .recommendation-price {
-      margin-bottom: 12px;
-
-      font-weight: 600;
     }
 
     /* =====================================================
@@ -459,52 +538,39 @@
 
     @media (max-width: 1000px) {
 
-      .cart-layout {
+      .checkout-layout {
         grid-template-columns: 1fr;
       }
 
-      .cart-summary {
+      .checkout-summary {
         position: static;
-      }
-
-      .recommendations-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 650px) {
 
-      .cart-item {
-        grid-template-columns:
-          95px 1fr;
-      }
-
-      .cart-item-side {
-        grid-column:
-          1 / -1;
-
-        width: 100%;
-
-        grid-template-columns:
-          auto 1fr auto;
-
-        justify-items: stretch;
-
-        align-items: center;
-      }
-
-      .cart-item-total {
-        text-align: center;
-      }
-
-      .cart-reassurance {
+      .form-grid {
         grid-template-columns: 1fr;
       }
 
-      .recommendations-grid {
-        grid-template-columns: 1fr;
+      .form-group.full {
+        grid-column: auto;
       }
+
+      .checkout-progress {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .choice-card {
+        grid-template-columns:
+          auto 1fr;
+      }
+
+      .choice-price {
+        grid-column: 2;
+      }
+
     }
 
   </style>
@@ -591,14 +657,7 @@
       <div class="actions">
 
         <a
-          class="iconbtn desktop-action"
-          href="account.html"
-        >
-          Compte
-        </a>
-
-        <a
-          class="iconbtn active"
+          class="iconbtn"
           href="cart.html"
         >
 
@@ -613,13 +672,6 @@
 
         </a>
 
-        <a
-          class="btn btn-primary desktop-action"
-          href="create.html"
-        >
-          Sur-mesure
-        </a>
-
       </div>
 
     </div>
@@ -628,66 +680,555 @@
 
 
   <!-- =====================================================
-       PANIER
+       PAGE
        ===================================================== -->
 
-  <main class="cart-page">
+  <main class="checkout-page">
 
     <div class="wrap">
 
 
       <!-- HERO -->
 
-      <section class="cart-hero">
+      <section class="checkout-hero">
 
         <div class="eyebrow">
-          Votre sélection
+          Finaliser votre commande
         </div>
 
         <h1>
-          Panier
+          Commande
         </h1>
 
         <p class="lead">
 
-          Retrouvez ici les créations
-          que vous avez sélectionnées.
+          Quelques informations,
+          puis votre création pourra
+          rejoindre son nouveau foyer.
 
         </p>
 
       </section>
 
 
-      <!-- LAYOUT -->
+      <!-- ÉTAPES -->
+
+      <div class="checkout-progress">
+
+        <div class="checkout-step done">
+
+          <strong>
+            1. Panier
+          </strong>
+
+          Sélection
+
+        </div>
+
+
+        <div class="checkout-step active">
+
+          <strong>
+            2. Livraison
+          </strong>
+
+          Vos coordonnées
+
+        </div>
+
+
+        <div class="checkout-step">
+
+          <strong>
+            3. Paiement
+          </strong>
+
+          Validation
+
+        </div>
+
+
+        <div class="checkout-step">
+
+          <strong>
+            4. Confirmation
+          </strong>
+
+          Commande enregistrée
+
+        </div>
+
+      </div>
+
+
+      <!-- CONTENU -->
 
       <div
-        class="cart-layout"
-        id="cart-layout"
+        class="checkout-layout"
+        id="checkout-layout"
       >
 
 
-        <!-- LISTE -->
+        <!-- =================================================
+             COLONNE FORMULAIRE
+             ================================================= -->
 
         <section>
 
-          <div
-            class="cart-list"
-            id="cart-list"
-          ></div>
+
+          <!-- INFORMATIONS -->
+
+          <div class="checkout-block">
+
+            <h2>
+              1. Vos informations
+            </h2>
+
+
+            <div class="form-grid">
+
+
+              <div class="form-group">
+
+                <label for="firstname">
+                  Prénom *
+                </label>
+
+                <input
+                  class="form-control"
+                  id="firstname"
+                  type="text"
+                  autocomplete="given-name"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="lastname">
+                  Nom *
+                </label>
+
+                <input
+                  class="form-control"
+                  id="lastname"
+                  type="text"
+                  autocomplete="family-name"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="email">
+                  Adresse e-mail *
+                </label>
+
+                <input
+                  class="form-control"
+                  id="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="phone">
+                  Téléphone *
+                </label>
+
+                <input
+                  class="form-control"
+                  id="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  required
+                >
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+          <!-- ADRESSE -->
+
+          <div class="checkout-block">
+
+            <h2>
+              2. Adresse de livraison
+            </h2>
+
+
+            <div class="form-grid">
+
+
+              <div class="form-group full">
+
+                <label for="address">
+                  Adresse *
+                </label>
+
+                <input
+                  class="form-control"
+                  id="address"
+                  type="text"
+                  autocomplete="street-address"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group full">
+
+                <label for="address2">
+                  Complément d’adresse
+                </label>
+
+                <input
+                  class="form-control"
+                  id="address2"
+                  type="text"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="postal-code">
+                  Code postal *
+                </label>
+
+                <input
+                  class="form-control"
+                  id="postal-code"
+                  type="text"
+                  autocomplete="postal-code"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="city">
+                  Ville *
+                </label>
+
+                <input
+                  class="form-control"
+                  id="city"
+                  type="text"
+                  autocomplete="address-level2"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group full">
+
+                <label for="country">
+                  Pays *
+                </label>
+
+                <select
+                  class="form-control"
+                  id="country"
+                  onchange="updateDeliveryOptions()"
+                >
+
+                  <option value="FR">
+                    France
+                  </option>
+
+                  <option value="DE">
+                    Allemagne
+                  </option>
+
+                  <option value="BE">
+                    Belgique
+                  </option>
+
+                  <option value="LU">
+                    Luxembourg
+                  </option>
+
+                  <option value="NL">
+                    Pays-Bas
+                  </option>
+
+                  <option value="ES">
+                    Espagne
+                  </option>
+
+                  <option value="IT">
+                    Italie
+                  </option>
+
+                  <option value="OTHER-EU">
+                    Autre pays UE
+                  </option>
+
+                </select>
+
+              </div>
+
+
+            </div>
+
+
+            <label class="form-checkbox">
+
+              <input
+                type="checkbox"
+                id="save-details"
+              >
+
+              <span>
+                Mémoriser mes informations
+                sur cet appareil pour ma prochaine commande.
+              </span>
+
+            </label>
+
+          </div>
+
+
+          <!-- LIVRAISON -->
+
+          <div class="checkout-block">
+
+            <h2>
+              3. Mode de livraison
+            </h2>
+
+
+            <div
+              class="delivery-options"
+              id="delivery-options"
+            ></div>
+
+          </div>
+
+
+          <!-- NOTE -->
+
+          <div class="checkout-block">
+
+            <h2>
+              4. Message pour l’atelier
+            </h2>
+
+
+            <div class="form-group">
+
+              <label for="order-note">
+
+                Une précision,
+                un message cadeau,
+                une demande particulière ?
+
+              </label>
+
+              <textarea
+                class="form-control"
+                id="order-note"
+                placeholder="Votre message..."
+              ></textarea>
+
+            </div>
+
+          </div>
+
+
+          <!-- PAIEMENT -->
+
+          <div class="checkout-block">
+
+            <h2>
+              5. Mode de paiement
+            </h2>
+
+
+            <div
+              class="payment-options"
+              id="payment-options"
+            >
+
+
+              <label
+                class="choice-card selected"
+                id="payment-card-card"
+              >
+
+                <input
+                  type="radio"
+                  name="payment"
+                  value="card"
+                  checked
+                  onchange="selectPaymentMethod(this)"
+                >
+
+                <div>
+
+                  <strong>
+                    Carte bancaire
+                  </strong>
+
+                  <small>
+                    Paiement sécurisé
+                  </small>
+
+                </div>
+
+                <span>
+                  CB
+                </span>
+
+              </label>
+
+
+              <label
+                class="choice-card"
+                id="payment-card-paypal"
+              >
+
+                <input
+                  type="radio"
+                  name="payment"
+                  value="paypal"
+                  onchange="selectPaymentMethod(this)"
+                >
+
+                <div>
+
+                  <strong>
+                    PayPal
+                  </strong>
+
+                  <small>
+                    Paiement via PayPal
+                  </small>
+
+                </div>
+
+                <span>
+                  PayPal
+                </span>
+
+              </label>
+
+
+            </div>
+
+
+            <div class="payment-badges">
+
+              <span class="payment-badge">
+                Carte bancaire
+              </span>
+
+              <span class="payment-badge">
+                PayPal
+              </span>
+
+              <span class="payment-badge">
+                Paiement sécurisé
+              </span>
+
+            </div>
+
+
+            <div class="payment-demo-note">
+
+              <strong>
+                Important :
+              </strong>
+
+              cette version GitHub Pages
+              prépare l’interface de paiement,
+              mais n’encaisse pas encore réellement
+              les cartes bancaires.
+
+              Le futur branchement Stripe ou PayPal
+              remplacera simplement cette étape.
+
+            </div>
+
+          </div>
+
+
+          <!-- CGV -->
+
+          <div class="checkout-block">
+
+            <label class="form-checkbox">
+
+              <input
+                type="checkbox"
+                id="accept-terms"
+              >
+
+              <span>
+
+                J’ai lu et j’accepte les
+
+                <a
+                  href="legal.html"
+                  target="_blank"
+                >
+                  conditions générales de vente
+                </a>
+
+                et la politique de confidentialité. *
+
+              </span>
+
+            </label>
+
+
+            <div
+              id="checkout-error"
+              class="error-message"
+            ></div>
+
+          </div>
 
         </section>
 
 
-        <!-- RÉCAP -->
+        <!-- =================================================
+             RÉCAPITULATIF
+             ================================================= -->
 
-        <aside
-          class="cart-summary"
-          id="cart-summary"
-        >
+        <aside class="checkout-summary">
 
           <h2>
-            Récapitulatif
+            Votre commande
           </h2>
+
+
+          <div
+            class="summary-products"
+            id="summary-products"
+          ></div>
+
+
+          <div class="summary-divider"></div>
 
 
           <div class="summary-line">
@@ -697,7 +1238,7 @@
             </span>
 
             <strong
-              id="cart-subtotal"
+              id="summary-subtotal"
             >
               0,00 €
             </strong>
@@ -712,7 +1253,7 @@
             </span>
 
             <strong
-              id="cart-shipping"
+              id="summary-shipping"
             >
               0,00 €
             </strong>
@@ -722,7 +1263,7 @@
 
           <div
             class="summary-line"
-            id="gift-summary-line"
+            id="summary-gift-line"
             style="display:none"
           >
 
@@ -730,7 +1271,9 @@
               Emballage cadeau
             </span>
 
-            <strong>
+            <strong
+              id="summary-gift"
+            >
               4,90 €
             </strong>
 
@@ -739,7 +1282,7 @@
 
           <div
             class="summary-line"
-            id="discount-line"
+            id="summary-discount-line"
             style="display:none"
           >
 
@@ -748,7 +1291,7 @@
             </span>
 
             <strong
-              id="discount-value"
+              id="summary-discount"
             >
               −0,00 €
             </strong>
@@ -763,7 +1306,7 @@
             </span>
 
             <strong
-              id="cart-total"
+              id="summary-total"
             >
               0,00 €
             </strong>
@@ -772,152 +1315,32 @@
 
 
           <div
-            class="summary-note"
-            id="shipping-message"
-          >
-          </div>
-
-
-          <!-- EMBALLAGE CADEAU -->
-
-          <label class="gift-option">
-
-            <input
-              type="checkbox"
-              id="gift-wrap"
-              onchange="updateCartTotals()"
-            >
-
-            <span>
-
-              <strong>
-                Emballage cadeau
-              </strong>
-
-              <br>
-
-              Écrin soigné et carte
-              personnalisable.
-
-              <strong>
-                +4,90 €
-              </strong>
-
-            </span>
-
-          </label>
-
-
-          <!-- CODE PROMO -->
-
-          <div class="promo-row">
-
-            <input
-              id="promo-code"
-              class="form-control"
-              type="text"
-              placeholder="Code promo"
-            >
-
-            <button
-              class="btn"
-              type="button"
-              onclick="applyPromoCode()"
-            >
-              Appliquer
-            </button>
-
-          </div>
-
-
-          <div
-            id="promo-message"
-            class="muted"
-            style="
-              margin-top:8px;
-              font-size:12px;
-            "
+            class="summary-info"
+            id="summary-delivery-info"
           ></div>
 
 
-          <!-- CHECKOUT -->
+          <button
+            class="btn btn-primary checkout-submit"
+            type="button"
+            onclick="submitCheckout()"
+          >
+
+            Valider la commande
+
+          </button>
+
 
           <a
-            class="btn btn-primary checkout-button"
-            href="checkout.html"
-            id="checkout-link"
+            class="back-cart"
+            href="cart.html"
           >
-            Passer à la commande
-          </a>
-
-
-          <a
-            class="continue-link"
-            href="shop.html"
-          >
-            ← Continuer mes achats
+            ← Retour au panier
           </a>
 
         </aside>
 
       </div>
-
-
-      <!-- RÉASSURANCE -->
-
-      <section class="cart-reassurance">
-
-        <div class="reassurance-card">
-
-          <strong>
-            Paiement sécurisé
-          </strong>
-
-          <span>
-            Paiement protégé lors
-            de la validation finale.
-          </span>
-
-        </div>
-
-
-        <div class="reassurance-card">
-
-          <strong>
-            Fabrication artisanale
-          </strong>
-
-          <span>
-            Chaque pièce est réalisée
-            ou préparée à Strasbourg.
-          </span>
-
-        </div>
-
-
-        <div class="reassurance-card">
-
-          <strong>
-            Livraison suivie
-          </strong>
-
-          <span>
-            Expédition en France
-            et en Europe.
-          </span>
-
-        </div>
-
-      </section>
-
-
-      <!-- RECOMMANDATIONS -->
-
-      <section
-        class="recommendations"
-        id="recommendations-section"
-      ></section>
-
 
     </div>
 
@@ -961,10 +1384,6 @@
 
         <a href="collections.html">
           Collections
-        </a>
-
-        <a href="create.html">
-          Sur-mesure
         </a>
 
       </div>
@@ -1019,19 +1438,6 @@
           et inspirations.
         </p>
 
-        <input
-          class="form-control"
-          type="email"
-          placeholder="Votre e-mail"
-        >
-
-        <button
-          class="btn btn-primary"
-          style="margin-top:8px"
-        >
-          S’inscrire
-        </button>
-
       </div>
 
     </div>
@@ -1051,43 +1457,41 @@
   <script>
 
     // =====================================================
-    // CONFIGURATION
+    // CONFIG
     // =====================================================
 
     const CART_KEY =
       "byssus-cart";
 
-    const PROMO_KEY =
-      "byssus-promo";
+    const OPTIONS_KEY =
+      "byssus-cart-options";
+
+    const CHECKOUT_KEY =
+      "byssus-checkout";
+
+    const CUSTOMER_KEY =
+      "byssus-customer";
 
 
-    const FREE_SHIPPING_THRESHOLD =
-      90;
+    let cart = [];
 
-    const STANDARD_SHIPPING_PRICE =
-      6.90;
+    let cartOptions = {};
 
-    const GIFT_WRAP_PRICE =
-      4.90;
+    let selectedDelivery = null;
 
-
-    let activePromo = null;
+    let selectedPayment = "card";
 
 
 
     // =====================================================
-    // CHARGEMENT
+    // INITIALISATION
     // =====================================================
 
     document.addEventListener(
       "DOMContentLoaded",
       () => {
 
-        loadPromoFromStorage();
-
-        renderCart();
-
-        renderRecommendations();
+        loadCheckoutData();
 
       }
     );
@@ -1095,23 +1499,68 @@
 
 
     // =====================================================
-    // RÉCUPÉRER PANIER
+    // CHARGER DONNÉES
     // =====================================================
 
-    function getCart() {
+    function loadCheckoutData() {
+
+      cart =
+        readStorageArray(
+          CART_KEY
+        );
+
+
+      cartOptions =
+        readStorageObject(
+          OPTIONS_KEY
+        );
+
+
+      if (!cart.length) {
+
+        renderEmptyCheckout();
+
+        return;
+
+      }
+
+
+      restoreCustomerData();
+
+      renderOrderProducts();
+
+      updateDeliveryOptions();
+
+      updateSummary();
+
+      updateCartBadge();
+
+    }
+
+
+
+    // =====================================================
+    // STORAGE
+    // =====================================================
+
+    function readStorageArray(key) {
 
       try {
 
-        return JSON.parse(
-          localStorage.getItem(
-            CART_KEY
-          )
-          ||
-          "[]"
-        );
+        const value =
+          JSON.parse(
+            localStorage.getItem(key)
+            ||
+            "[]"
+          );
+
+
+        return Array.isArray(value)
+          ? value
+          : [];
 
       }
-      catch (error) {
+      catch {
 
         return [];
 
@@ -1121,432 +1570,160 @@
 
 
 
-    // =====================================================
-    // SAUVEGARDER PANIER
-    // =====================================================
+    function readStorageObject(key) {
 
-    function saveCart(cart) {
+      try {
 
-      localStorage.setItem(
-        CART_KEY,
-        JSON.stringify(cart)
-      );
+        const value =
+          JSON.parse(
+            localStorage.getItem(key)
+            ||
+            "{}"
+          );
 
 
-      updateCartBadge();
+        return value
+        &&
+        typeof value === "object"
+          ? value
+          : {};
+
+      }
+      catch {
+
+        return {};
+
+      }
 
     }
 
 
 
     // =====================================================
-    // AFFICHER PANIER
+    // PRODUITS
     // =====================================================
 
-    function renderCart() {
-
-      const cart =
-        getCart();
-
+    function renderOrderProducts() {
 
       const container =
         document.getElementById(
-          "cart-list"
+          "summary-products"
         );
-
-
-      if (!cart.length) {
-
-        renderEmptyCart();
-
-        updateCartTotals();
-
-        updateCartBadge();
-
-        return;
-
-      }
 
 
       container.innerHTML = "";
 
 
-      cart.forEach(cartItem => {
+      cart.forEach(
+        item => {
 
-        const product =
-          getProductById(
-            cartItem.id
-          );
-
-
-        if (!product) {
-          return;
-        }
+          const product =
+            getProductById(
+              item.id
+            );
 
 
-        const quantity =
-          Math.max(
-            1,
+          if (!product) {
+            return;
+          }
+
+
+          const quantity =
             Number(
-              cartItem.quantity || 1
-            )
-          );
+              item.quantity || 1
+            );
 
 
-        const total =
-          product.price
-          *
-          quantity;
+          const total =
+            product.price
+            *
+            quantity;
 
 
-        const article =
-          document.createElement(
-            "article"
-          );
+          const row =
+            document.createElement(
+              "div"
+            );
 
 
-        article.className =
-          "cart-item";
+          row.className =
+            "summary-product";
 
 
-        article.innerHTML = `
+          row.innerHTML = `
 
-          <a
-            class="cart-item-image"
-            href="product.html?id=${encodeURIComponent(
-              product.id
-            )}"
-          >
+            <div class="summary-product-image">
 
-            <img
-              src="${product.mainImage}"
-              alt="${escapeHtml(
-                product.name
-              )}"
-              onerror="this.src='assets/images/logo-byssus.png'"
-            >
-
-          </a>
-
-
-          <div class="cart-item-content">
-
-            <h3>
-
-              <a
-                href="product.html?id=${encodeURIComponent(
-                  product.id
+              <img
+                src="${product.mainImage}"
+                alt="${escapeHtml(
+                  product.name
                 )}"
+                onerror="this.src='assets/images/logo-byssus.png'"
               >
+
+            </div>
+
+
+            <div>
+
+              <div class="summary-product-name">
+
                 ${escapeHtml(
                   product.name
                 )}
-              </a>
-
-            </h3>
-
-
-            <div class="cart-item-meta">
-
-              ${escapeHtml(
-                product.stone
-              )}
-
-              ·
-
-              ${escapeHtml(
-                product.size
-              )}
-
-              <br>
-
-              ${
-                product.madeToOrder
-                  ? "Fabrication sur commande"
-                  : product.leadTime
-              }
-
-            </div>
-
-
-            <div class="cart-item-price">
-
-              ${formatPrice(
-                product.price
-              )}
-
-              / pièce
-
-            </div>
-
-          </div>
-
-
-          <div class="cart-item-side">
-
-
-            <div class="quantity-control">
-
-              <button
-                type="button"
-                onclick="changeCartQuantity(
-                  '${product.id}',
-                  -1
-                )"
-              >
-                −
-              </button>
-
-
-              <div class="quantity-value">
-
-                ${quantity}
 
               </div>
 
 
-              <button
-                type="button"
-                onclick="changeCartQuantity(
-                  '${product.id}',
-                  1
-                )"
-              >
-                +
-              </button>
+              <div class="summary-product-meta">
+
+                Quantité :
+                ${quantity}
+
+                <br>
+
+                ${escapeHtml(
+                  product.stone
+                )}
+
+              </div>
 
             </div>
 
 
-            <div class="cart-item-total">
+            <div class="summary-product-price">
 
-              ${formatPrice(
-                total
-              )}
+              ${formatPrice(total)}
 
             </div>
 
-
-            <button
-              class="remove-button"
-              type="button"
-              onclick="removeFromCart(
-                '${product.id}'
-              )"
-            >
-              Supprimer
-            </button>
-
-          </div>
-
-        `;
+          `;
 
 
-        container.appendChild(
-          article
-        );
+          container.appendChild(
+            row
+          );
 
-      });
-
-
-      updateCartTotals();
-
-      updateCartBadge();
+        }
+      );
 
     }
 
 
 
     // =====================================================
-    // PANIER VIDE
+    // SOUS TOTAL
     // =====================================================
 
-    function renderEmptyCart() {
-
-      const container =
-        document.getElementById(
-          "cart-list"
-        );
-
-
-      container.innerHTML = `
-
-        <div class="empty-cart">
-
-          <div class="eyebrow">
-            Votre panier est vide
-          </div>
-
-
-          <h2>
-            L’ombre attend encore
-            sa première pièce.
-          </h2>
-
-
-          <p class="muted">
-
-            Découvrez les bijoux,
-            talismans et parures
-            de Byssus Tenebrarum.
-
-          </p>
-
-
-          <a
-            class="btn btn-primary"
-            href="shop.html"
-          >
-            Découvrir la boutique
-          </a>
-
-        </div>
-
-      `;
-
-
-      document
-        .getElementById(
-          "checkout-link"
-        )
-        .style.pointerEvents =
-        "none";
-
-
-      document
-        .getElementById(
-          "checkout-link"
-        )
-        .style.opacity =
-        ".4";
-
-    }
-
-
-
-    // =====================================================
-    // MODIFIER QUANTITÉ
-    // =====================================================
-
-    function changeCartQuantity(
-      productId,
-      amount
-    ) {
-
-      const cart =
-        getCart();
-
-
-      const item =
-        cart.find(
-          item =>
-            item.id ===
-            productId
-        );
-
-
-      if (!item) {
-        return;
-      }
-
-
-      const product =
-        getProductById(
-          productId
-        );
-
-
-      item.quantity =
-        Number(
-          item.quantity || 1
-        )
-        +
-        amount;
-
-
-      if (
-        item.quantity < 1
-      ) {
-
-        removeFromCart(
-          productId
-        );
-
-        return;
-
-      }
-
-
-      if (
-        product
-        &&
-        !product.madeToOrder
-        &&
-        product.stock > 0
-        &&
-        item.quantity
-        >
-        product.stock
-      ) {
-
-        item.quantity =
-          product.stock;
-
-      }
-
-
-      saveCart(cart);
-
-      renderCart();
-
-    }
-
-
-
-    // =====================================================
-    // SUPPRESSION
-    // =====================================================
-
-    function removeFromCart(
-      productId
-    ) {
-
-      let cart =
-        getCart();
-
-
-      cart =
-        cart.filter(
-          item =>
-            item.id !==
-            productId
-        );
-
-
-      saveCart(cart);
-
-      renderCart();
-
-    }
-
-
-
-    // =====================================================
-    // SOUS-TOTAL
-    // =====================================================
-
-    function getSubtotal() {
-
-      const cart =
-        getCart();
-
+    function calculateSubtotal() {
 
       return cart.reduce(
-        (sum, cartItem) => {
+        (sum, item) => {
 
           const product =
             getProductById(
-              cartItem.id
+              item.id
             );
 
 
@@ -1561,7 +1738,7 @@
             product.price
             *
             Number(
-              cartItem.quantity || 1
+              item.quantity || 1
             )
           );
 
@@ -1577,267 +1754,331 @@
     // LIVRAISON
     // =====================================================
 
-    function calculateShipping(
-      subtotal
-    ) {
+    function updateDeliveryOptions() {
 
-      if (
-        subtotal <= 0
-      ) {
-
-        return 0;
-
-      }
+      const country =
+        document
+          .getElementById(
+            "country"
+          )
+          .value;
 
 
-      if (
-        subtotal >=
-        FREE_SHIPPING_THRESHOLD
-      ) {
-
-        return 0;
-
-      }
-
-
-      return STANDARD_SHIPPING_PRICE;
-
-    }
-
-
-
-    // =====================================================
-    // PROMO
-    // =====================================================
-
-    function applyPromoCode() {
-
-      const field =
+      const container =
         document.getElementById(
-          "promo-code"
+          "delivery-options"
         );
 
 
-      const message =
-        document.getElementById(
-          "promo-message"
-        );
+      const subtotal =
+        calculateSubtotal();
 
 
-      const code =
-        field
-          .value
-          .trim()
-          .toUpperCase();
+      let options = [];
 
 
-      if (!code) {
+      if (country === "FR") {
 
-        activePromo = null;
+        options = [
 
-        localStorage.removeItem(
-          PROMO_KEY
-        );
+          {
+            id: "standard-fr",
+            name: "Livraison standard",
+            delay: "3 à 5 jours ouvrés",
+            price:
+              subtotal >= 90
+                ? 0
+                : 6.90
+          },
 
+          {
+            id: "express-fr",
+            name: "Livraison express",
+            delay: "1 à 2 jours ouvrés",
+            price: 12.90
+          }
 
-        message.textContent =
-          "Saisissez un code promo.";
-
-
-        updateCartTotals();
-
-        return;
+        ];
 
       }
+      else {
 
+        options = [
 
-      /*
-       * EXEMPLES :
-       *
-       * BIENVENUE10 = -10 %
-       * TENEBRES15  = -15 %
-       *
-       * Tu peux modifier ou supprimer
-       * ces codes plus tard.
-       */
+          {
+            id: "standard-eu",
+            name: "Livraison Europe suivie",
+            delay: "4 à 8 jours ouvrés",
+            price: 11.90
+          },
 
-      const promoCodes = {
+          {
+            id: "express-eu",
+            name: "Livraison Europe express",
+            delay: "2 à 4 jours ouvrés",
+            price: 18.90
+          }
 
-        BIENVENUE10: {
-          type: "percent",
-          value: 10
-        },
+        ];
 
-        TENEBRES15: {
-          type: "percent",
-          value: 15
-        }
-
-      };
+      }
 
 
       if (
-        !promoCodes[code]
-      ) {
-
-        activePromo = null;
-
-        localStorage.removeItem(
-          PROMO_KEY
-        );
-
-
-        message.textContent =
-          "Ce code promo n’est pas valide.";
-
-
-        updateCartTotals();
-
-        return;
-
-      }
-
-
-      activePromo = {
-        code,
-        ...promoCodes[code]
-      };
-
-
-      localStorage.setItem(
-        PROMO_KEY,
-        JSON.stringify(
-          activePromo
+        !selectedDelivery
+        ||
+        !options.find(
+          option =>
+            option.id
+            ===
+            selectedDelivery.id
         )
+      ) {
+
+        selectedDelivery =
+          options[0];
+
+      }
+      else {
+
+        selectedDelivery =
+          options.find(
+            option =>
+              option.id
+              ===
+              selectedDelivery.id
+          );
+
+      }
+
+
+      container.innerHTML = "";
+
+
+      options.forEach(
+        option => {
+
+          const label =
+            document.createElement(
+              "label"
+            );
+
+
+          label.className =
+            `choice-card ${
+              option.id
+              ===
+              selectedDelivery.id
+                ? "selected"
+                : ""
+            }`;
+
+
+          label.innerHTML = `
+
+            <input
+              type="radio"
+              name="delivery"
+              value="${option.id}"
+              ${
+                option.id
+                ===
+                selectedDelivery.id
+                  ? "checked"
+                  : ""
+              }
+              onchange="selectDelivery(
+                '${option.id}'
+              )"
+            >
+
+
+            <div>
+
+              <strong>
+                ${escapeHtml(
+                  option.name
+                )}
+              </strong>
+
+              <small>
+                ${escapeHtml(
+                  option.delay
+                )}
+              </small>
+
+            </div>
+
+
+            <span class="choice-price">
+
+              ${
+                option.price === 0
+                  ? "Offerte"
+                  : formatPrice(
+                      option.price
+                    )
+              }
+
+            </span>
+
+          `;
+
+
+          container.appendChild(
+            label
+          );
+
+        }
       );
 
 
-      message.textContent =
-        `Code ${code} appliqué.`;
-
-
-      updateCartTotals();
+      updateSummary();
 
     }
 
 
 
-    // =====================================================
-    // CHARGER PROMO
-    // =====================================================
+    function selectDelivery(id) {
 
-    function loadPromoFromStorage() {
-
-      try {
-
-        const saved =
-          JSON.parse(
-            localStorage.getItem(
-              PROMO_KEY
-            )
-          );
-
-
-        if (saved) {
-
-          activePromo =
-            saved;
-
-
-          document
-            .getElementById(
-              "promo-code"
-            )
-            .value =
-            saved.code || "";
-
-        }
-
-      }
-      catch (error) {
-
-        activePromo = null;
-
-      }
-
-    }
-
-
-
-    // =====================================================
-    // CALCUL PROMO
-    // =====================================================
-
-    function calculateDiscount(
-      subtotal
-    ) {
-
-      if (!activePromo) {
-
-        return 0;
-
-      }
-
-
-      if (
-        activePromo.type
-        ===
-        "percent"
-      ) {
-
-        return (
-          subtotal
-          *
-          Number(
-            activePromo.value
+      const country =
+        document
+          .getElementById(
+            "country"
           )
-          /
-          100
-        );
+          .value;
 
-      }
-
-
-      return 0;
-
-    }
-
-
-
-    // =====================================================
-    // TOTALS
-    // =====================================================
-
-    function updateCartTotals() {
 
       const subtotal =
-        getSubtotal();
+        calculateSubtotal();
 
 
-      const shipping =
-        calculateShipping(
-          subtotal
+      const allOptions = [
+
+        {
+          id: "standard-fr",
+          name: "Livraison standard",
+          delay: "3 à 5 jours ouvrés",
+          price:
+            subtotal >= 90
+              ? 0
+              : 6.90
+        },
+
+        {
+          id: "express-fr",
+          name: "Livraison express",
+          delay: "1 à 2 jours ouvrés",
+          price: 12.90
+        },
+
+        {
+          id: "standard-eu",
+          name: "Livraison Europe suivie",
+          delay: "4 à 8 jours ouvrés",
+          price: 11.90
+        },
+
+        {
+          id: "express-eu",
+          name: "Livraison Europe express",
+          delay: "2 à 4 jours ouvrés",
+          price: 18.90
+        }
+
+      ];
+
+
+      selectedDelivery =
+        allOptions.find(
+          option =>
+            option.id === id
         );
+
+
+      updateDeliveryOptions();
+
+    }
+
+
+
+    // =====================================================
+    // PAIEMENT
+    // =====================================================
+
+    function selectPaymentMethod(input) {
+
+      selectedPayment =
+        input.value;
+
+
+      document
+        .querySelectorAll(
+          ".payment-options .choice-card"
+        )
+        .forEach(
+          card => {
+
+            card.classList.remove(
+              "selected"
+            );
+
+          }
+        );
+
+
+      input
+        .closest(
+          ".choice-card"
+        )
+        .classList.add(
+          "selected"
+        );
+
+    }
+
+
+
+    // =====================================================
+    // RÉCAP TOTAL
+    // =====================================================
+
+    function updateSummary() {
+
+      const subtotal =
+        calculateSubtotal();
 
 
       const giftWrap =
-        document
-          .getElementById(
-            "gift-wrap"
-          )
-          .checked;
+        Boolean(
+          cartOptions.giftWrap
+        );
 
 
       const giftPrice =
         giftWrap
-          ? GIFT_WRAP_PRICE
+          ? Number(
+              cartOptions.giftPrice
+              ||
+              4.90
+            )
           : 0;
 
 
       const discount =
-        calculateDiscount(
-          subtotal
+        Number(
+          cartOptions.discount
+          ||
+          0
         );
+
+
+      const shipping =
+        selectedDelivery
+          ? Number(
+              selectedDelivery.price
+            )
+          : 0;
 
 
       const total =
@@ -1847,15 +2088,15 @@
           -
           discount
           +
-          shipping
-          +
           giftPrice
+          +
+          shipping
         );
 
 
       document
         .getElementById(
-          "cart-subtotal"
+          "summary-subtotal"
         )
         .textContent =
         formatPrice(
@@ -1865,50 +2106,59 @@
 
       document
         .getElementById(
-          "cart-shipping"
+          "summary-shipping"
         )
         .textContent =
         shipping === 0
-        && subtotal > 0
           ? "Offerte"
           : formatPrice(
               shipping
             );
 
 
-      document
-        .getElementById(
-          "cart-total"
-        )
-        .textContent =
-        formatPrice(
-          total
-        );
+      // cadeau
+
+      const giftLine =
+        document
+          .getElementById(
+            "summary-gift-line"
+          );
 
 
-      // CADEAU
+      if (giftWrap) {
 
-      document
-        .getElementById(
-          "gift-summary-line"
-        )
-        .style.display =
-        giftWrap
-          ? "flex"
-          : "none";
+        giftLine.style.display =
+          "flex";
 
 
-      // RÉDUCTION
+        document
+          .getElementById(
+            "summary-gift"
+          )
+          .textContent =
+          formatPrice(
+            giftPrice
+          );
+
+      }
+      else {
+
+        giftLine.style.display =
+          "none";
+
+      }
+
+
+      // remise
 
       const discountLine =
-        document.getElementById(
-          "discount-line"
-        );
+        document
+          .getElementById(
+            "summary-discount-line"
+          );
 
 
-      if (
-        discount > 0
-      ) {
+      if (discount > 0) {
 
         discountLine.style.display =
           "flex";
@@ -1916,7 +2166,7 @@
 
         document
           .getElementById(
-            "discount-value"
+            "summary-discount"
           )
           .textContent =
           `−${formatPrice(
@@ -1932,92 +2182,529 @@
       }
 
 
-      // MESSAGE LIVRAISON
-
-      updateShippingMessage(
-        subtotal
-      );
-
-
-      // ENREGISTRER OPTIONS POUR CHECKOUT
-
-      localStorage.setItem(
-        "byssus-cart-options",
-        JSON.stringify({
-          giftWrap,
-          giftPrice,
-          promo:
-            activePromo,
-          discount,
-          shipping,
-          subtotal,
+      document
+        .getElementById(
+          "summary-total"
+        )
+        .textContent =
+        formatPrice(
           total
-        })
-      );
+        );
+
+
+      const deliveryInfo =
+        document.getElementById(
+          "summary-delivery-info"
+        );
+
+
+      if (selectedDelivery) {
+
+        deliveryInfo.innerHTML = `
+
+          <strong>
+            ${escapeHtml(
+              selectedDelivery.name
+            )}
+          </strong>
+
+          <br>
+
+          ${escapeHtml(
+            selectedDelivery.delay
+          )}
+
+        `;
+
+      }
+
+
+      return {
+        subtotal,
+        shipping,
+        giftWrap,
+        giftPrice,
+        discount,
+        total
+      };
 
     }
 
 
 
     // =====================================================
-    // MESSAGE LIVRAISON
+    // VALIDATION FORMULAIRE
     // =====================================================
 
-    function updateShippingMessage(
-      subtotal
-    ) {
+    function validateCheckout() {
 
-      const box =
-        document.getElementById(
-          "shipping-message"
+      clearErrors();
+
+
+      const requiredFields = [
+
+        "firstname",
+        "lastname",
+        "email",
+        "phone",
+        "address",
+        "postal-code",
+        "city"
+
+      ];
+
+
+      let valid = true;
+
+
+      requiredFields.forEach(
+        id => {
+
+          const field =
+            document.getElementById(
+              id
+            );
+
+
+          if (
+            !field.value.trim()
+          ) {
+
+            field.classList.add(
+              "field-error"
+            );
+
+
+            valid = false;
+
+          }
+
+        }
+      );
+
+
+      const email =
+        document
+          .getElementById(
+            "email"
+          );
+
+
+      if (
+        email.value
+        &&
+        !isValidEmail(
+          email.value
+        )
+      ) {
+
+        email.classList.add(
+          "field-error"
+        );
+
+
+        valid = false;
+
+      }
+
+
+      const acceptTerms =
+        document
+          .getElementById(
+            "accept-terms"
+          )
+          .checked;
+
+
+      if (!acceptTerms) {
+
+        valid = false;
+
+      }
+
+
+      if (!valid) {
+
+        document
+          .getElementById(
+            "checkout-error"
+          )
+          .textContent =
+          "Merci de vérifier les champs obligatoires et d’accepter les conditions générales de vente.";
+
+      }
+
+
+      return valid;
+
+    }
+
+
+
+    function clearErrors() {
+
+      document
+        .querySelectorAll(
+          ".field-error"
+        )
+        .forEach(
+          field => {
+
+            field.classList.remove(
+              "field-error"
+            );
+
+          }
+        );
+
+
+      document
+        .getElementById(
+          "checkout-error"
+        )
+        .textContent =
+        "";
+
+    }
+
+
+
+    function isValidEmail(email) {
+
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(
+          email
+        );
+
+    }
+
+
+
+    // =====================================================
+    // VALIDATION COMMANDE
+    // =====================================================
+
+    function submitCheckout() {
+
+      if (
+        !validateCheckout()
+      ) {
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+
+        return;
+
+      }
+
+
+      const totals =
+        updateSummary();
+
+
+      const order = {
+
+        orderId:
+          generateOrderId(),
+
+        createdAt:
+          new Date()
+            .toISOString(),
+
+        customer: {
+
+          firstname:
+            getFieldValue(
+              "firstname"
+            ),
+
+          lastname:
+            getFieldValue(
+              "lastname"
+            ),
+
+          email:
+            getFieldValue(
+              "email"
+            ),
+
+          phone:
+            getFieldValue(
+              "phone"
+            )
+
+        },
+
+        shippingAddress: {
+
+          address:
+            getFieldValue(
+              "address"
+            ),
+
+          address2:
+            getFieldValue(
+              "address2"
+            ),
+
+          postalCode:
+            getFieldValue(
+              "postal-code"
+            ),
+
+          city:
+            getFieldValue(
+              "city"
+            ),
+
+          country:
+            getFieldValue(
+              "country"
+            )
+
+        },
+
+        delivery:
+          selectedDelivery,
+
+        paymentMethod:
+          selectedPayment,
+
+        note:
+          getFieldValue(
+            "order-note"
+          ),
+
+        items:
+          cart,
+
+        totals:
+          totals,
+
+        promo:
+          cartOptions.promo
+          ||
+          null
+
+      };
+
+
+      localStorage.setItem(
+        CHECKOUT_KEY,
+        JSON.stringify(
+          order
+        )
+      );
+
+
+      // mémoriser client si demandé
+
+      if (
+        document
+          .getElementById(
+            "save-details"
+          )
+          .checked
+      ) {
+
+        localStorage.setItem(
+          CUSTOMER_KEY,
+          JSON.stringify({
+            firstname:
+              order.customer.firstname,
+
+            lastname:
+              order.customer.lastname,
+
+            email:
+              order.customer.email,
+
+            phone:
+              order.customer.phone,
+
+            address:
+              order.shippingAddress.address,
+
+            address2:
+              order.shippingAddress.address2,
+
+            postalCode:
+              order.shippingAddress.postalCode,
+
+            city:
+              order.shippingAddress.city,
+
+            country:
+              order.shippingAddress.country
+          })
+        );
+
+      }
+
+
+      /*
+       * ===================================================
+       * IMPORTANT
+       * ===================================================
+       *
+       * Pour le moment :
+       * pas d'encaissement réel.
+       *
+       * Ici, plus tard :
+       *
+       * - appel Stripe Checkout
+       * OU
+       * - redirection PayPal
+       *
+       */
+
+
+      alert(
+        "Commande enregistrée en mode démonstration. Le paiement réel sera activé lorsque Stripe ou PayPal sera connecté."
+      );
+
+
+      /*
+       * Pour une future page confirmation :
+       *
+       * window.location.href =
+       *   "confirmation.html";
+       */
+
+    }
+
+
+
+    // =====================================================
+    // CLIENT MÉMORISÉ
+    // =====================================================
+
+    function restoreCustomerData() {
+
+      const customer =
+        readStorageObject(
+          CUSTOMER_KEY
         );
 
 
       if (
-        subtotal <= 0
+        !customer
+        ||
+        !Object.keys(
+          customer
+        ).length
       ) {
-
-        box.textContent =
-          "Ajoutez une création à votre panier.";
 
         return;
 
       }
+
+
+      setFieldValue(
+        "firstname",
+        customer.firstname
+      );
+
+      setFieldValue(
+        "lastname",
+        customer.lastname
+      );
+
+      setFieldValue(
+        "email",
+        customer.email
+      );
+
+      setFieldValue(
+        "phone",
+        customer.phone
+      );
+
+      setFieldValue(
+        "address",
+        customer.address
+      );
+
+      setFieldValue(
+        "address2",
+        customer.address2
+      );
+
+      setFieldValue(
+        "postal-code",
+        customer.postalCode
+      );
+
+      setFieldValue(
+        "city",
+        customer.city
+      );
 
 
       if (
-        subtotal >=
-        FREE_SHIPPING_THRESHOLD
+        customer.country
       ) {
 
-        box.innerHTML =
-          `
-          ✓ Livraison standard offerte
-          en France.
-          `;
-
-        return;
+        setFieldValue(
+          "country",
+          customer.country
+        );
 
       }
 
-
-      const remaining =
-        FREE_SHIPPING_THRESHOLD
-        -
-        subtotal;
+    }
 
 
-      box.innerHTML =
-        `
-        Plus que
-        <strong>
-          ${formatPrice(
-            remaining
-          )}
-        </strong>
-        pour bénéficier de la
-        livraison offerte.
-        `;
+
+    // =====================================================
+    // PANIER VIDE
+    // =====================================================
+
+    function renderEmptyCheckout() {
+
+      const layout =
+        document.getElementById(
+          "checkout-layout"
+        );
+
+
+      layout.innerHTML = `
+
+        <div
+          class="checkout-error"
+          style="
+            grid-column:1 / -1;
+          "
+        >
+
+          <div class="eyebrow">
+            Commande impossible
+          </div>
+
+          <h2>
+            Votre panier est vide
+          </h2>
+
+          <p class="muted">
+
+            Ajoutez au moins une création
+            avant de passer commande.
+
+          </p>
+
+          <a
+            class="btn btn-primary"
+            href="shop.html"
+          >
+            Découvrir la boutique
+          </a>
+
+        </div>
+
+      `;
 
     }
 
@@ -2029,17 +2716,15 @@
 
     function updateCartBadge() {
 
-      const cart =
-        getCart();
-
-
       const count =
         cart.reduce(
           (sum, item) =>
             sum
             +
             Number(
-              item.quantity || 0
+              item.quantity
+              ||
+              0
             ),
           0
         );
@@ -2063,251 +2748,90 @@
 
 
     // =====================================================
-    // RECOMMANDATIONS
+    // NUMÉRO COMMANDE
     // =====================================================
 
-    function renderRecommendations() {
+    function generateOrderId() {
 
-      const container =
-        document.getElementById(
-          "recommendations-section"
-        );
+      const now =
+        new Date();
 
 
-      const cartIds =
-        new Set(
-          getCart()
-            .map(
-              item =>
-                item.id
-            )
-        );
-
-
-      const recommendations =
-        PRODUCTS
-          .filter(
-            product =>
-              !cartIds.has(
-                product.id
-              )
-          )
-          .sort(
-            (a, b) =>
-              Number(
-                b.featured
-              )
-              -
-              Number(
-                a.featured
-              )
-          )
-          .slice(
-            0,
-            4
+      const date =
+        now
+          .toISOString()
+          .slice(0, 10)
+          .replaceAll(
+            "-",
+            ""
           );
 
 
-      if (
-        !recommendations.length
-      ) {
-
-        container.innerHTML =
-          "";
-
-        return;
-
-      }
+      const random =
+        Math.floor(
+          1000
+          +
+          Math.random()
+          *
+          9000
+        );
 
 
-      container.innerHTML = `
-
-        <div class="recommendations-header">
-
-          <div>
-
-            <div class="eyebrow">
-              Compléter votre sélection
-            </div>
-
-            <h2>
-              Vous pourriez aussi aimer
-            </h2>
-
-          </div>
-
-
-          <a
-            class="btn"
-            href="shop.html"
-          >
-            Voir la boutique
-          </a>
-
-        </div>
-
-
-        <div class="recommendations-grid">
-
-          ${
-            recommendations
-              .map(
-                product => `
-
-                  <article class="recommendation-card">
-
-
-                    <a
-                      href="product.html?id=${encodeURIComponent(
-                        product.id
-                      )}"
-                    >
-
-                      <img
-                        src="${product.mainImage}"
-                        alt="${escapeHtml(
-                          product.name
-                        )}"
-                        loading="lazy"
-                        onerror="this.src='assets/images/logo-byssus.png'"
-                      >
-
-                    </a>
-
-
-                    <div class="recommendation-content">
-
-                      <h3>
-
-                        <a
-                          href="product.html?id=${encodeURIComponent(
-                            product.id
-                          )}"
-                          style="
-                            color:inherit;
-                            text-decoration:none;
-                          "
-                        >
-
-                          ${escapeHtml(
-                            product.name
-                          )}
-
-                        </a>
-
-                      </h3>
-
-
-                      <div class="recommendation-meta">
-
-                        ${escapeHtml(
-                          product.stone
-                        )}
-
-                        ·
-
-                        ${escapeHtml(
-                          product.categoryLabel
-                        )}
-
-                      </div>
-
-
-                      <div class="recommendation-price">
-
-                        ${formatPrice(
-                          product.price
-                        )}
-
-                      </div>
-
-
-                      <button
-                        class="btn btn-primary"
-                        type="button"
-                        onclick="addRecommendation(
-                          '${product.id}'
-                        )"
-                      >
-                        Ajouter au panier
-                      </button>
-
-                    </div>
-
-                  </article>
-
-                `
-              )
-              .join("")
-          }
-
-        </div>
-
-      `;
+      return (
+        `BT-${date}-${random}`
+      );
 
     }
 
 
 
     // =====================================================
-    // AJOUT RECOMMANDATION
+    // HELPERS
     // =====================================================
 
-    function addRecommendation(
-      productId
+    function getFieldValue(id) {
+
+      const field =
+        document.getElementById(
+          id
+        );
+
+
+      return field
+        ? field.value.trim()
+        : "";
+
+    }
+
+
+
+    function setFieldValue(
+      id,
+      value
     ) {
 
-      const product =
-        getProductById(
-          productId
+      const field =
+        document.getElementById(
+          id
         );
 
 
-      if (!product) {
-        return;
-      }
+      if (
+        field
+        &&
+        value !== undefined
+        &&
+        value !== null
+      ) {
 
-
-      const cart =
-        getCart();
-
-
-      const item =
-        cart.find(
-          item =>
-            item.id ===
-            productId
-        );
-
-
-      if (item) {
-
-        item.quantity += 1;
+        field.value =
+          value;
 
       }
-      else {
-
-        cart.push({
-          id: productId,
-          quantity: 1
-        });
-
-      }
-
-
-      saveCart(cart);
-
-      renderCart();
-
-      renderRecommendations();
 
     }
 
 
-
-    // =====================================================
-    // UTILS
-    // =====================================================
 
     function escapeHtml(value) {
 
