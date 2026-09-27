@@ -1,2 +1,2695 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Byssus Tenebrarum — bijoux de corps artisanaux en micro-macramé."><title>Mon compte · Byssus Tenebrarum</title><link rel="stylesheet" href="assets/css/style.css"></head><body><div class="topbar"><div class="wrap"><span>Bijoux faits main en micro-macramé · Atelier artisanal à Strasbourg</span><span>Livraison France & Europe · Emballage soigné</span></div></div>
-<header class="site-header"><div class="wrap nav"><a href="index.html"><img class="logo" src="assets/images/logo-byssus.png" alt="Byssus Tenebrarum"></a><nav class="navlinks"><a href="index.html">Accueil</a><a href="shop.html">Boutique</a><a href="collections.html">Collections</a><a href="create.html">Créer mon bijou</a><a href="about.html">À propos</a><a href="faq.html">FAQ</a></nav><div class="actions"><a class="iconbtn desktop-action" href="shop.html">⌕</a><a class="iconbtn desktop-action" href="account.html">♙</a><a class="iconbtn" href="cart.html">Panier <span class="cart-badge" data-cart-count>0</span></a><a class="btn btn-primary desktop-action" href="create.html">Sur-mesure</a></div></div></header><section class="section"><div class="wrap"><h1 style="font-size:54px">Mon compte</h1><div class="content-card"><p class="muted">Espace client à connecter ultérieurement à votre solution e-commerce ou backend.</p></div></div></section><footer class="footer"><div class="wrap footer-grid"><div><img class="logo" src="assets/images/logo-byssus.png" alt="Byssus Tenebrarum"><p>Bijoux et parures corporelles artisanales en micro-macramé.</p></div><div><h4>Boutique</h4><a href="shop.html">Tous les bijoux</a><a href="collections.html">Collections</a><a href="create.html">Sur-mesure</a><a href="cart.html">Panier</a></div><div><h4>Aide</h4><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="legal.html">CGV & mentions</a><a href="legal.html#returns">Retours</a></div><div><h4>À propos</h4><a href="about.html">Notre histoire</a><a href="about.html#atelier">Notre atelier</a><a href="journal.html">Journal</a></div><div><h4>Rejoignez l’univers</h4><p>Recevez nouveautés, coulisses et inspirations.</p><input class="form-control" placeholder="Votre e-mail"><button class="btn btn-primary" style="margin-top:8px">S’inscrire</button></div></div></footer><script src="assets/js/products.js"></script><script src="assets/js/app.js"></script></body></html>
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Votre espace personnel Byssus Tenebrarum."
+  >
+
+  <title>
+    Mon compte · Byssus Tenebrarum
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="assets/css/style.css"
+  >
+
+  <style>
+
+    /* =====================================================
+       ACCOUNT.HTML
+       ===================================================== */
+
+    .account-page {
+      padding: 48px 0 90px;
+    }
+
+    .account-hero {
+      padding-bottom: 30px;
+      margin-bottom: 34px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .account-hero h1 {
+      margin:
+        8px 0 10px;
+
+      font-size:
+        clamp(42px, 6vw, 68px);
+
+      line-height: 1;
+    }
+
+    .account-layout {
+      display: grid;
+
+      grid-template-columns:
+        250px minmax(0, 1fr);
+
+      gap: 32px;
+
+      align-items: start;
+    }
+
+    /* =====================================================
+       SIDEBAR
+       ===================================================== */
+
+    .account-sidebar {
+      position: sticky;
+      top: 108px;
+
+      padding: 20px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 18px;
+
+      background:
+        rgba(11, 9, 14, .9);
+    }
+
+    .account-user {
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .account-avatar {
+      width: 58px;
+      height: 58px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 12px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid
+        rgba(152, 91, 174, .55);
+
+      background:
+        rgba(86, 44, 101, .22);
+
+      font-size: 22px;
+    }
+
+    .account-user-name {
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .account-user-email {
+      font-size: 12px;
+      opacity: .65;
+      word-break: break-word;
+    }
+
+    .account-nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .account-nav-button {
+      width: 100%;
+
+      padding: 11px 12px;
+
+      text-align: left;
+
+      border:
+        1px solid transparent;
+
+      border-radius: 10px;
+
+      background:
+        transparent;
+
+      color: inherit;
+
+      cursor: pointer;
+    }
+
+    .account-nav-button:hover {
+      background:
+        rgba(89, 47, 104, .15);
+    }
+
+    .account-nav-button.active {
+      border-color:
+        rgba(150, 87, 171, .45);
+
+      background:
+        rgba(89, 47, 104, .24);
+    }
+
+    /* =====================================================
+       CONTENT
+       ===================================================== */
+
+    .account-panel {
+      display: none;
+    }
+
+    .account-panel.active {
+      display: block;
+    }
+
+    .account-card {
+      margin-bottom: 20px;
+
+      padding: 24px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(54, 27, 65, .16),
+          rgba(255,255,255,.01)
+        );
+    }
+
+    .account-card h2 {
+      margin:
+        0 0 18px;
+
+      font-size: 26px;
+    }
+
+    .account-card h3 {
+      margin:
+        0 0 10px;
+    }
+
+    .account-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 14px;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 7px;
+    }
+
+    .form-group.full {
+      grid-column:
+        1 / -1;
+    }
+
+    .form-group label {
+      font-size: 13px;
+    }
+
+    .form-control {
+      width: 100%;
+
+      padding: 12px 13px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 10px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      color: inherit;
+
+      font: inherit;
+    }
+
+    .form-control:focus {
+      outline: none;
+
+      border-color:
+        rgba(153, 90, 174, .8);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(108, 55, 126, .14);
+    }
+
+    .account-actions {
+      display: flex;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+
+      margin-top: 18px;
+    }
+
+    /* =====================================================
+       STATS
+       ===================================================== */
+
+    .account-stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 14px;
+
+      margin-bottom: 22px;
+    }
+
+    .account-stat {
+      padding: 18px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 14px;
+
+      background:
+        rgba(255,255,255,.015);
+    }
+
+    .account-stat strong {
+      display: block;
+
+      margin-bottom: 4px;
+
+      font-size: 24px;
+    }
+
+    .account-stat span {
+      font-size: 12px;
+      opacity: .65;
+    }
+
+    /* =====================================================
+       COMMANDES
+       ===================================================== */
+
+    .orders-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .order-card {
+      padding: 20px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 15px;
+
+      background:
+        rgba(255,255,255,.015);
+    }
+
+    .order-header {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      align-items: flex-start;
+
+      margin-bottom: 16px;
+    }
+
+    .order-number {
+      font-weight: 600;
+    }
+
+    .order-date {
+      font-size: 12px;
+      opacity: .62;
+    }
+
+    .order-status {
+      padding: 6px 9px;
+
+      border-radius: 999px;
+
+      border:
+        1px solid
+        rgba(98, 151, 112, .28);
+
+      background:
+        rgba(65, 108, 77, .12);
+
+      font-size: 11px;
+    }
+
+    .order-products {
+      display: grid;
+      gap: 10px;
+    }
+
+    .order-product {
+      display: grid;
+
+      grid-template-columns:
+        64px 1fr auto;
+
+      gap: 10px;
+
+      align-items: center;
+    }
+
+    .order-product img {
+      width: 64px;
+      aspect-ratio: 4 / 5;
+
+      object-fit: cover;
+
+      border-radius: 8px;
+
+      border:
+        1px solid var(--line);
+    }
+
+    .order-product-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .order-product-meta {
+      font-size: 11px;
+      opacity: .65;
+    }
+
+    .order-product-price {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .order-total {
+      display: flex;
+
+      justify-content: space-between;
+
+      margin-top: 16px;
+      padding-top: 16px;
+
+      border-top:
+        1px solid var(--line);
+
+      font-weight: 600;
+    }
+
+    /* =====================================================
+       FAVORIS
+       ===================================================== */
+
+    .wishlist-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .wishlist-card {
+      overflow: hidden;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 14px;
+
+      background:
+        rgba(12, 10, 15, .88);
+    }
+
+    .wishlist-card img {
+      width: 100%;
+
+      aspect-ratio: 4 / 5;
+
+      object-fit: cover;
+    }
+
+    .wishlist-card-content {
+      padding: 14px;
+    }
+
+    .wishlist-card h3 {
+      margin:
+        0 0 6px;
+
+      font-size: 18px;
+    }
+
+    .wishlist-meta {
+      margin-bottom: 10px;
+
+      font-size: 12px;
+
+      opacity: .65;
+    }
+
+    .wishlist-price {
+      margin-bottom: 12px;
+
+      font-weight: 600;
+    }
+
+    .wishlist-actions {
+      display: grid;
+      gap: 8px;
+    }
+
+    /* =====================================================
+       EMPTY
+       ===================================================== */
+
+    .account-empty {
+      padding:
+        50px 20px;
+
+      text-align: center;
+
+      border:
+        1px dashed var(--line);
+
+      border-radius: 14px;
+    }
+
+    /* =====================================================
+       ADDRESS
+       ===================================================== */
+
+    .address-preview {
+      margin-top: 16px;
+
+      padding: 16px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 12px;
+
+      background:
+        rgba(255,255,255,.015);
+
+      line-height: 1.7;
+    }
+
+    /* =====================================================
+       NOTE LOCAL
+       ===================================================== */
+
+    .account-local-note {
+      margin-top: 24px;
+
+      padding: 14px;
+
+      border-radius: 12px;
+
+      border:
+        1px solid
+        rgba(170, 125, 75, .22);
+
+      background:
+        rgba(125, 84, 45, .10);
+
+      font-size: 12px;
+
+      line-height: 1.6;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1000px) {
+
+      .account-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .account-sidebar {
+        position: static;
+      }
+
+      .account-nav {
+        grid-template-columns:
+          repeat(4, 1fr);
+      }
+
+      .account-nav-button {
+        text-align: center;
+      }
+
+      .wishlist-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 700px) {
+
+      .account-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .account-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .account-nav {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .wishlist-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .order-header {
+        flex-direction: column;
+      }
+
+      .order-product {
+        grid-template-columns:
+          55px 1fr;
+      }
+
+      .order-product-price {
+        grid-column: 2;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- =====================================================
+       TOPBAR
+       ===================================================== -->
+
+  <div class="topbar">
+
+    <div class="wrap">
+
+      <span>
+        Bijoux faits main en micro-macramé ·
+        Atelier artisanal à Strasbourg
+      </span>
+
+      <span>
+        Livraison France & Europe
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header class="site-header">
+
+    <div class="wrap nav">
+
+      <a href="index.html">
+
+        <img
+          class="logo"
+          src="assets/images/logo-byssus.png"
+          alt="Byssus Tenebrarum"
+        >
+
+      </a>
+
+
+      <nav class="navlinks">
+
+        <a href="index.html">
+          Accueil
+        </a>
+
+        <a href="shop.html">
+          Boutique
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="create.html">
+          Créer mon bijou
+        </a>
+
+        <a href="about.html">
+          À propos
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+      </nav>
+
+
+      <div class="actions">
+
+        <a
+          class="iconbtn active"
+          href="account.html"
+        >
+          Compte
+        </a>
+
+        <a
+          class="iconbtn"
+          href="cart.html"
+        >
+
+          Panier
+
+          <span
+            class="cart-badge"
+            data-cart-count
+          >
+            0
+          </span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       PAGE
+       ===================================================== -->
+
+  <main class="account-page">
+
+    <div class="wrap">
+
+
+      <!-- HERO -->
+
+      <section class="account-hero">
+
+        <div class="eyebrow">
+          Espace personnel
+        </div>
+
+        <h1>
+          Mon compte
+        </h1>
+
+        <p class="lead">
+
+          Retrouvez vos coordonnées,
+          vos commandes et vos créations favorites.
+
+        </p>
+
+      </section>
+
+
+      <!-- LAYOUT -->
+
+      <div class="account-layout">
+
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
+        <aside class="account-sidebar">
+
+          <div class="account-user">
+
+            <div
+              class="account-avatar"
+              id="account-avatar"
+            >
+              B
+            </div>
+
+
+            <div
+              class="account-user-name"
+              id="sidebar-user-name"
+            >
+              Bienvenue
+            </div>
+
+
+            <div
+              class="account-user-email"
+              id="sidebar-user-email"
+            >
+              Votre espace Byssus Tenebrarum
+            </div>
+
+          </div>
+
+
+          <nav class="account-nav">
+
+            <button
+              class="account-nav-button active"
+              data-panel="profile"
+              onclick="openAccountPanel('profile', this)"
+            >
+              Mon profil
+            </button>
+
+
+            <button
+              class="account-nav-button"
+              data-panel="orders"
+              onclick="openAccountPanel('orders', this)"
+            >
+              Mes commandes
+            </button>
+
+
+            <button
+              class="account-nav-button"
+              data-panel="wishlist"
+              onclick="openAccountPanel('wishlist', this)"
+            >
+              Mes favoris
+            </button>
+
+
+            <button
+              class="account-nav-button"
+              data-panel="address"
+              onclick="openAccountPanel('address', this)"
+            >
+              Mes adresses
+            </button>
+
+          </nav>
+
+
+          <div class="account-local-note">
+
+            <strong>
+              Version GitHub Pages
+            </strong>
+
+            <br>
+
+            Les informations de cet espace sont
+            actuellement enregistrées uniquement
+            dans ce navigateur.
+
+          </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             PANELS
+             ================================================= -->
+
+        <section>
+
+
+          <!-- ===============================================
+               PROFIL
+               =============================================== -->
+
+          <div
+            class="account-panel active"
+            id="panel-profile"
+          >
+
+            <div
+              class="account-stats"
+              id="account-stats"
+            ></div>
+
+
+            <div class="account-card">
+
+              <h2>
+                Mes informations
+              </h2>
+
+
+              <div class="account-grid">
+
+
+                <div class="form-group">
+
+                  <label for="profile-firstname">
+                    Prénom
+                  </label>
+
+                  <input
+                    id="profile-firstname"
+                    class="form-control"
+                    type="text"
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="profile-lastname">
+                    Nom
+                  </label>
+
+                  <input
+                    id="profile-lastname"
+                    class="form-control"
+                    type="text"
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="profile-email">
+                    Adresse e-mail
+                  </label>
+
+                  <input
+                    id="profile-email"
+                    class="form-control"
+                    type="email"
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="profile-phone">
+                    Téléphone
+                  </label>
+
+                  <input
+                    id="profile-phone"
+                    class="form-control"
+                    type="tel"
+                  >
+
+                </div>
+
+              </div>
+
+
+              <div class="account-actions">
+
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  onclick="saveProfile()"
+                >
+                  Enregistrer
+                </button>
+
+              </div>
+
+
+              <div
+                id="profile-message"
+                class="muted"
+                style="margin-top:12px;font-size:12px;"
+              ></div>
+
+            </div>
+
+
+            <div class="account-card">
+
+              <h2>
+                Votre univers
+              </h2>
+
+              <p>
+
+                Cet espace pourra plus tard
+                mémoriser vos préférences :
+
+                pierres favorites,
+                tailles,
+                univers gothique,
+                mythologique,
+                couple,
+                pièces sur mesure
+                et créations déjà commandées.
+
+              </p>
+
+
+              <a
+                class="btn"
+                href="create.html"
+              >
+                Créer mon bijou
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <!-- ===============================================
+               COMMANDES
+               =============================================== -->
+
+          <div
+            class="account-panel"
+            id="panel-orders"
+          >
+
+            <div class="account-card">
+
+              <h2>
+                Mes commandes
+              </h2>
+
+              <div
+                class="orders-list"
+                id="orders-list"
+              ></div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ===============================================
+               FAVORIS
+               =============================================== -->
+
+          <div
+            class="account-panel"
+            id="panel-wishlist"
+          >
+
+            <div class="account-card">
+
+              <h2>
+                Mes favoris
+              </h2>
+
+              <div
+                class="wishlist-grid"
+                id="wishlist-grid"
+              ></div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ===============================================
+               ADRESSE
+               =============================================== -->
+
+          <div
+            class="account-panel"
+            id="panel-address"
+          >
+
+            <div class="account-card">
+
+              <h2>
+                Adresse de livraison
+              </h2>
+
+
+              <div class="account-grid">
+
+
+                <div class="form-group full">
+
+                  <label for="address-line1">
+                    Adresse
+                  </label>
+
+                  <input
+                    id="address-line1"
+                    class="form-control"
+                    type="text"
+                  >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                  <label for="address-line2">
+                    Complément
+                  </label>
+
+                  <input
+                    id="address-line2"
+                    class="form-control"
+                    type="text"
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="address-postal">
+                    Code postal
+                  </label>
+
+                  <input
+                    id="address-postal"
+                    class="form-control"
+                    type="text"
+                  >
+
+                </div>
+
+
+                <div class="form-group">
+
+                  <label for="address-city">
+                    Ville
+                  </label>
+
+                  <input
+                    id="address-city"
+                    class="form-control"
+                    type="text"
+                  >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                  <label for="address-country">
+                    Pays
+                  </label>
+
+                  <select
+                    id="address-country"
+                    class="form-control"
+                  >
+
+                    <option value="FR">
+                      France
+                    </option>
+
+                    <option value="DE">
+                      Allemagne
+                    </option>
+
+                    <option value="BE">
+                      Belgique
+                    </option>
+
+                    <option value="LU">
+                      Luxembourg
+                    </option>
+
+                    <option value="NL">
+                      Pays-Bas
+                    </option>
+
+                    <option value="ES">
+                      Espagne
+                    </option>
+
+                    <option value="IT">
+                      Italie
+                    </option>
+
+                    <option value="OTHER-EU">
+                      Autre pays UE
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+
+              <div class="account-actions">
+
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  onclick="saveAddress()"
+                >
+                  Enregistrer l’adresse
+                </button>
+
+              </div>
+
+
+              <div
+                id="address-message"
+                class="muted"
+                style="margin-top:12px;font-size:12px;"
+              ></div>
+
+
+              <div
+                class="address-preview"
+                id="address-preview"
+              ></div>
+
+            </div>
+
+          </div>
+
+
+        </section>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer class="footer">
+
+    <div class="wrap footer-grid">
+
+
+      <div>
+
+        <img
+          class="logo"
+          src="assets/images/logo-byssus.png"
+          alt="Byssus Tenebrarum"
+        >
+
+        <p>
+          Bijoux et parures corporelles
+          artisanales en micro-macramé.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Boutique
+        </h4>
+
+        <a href="shop.html">
+          Tous les bijoux
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="create.html">
+          Sur-mesure
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Aide
+        </h4>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+        <a href="legal.html">
+          CGV
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          À propos
+        </h4>
+
+        <a href="about.html">
+          Notre histoire
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Newsletter
+        </h4>
+
+        <p>
+          Nouveautés, coulisses
+          et inspirations.
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       SCRIPTS
+       ===================================================== -->
+
+  <script src="assets/js/products.js"></script>
+
+  <script src="assets/js/app.js"></script>
+
+
+  <script>
+
+    // =====================================================
+    // STORAGE KEYS
+    // =====================================================
+
+    const CUSTOMER_KEY =
+      "byssus-customer";
+
+    const WISHLIST_KEY =
+      "byssus-wishlist";
+
+    const LAST_ORDER_KEY =
+      "byssus-last-order";
+
+    const ORDERS_KEY =
+      "byssus-orders";
+
+    const CART_KEY =
+      "byssus-cart";
+
+
+    let customer = {};
+
+    let orders = [];
+
+    let wishlist = [];
+
+
+
+    // =====================================================
+    // INITIALISATION
+    // =====================================================
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        loadAccount();
+
+      }
+    );
+
+
+
+    // =====================================================
+    // LOAD
+    // =====================================================
+
+    function loadAccount() {
+
+      customer =
+        readStorageObject(
+          CUSTOMER_KEY
+        );
+
+
+      wishlist =
+        readStorageArray(
+          WISHLIST_KEY
+        );
+
+
+      orders =
+        loadOrders();
+
+
+      fillProfile();
+
+      fillAddress();
+
+      renderSidebarUser();
+
+      renderStats();
+
+      renderOrders();
+
+      renderWishlist();
+
+      renderAddressPreview();
+
+      updateCartBadge();
+
+    }
+
+
+
+    // =====================================================
+    // PANELS
+    // =====================================================
+
+    function openAccountPanel(
+      panelName,
+      button
+    ) {
+
+      document
+        .querySelectorAll(
+          ".account-panel"
+        )
+        .forEach(
+          panel => {
+
+            panel.classList.remove(
+              "active"
+            );
+
+          }
+        );
+
+
+      document
+        .querySelectorAll(
+          ".account-nav-button"
+        )
+        .forEach(
+          navButton => {
+
+            navButton.classList.remove(
+              "active"
+            );
+
+          }
+        );
+
+
+      const panel =
+        document.getElementById(
+          `panel-${panelName}`
+        );
+
+
+      if (panel) {
+
+        panel.classList.add(
+          "active"
+        );
+
+      }
+
+
+      if (button) {
+
+        button.classList.add(
+          "active"
+        );
+
+      }
+
+    }
+
+
+
+    // =====================================================
+    // PROFIL
+    // =====================================================
+
+    function fillProfile() {
+
+      setFieldValue(
+        "profile-firstname",
+        customer.firstname
+      );
+
+      setFieldValue(
+        "profile-lastname",
+        customer.lastname
+      );
+
+      setFieldValue(
+        "profile-email",
+        customer.email
+      );
+
+      setFieldValue(
+        "profile-phone",
+        customer.phone
+      );
+
+    }
+
+
+
+    function saveProfile() {
+
+      customer.firstname =
+        getFieldValue(
+          "profile-firstname"
+        );
+
+
+      customer.lastname =
+        getFieldValue(
+          "profile-lastname"
+        );
+
+
+      customer.email =
+        getFieldValue(
+          "profile-email"
+        );
+
+
+      customer.phone =
+        getFieldValue(
+          "profile-phone"
+        );
+
+
+      saveCustomer();
+
+
+      renderSidebarUser();
+
+
+      document
+        .getElementById(
+          "profile-message"
+        )
+        .textContent =
+        "Vos informations ont été enregistrées sur cet appareil.";
+
+    }
+
+
+
+    // =====================================================
+    // SIDEBAR USER
+    // =====================================================
+
+    function renderSidebarUser() {
+
+      const fullname =
+        [
+          customer.firstname,
+          customer.lastname
+        ]
+          .filter(Boolean)
+          .join(" ");
+
+
+      document
+        .getElementById(
+          "sidebar-user-name"
+        )
+        .textContent =
+        fullname
+        ||
+        "Bienvenue";
+
+
+      document
+        .getElementById(
+          "sidebar-user-email"
+        )
+        .textContent =
+        customer.email
+        ||
+        "Votre espace Byssus Tenebrarum";
+
+
+      const initials =
+        [
+          customer.firstname,
+          customer.lastname
+        ]
+          .filter(Boolean)
+          .map(
+            value =>
+              value
+                .charAt(0)
+                .toUpperCase()
+          )
+          .join("")
+          .slice(0,2);
+
+
+      document
+        .getElementById(
+          "account-avatar"
+        )
+        .textContent =
+        initials
+        ||
+        "B";
+
+    }
+
+
+
+    // =====================================================
+    // ADRESSE
+    // =====================================================
+
+    function fillAddress() {
+
+      setFieldValue(
+        "address-line1",
+        customer.address
+      );
+
+      setFieldValue(
+        "address-line2",
+        customer.address2
+      );
+
+      setFieldValue(
+        "address-postal",
+        customer.postalCode
+      );
+
+      setFieldValue(
+        "address-city",
+        customer.city
+      );
+
+
+      if (
+        customer.country
+      ) {
+
+        setFieldValue(
+          "address-country",
+          customer.country
+        );
+
+      }
+
+    }
+
+
+
+    function saveAddress() {
+
+      customer.address =
+        getFieldValue(
+          "address-line1"
+        );
+
+
+      customer.address2 =
+        getFieldValue(
+          "address-line2"
+        );
+
+
+      customer.postalCode =
+        getFieldValue(
+          "address-postal"
+        );
+
+
+      customer.city =
+        getFieldValue(
+          "address-city"
+        );
+
+
+      customer.country =
+        getFieldValue(
+          "address-country"
+        );
+
+
+      saveCustomer();
+
+
+      renderAddressPreview();
+
+
+      document
+        .getElementById(
+          "address-message"
+        )
+        .textContent =
+        "Votre adresse a été enregistrée.";
+
+    }
+
+
+
+    function renderAddressPreview() {
+
+      const container =
+        document.getElementById(
+          "address-preview"
+        );
+
+
+      if (
+        !customer.address
+        &&
+        !customer.city
+      ) {
+
+        container.innerHTML = `
+
+          <span class="muted">
+            Aucune adresse enregistrée.
+          </span>
+
+        `;
+
+        return;
+
+      }
+
+
+      container.innerHTML = `
+
+        <strong>
+          Adresse enregistrée
+        </strong>
+
+        <br><br>
+
+        ${escapeHtml(
+          customer.firstname || ""
+        )}
+
+        ${escapeHtml(
+          customer.lastname || ""
+        )}
+
+        <br>
+
+        ${escapeHtml(
+          customer.address || ""
+        )}
+
+        ${
+          customer.address2
+            ? `<br>${escapeHtml(
+                customer.address2
+              )}`
+            : ""
+        }
+
+        <br>
+
+        ${escapeHtml(
+          customer.postalCode || ""
+        )}
+
+        ${escapeHtml(
+          customer.city || ""
+        )}
+
+        <br>
+
+        ${escapeHtml(
+          formatCountry(
+            customer.country
+          )
+        )}
+
+      `;
+
+    }
+
+
+
+    // =====================================================
+    // SAVE CUSTOMER
+    // =====================================================
+
+    function saveCustomer() {
+
+      localStorage.setItem(
+        CUSTOMER_KEY,
+        JSON.stringify(
+          customer
+        )
+      );
+
+    }
+
+
+
+    // =====================================================
+    // ORDERS
+    // =====================================================
+
+    function loadOrders() {
+
+      let storedOrders =
+        readStorageArray(
+          ORDERS_KEY
+        );
+
+
+      const lastOrder =
+        readStorageObject(
+          LAST_ORDER_KEY
+        );
+
+
+      if (
+        lastOrder
+        &&
+        lastOrder.orderId
+        &&
+        !storedOrders.some(
+          order =>
+            order.orderId
+            ===
+            lastOrder.orderId
+        )
+      ) {
+
+        storedOrders.unshift(
+          lastOrder
+        );
+
+
+        localStorage.setItem(
+          ORDERS_KEY,
+          JSON.stringify(
+            storedOrders
+          )
+        );
+
+      }
+
+
+      return storedOrders;
+
+    }
+
+
+
+    function renderOrders() {
+
+      const container =
+        document.getElementById(
+          "orders-list"
+        );
+
+
+      if (
+        !orders.length
+      ) {
+
+        container.innerHTML = `
+
+          <div class="account-empty">
+
+            <h3>
+              Aucune commande
+            </h3>
+
+            <p class="muted">
+
+              Vos commandes apparaîtront ici
+              après leur validation.
+
+            </p>
+
+            <a
+              class="btn btn-primary"
+              href="shop.html"
+            >
+              Découvrir la boutique
+            </a>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        orders
+          .map(
+            order => renderOrderCard(
+              order
+            )
+          )
+          .join("");
+
+    }
+
+
+
+    function renderOrderCard(order) {
+
+      const items =
+        Array.isArray(
+          order.items
+        )
+          ? order.items
+          : [];
+
+
+      const productsHtml =
+        items
+          .map(
+            item => {
+
+              const product =
+                getProductById(
+                  item.id
+                );
+
+
+              if (!product) {
+                return "";
+              }
+
+
+              const quantity =
+                Number(
+                  item.quantity || 1
+                );
+
+
+              return `
+
+                <div class="order-product">
+
+                  <img
+                    src="${product.mainImage}"
+                    alt="${escapeHtml(
+                      product.name
+                    )}"
+                    onerror="this.src='assets/images/logo-byssus.png'"
+                  >
+
+
+                  <div>
+
+                    <div class="order-product-name">
+
+                      ${escapeHtml(
+                        product.name
+                      )}
+
+                    </div>
+
+
+                    <div class="order-product-meta">
+
+                      Quantité :
+                      ${quantity}
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="order-product-price">
+
+                    ${formatPrice(
+                      product.price
+                      *
+                      quantity
+                    )}
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join("");
+
+
+      const total =
+        order.totals
+        &&
+        order.totals.total
+          ? order.totals.total
+          : 0;
+
+
+      return `
+
+        <article class="order-card">
+
+          <div class="order-header">
+
+            <div>
+
+              <div class="order-number">
+
+                ${escapeHtml(
+                  order.orderId
+                )}
+
+              </div>
+
+
+              <div class="order-date">
+
+                ${escapeHtml(
+                  formatOrderDate(
+                    order.createdAt
+                  )
+                )}
+
+              </div>
+
+            </div>
+
+
+            <span class="order-status">
+              Confirmée
+            </span>
+
+          </div>
+
+
+          <div class="order-products">
+
+            ${productsHtml}
+
+          </div>
+
+
+          <div class="order-total">
+
+            <span>
+              Total TTC
+            </span>
+
+            <strong>
+
+              ${formatPrice(
+                total
+              )}
+
+            </strong>
+
+          </div>
+
+        </article>
+
+      `;
+
+    }
+
+
+
+    // =====================================================
+    // WISHLIST
+    // =====================================================
+
+    function renderWishlist() {
+
+      const container =
+        document.getElementById(
+          "wishlist-grid"
+        );
+
+
+      const wishlistProducts =
+        wishlist
+          .map(
+            id =>
+              getProductById(id)
+          )
+          .filter(Boolean);
+
+
+      if (
+        !wishlistProducts.length
+      ) {
+
+        container.innerHTML = `
+
+          <div
+            class="account-empty"
+            style="grid-column:1 / -1;"
+          >
+
+            <h3>
+              Aucun favori pour le moment
+            </h3>
+
+            <p class="muted">
+
+              Ajoutez un cœur aux créations
+              qui vous attirent.
+
+            </p>
+
+            <a
+              class="btn btn-primary"
+              href="shop.html"
+            >
+              Voir la boutique
+            </a>
+
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        wishlistProducts
+          .map(
+            product => `
+
+              <article class="wishlist-card">
+
+                <a
+                  href="product.html?id=${encodeURIComponent(
+                    product.id
+                  )}"
+                >
+
+                  <img
+                    src="${product.mainImage}"
+                    alt="${escapeHtml(
+                      product.name
+                    )}"
+                    onerror="this.src='assets/images/logo-byssus.png'"
+                  >
+
+                </a>
+
+
+                <div class="wishlist-card-content">
+
+                  <h3>
+
+                    <a
+                      href="product.html?id=${encodeURIComponent(
+                        product.id
+                      )}"
+                      style="
+                        color:inherit;
+                        text-decoration:none;
+                      "
+                    >
+                      ${escapeHtml(
+                        product.name
+                      )}
+                    </a>
+
+                  </h3>
+
+
+                  <div class="wishlist-meta">
+
+                    ${escapeHtml(
+                      product.stone
+                    )}
+
+                    ·
+
+                    ${escapeHtml(
+                      product.categoryLabel
+                    )}
+
+                  </div>
+
+
+                  <div class="wishlist-price">
+
+                    ${formatPrice(
+                      product.price
+                    )}
+
+                  </div>
+
+
+                  <div class="wishlist-actions">
+
+                    <button
+                      class="btn btn-primary"
+                      type="button"
+                      onclick="addWishlistToCart(
+                        '${product.id}'
+                      )"
+                    >
+                      Ajouter au panier
+                    </button>
+
+
+                    <button
+                      class="btn"
+                      type="button"
+                      onclick="removeWishlistItem(
+                        '${product.id}'
+                      )"
+                    >
+                      Retirer des favoris
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </article>
+
+            `
+          )
+          .join("");
+
+    }
+
+
+
+    function removeWishlistItem(
+      productId
+    ) {
+
+      wishlist =
+        wishlist.filter(
+          id =>
+            id !==
+            productId
+        );
+
+
+      localStorage.setItem(
+        WISHLIST_KEY,
+        JSON.stringify(
+          wishlist
+        )
+      );
+
+
+      renderWishlist();
+
+      renderStats();
+
+    }
+
+
+
+    function addWishlistToCart(
+      productId
+    ) {
+
+      const product =
+        getProductById(
+          productId
+        );
+
+
+      if (!product) {
+        return;
+      }
+
+
+      let cart =
+        readStorageArray(
+          CART_KEY
+        );
+
+
+      const existing =
+        cart.find(
+          item =>
+            item.id ===
+            productId
+        );
+
+
+      if (existing) {
+
+        existing.quantity += 1;
+
+      }
+      else {
+
+        cart.push({
+          id: productId,
+          quantity: 1
+        });
+
+      }
+
+
+      localStorage.setItem(
+        CART_KEY,
+        JSON.stringify(
+          cart
+        )
+      );
+
+
+      updateCartBadge();
+
+
+      alert(
+        `${product.name} a été ajouté au panier.`
+      );
+
+    }
+
+
+
+    // =====================================================
+    // STATS
+    // =====================================================
+
+    function renderStats() {
+
+      const ordersCount =
+        orders.length;
+
+
+      const wishlistCount =
+        wishlist.length;
+
+
+      const totalSpent =
+        orders.reduce(
+          (sum, order) => {
+
+            const total =
+              order.totals
+              &&
+              order.totals.total
+                ? Number(
+                    order.totals.total
+                  )
+                : 0;
+
+
+            return sum + total;
+
+          },
+          0
+        );
+
+
+      document
+        .getElementById(
+          "account-stats"
+        )
+        .innerHTML = `
+
+          <div class="account-stat">
+
+            <strong>
+              ${ordersCount}
+            </strong>
+
+            <span>
+              ${
+                ordersCount > 1
+                  ? "commandes"
+                  : "commande"
+              }
+            </span>
+
+          </div>
+
+
+          <div class="account-stat">
+
+            <strong>
+              ${wishlistCount}
+            </strong>
+
+            <span>
+              favoris
+            </span>
+
+          </div>
+
+
+          <div class="account-stat">
+
+            <strong>
+              ${formatPrice(
+                totalSpent
+              )}
+            </strong>
+
+            <span>
+              total des commandes
+            </span>
+
+          </div>
+
+        `;
+
+    }
+
+
+
+    // =====================================================
+    // CART BADGE
+    // =====================================================
+
+    function updateCartBadge() {
+
+      const cart =
+        readStorageArray(
+          CART_KEY
+        );
+
+
+      const count =
+        cart.reduce(
+          (sum, item) =>
+            sum
+            +
+            Number(
+              item.quantity
+              ||
+              0
+            ),
+          0
+        );
+
+
+      document
+        .querySelectorAll(
+          "[data-cart-count]"
+        )
+        .forEach(
+          badge => {
+
+            badge.textContent =
+              count;
+
+          }
+        );
+
+    }
+
+
+
+    // =====================================================
+    // STORAGE
+    // =====================================================
+
+    function readStorageObject(key) {
+
+      try {
+
+        const value =
+          JSON.parse(
+            localStorage.getItem(
+              key
+            )
+            ||
+            "{}"
+          );
+
+
+        return (
+          value
+          &&
+          typeof value === "object"
+          &&
+          !Array.isArray(value)
+        )
+          ? value
+          : {};
+
+      }
+      catch {
+
+        return {};
+
+      }
+
+    }
+
+
+
+    function readStorageArray(key) {
+
+      try {
+
+        const value =
+          JSON.parse(
+            localStorage.getItem(
+              key
+            )
+            ||
+            "[]"
+          );
+
+
+        return Array.isArray(value)
+          ? value
+          : [];
+
+      }
+      catch {
+
+        return [];
+
+      }
+
+    }
+
+
+
+    // =====================================================
+    // HELPERS
+    // =====================================================
+
+    function getFieldValue(id) {
+
+      const field =
+        document.getElementById(
+          id
+        );
+
+
+      return field
+        ? field.value.trim()
+        : "";
+
+    }
+
+
+
+    function setFieldValue(
+      id,
+      value
+    ) {
+
+      const field =
+        document.getElementById(
+          id
+        );
+
+
+      if (
+        field
+        &&
+        value !== undefined
+        &&
+        value !== null
+      ) {
+
+        field.value =
+          value;
+
+      }
+
+    }
+
+
+
+    function formatCountry(code) {
+
+      const countries = {
+
+        FR:
+          "France",
+
+        DE:
+          "Allemagne",
+
+        BE:
+          "Belgique",
+
+        LU:
+          "Luxembourg",
+
+        NL:
+          "Pays-Bas",
+
+        ES:
+          "Espagne",
+
+        IT:
+          "Italie",
+
+        "OTHER-EU":
+          "Union européenne"
+
+      };
+
+
+      return (
+        countries[code]
+        ||
+        code
+        ||
+        ""
+      );
+
+    }
+
+
+
+    function formatOrderDate(
+      dateString
+    ) {
+
+      if (!dateString) {
+        return "";
+      }
+
+
+      try {
+
+        return new Intl.DateTimeFormat(
+          "fr-FR",
+          {
+            day: "2-digit",
+            month: "long",
+            year: "numeric"
+          }
+        )
+          .format(
+            new Date(
+              dateString
+            )
+          );
+
+      }
+      catch {
+
+        return dateString;
+
+      }
+
+    }
+
+
+
+    function escapeHtml(value) {
+
+      return String(
+        value ?? ""
+      )
+        .replaceAll(
+          "&",
+          "&amp;"
+        )
+        .replaceAll(
+          "<",
+          "&lt;"
+        )
+        .replaceAll(
+          ">",
+          "&gt;"
+        )
+        .replaceAll(
+          '"',
+          "&quot;"
+        )
+        .replaceAll(
+          "'",
+          "&#039;"
+        );
+
+    }
+
+  </script>
+
+</body>
+
+</html>
