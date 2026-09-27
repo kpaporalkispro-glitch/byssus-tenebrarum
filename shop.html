@@ -1,2 +1,2584 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Byssus Tenebrarum — bijoux de corps artisanaux en micro-macramé."><title>Boutique · Byssus Tenebrarum</title><link rel="stylesheet" href="assets/css/style.css"></head><body><div class="topbar"><div class="wrap"><span>Bijoux faits main en micro-macramé · Atelier artisanal à Strasbourg</span><span>Livraison France & Europe · Emballage soigné</span></div></div>
-<header class="site-header"><div class="wrap nav"><a href="index.html"><img class="logo" src="assets/images/logo-byssus.png" alt="Byssus Tenebrarum"></a><nav class="navlinks"><a href="index.html">Accueil</a><a href="shop.html">Boutique</a><a href="collections.html">Collections</a><a href="create.html">Créer mon bijou</a><a href="about.html">À propos</a><a href="faq.html">FAQ</a></nav><div class="actions"><a class="iconbtn desktop-action" href="shop.html">⌕</a><a class="iconbtn desktop-action" href="account.html">♙</a><a class="iconbtn" href="cart.html">Panier <span class="cart-badge" data-cart-count>0</span></a><a class="btn btn-primary desktop-action" href="create.html">Sur-mesure</a></div></div></header><section class="section" style="padding-top:34px"><div class="wrap"><div class="eyebrow">Boutique</div><h1 style="font-size:54px">Toutes les créations</h1><p class="lead">Du petit bijou symbolique à la parure corporelle plus affirmée, avec une logique commune : fil, pierre, corps, ajustabilité.</p><div class="shop-layout"><aside class="filters"><h3>Filtres</h3><label>Type de bijou<select id="filter-category" class="form-control" onchange="applyFilters()"><option value="all">Tous</option><option>Colliers</option><option>Bracelets</option><option>Talismans</option><option>Chaînes de taille</option><option>Bijoux de corps</option><option>Couple</option><option>Boucles d’oreilles</option></select></label><label>Recherche<input id="shop-search" class="form-control" oninput="applyFilters()" placeholder="Nom, pierre, univers"></label><hr style="border-color:var(--line)"><p class="muted">Collections : Gothique · Mythologique · Rituel · Couple · Masculin.</p></aside><main><div class="toolbar"><strong id="result-count">12 créations</strong><select class="form-control" style="max-width:220px"><option>Notre sélection</option><option>Prix croissant</option><option>Prix décroissant</option></select></div><div id="shop-grid" class="grid products"></div></main></div></div></section><footer class="footer"><div class="wrap footer-grid"><div><img class="logo" src="assets/images/logo-byssus.png" alt="Byssus Tenebrarum"><p>Bijoux et parures corporelles artisanales en micro-macramé.</p></div><div><h4>Boutique</h4><a href="shop.html">Tous les bijoux</a><a href="collections.html">Collections</a><a href="create.html">Sur-mesure</a><a href="cart.html">Panier</a></div><div><h4>Aide</h4><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="legal.html">CGV & mentions</a><a href="legal.html#returns">Retours</a></div><div><h4>À propos</h4><a href="about.html">Notre histoire</a><a href="about.html#atelier">Notre atelier</a><a href="journal.html">Journal</a></div><div><h4>Rejoignez l’univers</h4><p>Recevez nouveautés, coulisses et inspirations.</p><input class="form-control" placeholder="Votre e-mail"><button class="btn btn-primary" style="margin-top:8px">S’inscrire</button></div></div></footer><script src="assets/js/products.js"></script><script src="assets/js/app.js"></script><script>document.addEventListener('DOMContentLoaded',()=>applyFilters())</script></body></html>
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Byssus Tenebrarum — bijoux et parures corporelles artisanales en micro-macramé, réalisés à Strasbourg."
+  >
+
+  <title>
+    Boutique · Byssus Tenebrarum
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="assets/css/style.css"
+  >
+
+  <style>
+    /* =====================================================
+       SHOP.HTML - STYLES COMPLÉMENTAIRES
+       ===================================================== */
+
+    .shop-hero {
+      padding: 55px 0 38px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .shop-hero-inner {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .shop-hero h1 {
+      margin: 8px 0 14px;
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1;
+    }
+
+    .shop-hero p {
+      max-width: 760px;
+    }
+
+    .shop-hero-note {
+      border: 1px solid var(--line);
+      padding: 24px;
+      border-radius: 18px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(80, 37, 100, 0.18),
+          rgba(0, 0, 0, 0.1)
+        );
+    }
+
+    .shop-hero-note strong {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .shop-section {
+      padding: 38px 0 70px;
+    }
+
+    .shop-layout {
+      display: grid;
+      grid-template-columns: 275px minmax(0, 1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .shop-sidebar {
+      position: sticky;
+      top: 105px;
+
+      border: 1px solid var(--line);
+      border-radius: 18px;
+
+      padding: 22px;
+
+      background:
+        rgba(10, 8, 13, 0.82);
+
+      backdrop-filter: blur(12px);
+    }
+
+    .shop-sidebar h2 {
+      margin-top: 0;
+      margin-bottom: 22px;
+      font-size: 25px;
+    }
+
+    .filter-group {
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .filter-group:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .filter-group h3 {
+      margin: 0 0 12px;
+      font-size: 15px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .filter-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .filter-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .filter-checkbox input {
+      accent-color: #7d438e;
+    }
+
+    .price-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .shop-main {
+      min-width: 0;
+    }
+
+    .shop-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .shop-toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .shop-search {
+      margin-bottom: 16px;
+    }
+
+    .active-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      margin-bottom: 18px;
+    }
+
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      padding: 7px 10px;
+
+      border: 1px solid var(--line);
+      border-radius: 999px;
+
+      background: rgba(95, 43, 112, 0.16);
+
+      font-size: 12px;
+    }
+
+    .filter-chip button {
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 22px;
+    }
+
+    .product-card {
+      position: relative;
+
+      border: 1px solid var(--line);
+      border-radius: 16px;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(34, 20, 39, .75),
+          rgba(8, 7, 10, .95)
+        );
+
+      transition:
+        transform .25s ease,
+        border-color .25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155, 95, 175, .6);
+    }
+
+    .product-image-wrap {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #0b090d;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      transition:
+        transform .4s ease;
+    }
+
+    .product-card:hover
+    .product-image {
+      transform: scale(1.035);
+    }
+
+    .product-badges {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .product-badge {
+      padding: 5px 8px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(16, 10, 18, .88);
+
+      border:
+        1px solid rgba(255,255,255,.13);
+
+      font-size: 10px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .product-badge.new {
+      color: #dab4e6;
+    }
+
+    .product-badge.best {
+      color: #d8b875;
+    }
+
+    .product-badge.order {
+      color: #d5aac5;
+    }
+
+    .product-content {
+      padding: 17px;
+    }
+
+    .product-category {
+      margin-bottom: 7px;
+
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+
+      opacity: .65;
+    }
+
+    .product-card h3 {
+      margin: 0 0 6px;
+      font-size: 22px;
+    }
+
+    .product-meta {
+      min-height: 40px;
+      margin-bottom: 12px;
+
+      font-size: 13px;
+      opacity: .75;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-top: 12px;
+    }
+
+    .product-price {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .product-actions {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+
+      margin-top: 14px;
+    }
+
+    .product-link {
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .wish-button {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 10px;
+
+      border: 1px solid var(--line);
+
+      background: transparent;
+      color: inherit;
+
+      cursor: pointer;
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+
+      padding: 60px 20px;
+
+      text-align: center;
+
+      border:
+        1px dashed var(--line);
+
+      border-radius: 18px;
+    }
+
+    .reset-button {
+      width: 100%;
+      margin-top: 14px;
+    }
+
+    .mobile-filter-button {
+      display: none;
+    }
+
+    .audience-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      margin: 20px 0 0;
+    }
+
+    .audience-tab {
+      padding: 8px 14px;
+
+      border: 1px solid var(--line);
+      border-radius: 999px;
+
+      background: transparent;
+      color: inherit;
+
+      cursor: pointer;
+    }
+
+    .audience-tab.active {
+      background:
+        rgba(107, 54, 126, .34);
+
+      border-color:
+        rgba(167, 100, 189, .6);
+    }
+
+    @media (max-width: 1050px) {
+
+      .products-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .shop-layout {
+        grid-template-columns: 240px minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 800px) {
+
+      .shop-hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .shop-layout {
+        display: block;
+      }
+
+      .shop-sidebar {
+        position: static;
+        display: none;
+
+        margin-bottom: 22px;
+      }
+
+      .shop-sidebar.open {
+        display: block;
+      }
+
+      .mobile-filter-button {
+        display: inline-flex;
+      }
+
+      .products-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .shop-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-actions {
+        grid-template-columns: 1fr auto;
+      }
+
+      .shop-hero h1 {
+        font-size: 44px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =====================================================
+       BARRE SUPÉRIEURE
+       ===================================================== -->
+
+  <div class="topbar">
+
+    <div class="wrap">
+
+      <span>
+        Bijoux faits main en micro-macramé ·
+        Atelier artisanal à Strasbourg
+      </span>
+
+      <span>
+        Livraison France & Europe ·
+        Emballage soigné
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header class="site-header">
+
+    <div class="wrap nav">
+
+      <a href="index.html">
+
+        <img
+          class="logo"
+          src="assets/images/logo-byssus.png"
+          alt="Byssus Tenebrarum"
+        >
+
+      </a>
+
+
+      <nav class="navlinks">
+
+        <a href="index.html">
+          Accueil
+        </a>
+
+        <a
+          href="shop.html"
+          class="active"
+        >
+          Boutique
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="create.html">
+          Créer mon bijou
+        </a>
+
+        <a href="about.html">
+          À propos
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+      </nav>
+
+
+      <div class="actions">
+
+        <button
+          class="iconbtn desktop-action"
+          type="button"
+          onclick="focusSearch()"
+          aria-label="Rechercher"
+        >
+          ⌕
+        </button>
+
+        <a
+          class="iconbtn desktop-action"
+          href="account.html"
+        >
+          ♙
+        </a>
+
+        <a
+          class="iconbtn desktop-action"
+          href="#"
+          aria-label="Favoris"
+        >
+          ♡
+        </a>
+
+        <a
+          class="iconbtn"
+          href="cart.html"
+        >
+          Panier
+
+          <span
+            class="cart-badge"
+            data-cart-count
+          >
+            0
+          </span>
+
+        </a>
+
+        <a
+          class="btn btn-primary desktop-action"
+          href="create.html"
+        >
+          Sur-mesure
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       HERO BOUTIQUE
+       ===================================================== -->
+
+  <section class="shop-hero">
+
+    <div class="wrap shop-hero-inner">
+
+      <div>
+
+        <div class="eyebrow">
+          Boutique
+        </div>
+
+        <h1>
+          Bijoux & parures
+        </h1>
+
+        <p class="lead">
+
+          Du petit bijou symbolique à la parure corporelle
+          plus affirmée, toutes les créations Byssus Tenebrarum
+          ont un même fil conducteur :
+
+          <strong>
+            le fil, la pierre, le corps et le symbole.
+          </strong>
+
+        </p>
+
+
+        <div class="audience-tabs">
+
+          <button
+            class="audience-tab active"
+            data-audience=""
+            onclick="setAudienceFilter('', this)"
+          >
+            Tous
+          </button>
+
+          <button
+            class="audience-tab"
+            data-audience="femme"
+            onclick="setAudienceFilter('femme', this)"
+          >
+            Femme
+          </button>
+
+          <button
+            class="audience-tab"
+            data-audience="homme"
+            onclick="setAudienceFilter('homme', this)"
+          >
+            Homme
+          </button>
+
+          <button
+            class="audience-tab"
+            data-audience="unisexe"
+            onclick="setAudienceFilter('unisexe', this)"
+          >
+            Unisexe
+          </button>
+
+          <button
+            class="audience-tab"
+            data-audience="couple"
+            onclick="setAudienceFilter('couple', this)"
+          >
+            Couple
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="shop-hero-note">
+
+        <strong>
+          Fabrication artisanale
+        </strong>
+
+        <p class="muted">
+
+          Les pièces sont fabriquées en petites séries
+          ou sur commande.
+
+          Certaines variations de pierres et de nuances
+          sont naturelles et rendent chaque création unique.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       BOUTIQUE
+       ===================================================== -->
+
+  <section class="shop-section">
+
+    <div class="wrap">
+
+
+      <button
+        class="btn mobile-filter-button"
+        type="button"
+        onclick="toggleMobileFilters()"
+      >
+        Filtres
+      </button>
+
+
+      <div class="shop-layout">
+
+
+        <!-- =================================================
+             SIDEBAR FILTRES
+             ================================================= -->
+
+        <aside
+          class="shop-sidebar"
+          id="shop-sidebar"
+        >
+
+          <h2>
+            Filtres
+          </h2>
+
+
+          <!-- CATÉGORIES -->
+
+          <div class="filter-group">
+
+            <h3>
+              Catégories
+            </h3>
+
+            <div
+              class="filter-list"
+              id="category-filters"
+            ></div>
+
+          </div>
+
+
+          <!-- PUBLIC -->
+
+          <div class="filter-group">
+
+            <h3>
+              Pour qui ?
+            </h3>
+
+            <div
+              class="filter-list"
+              id="audience-filters"
+            ></div>
+
+          </div>
+
+
+          <!-- UNIVERS -->
+
+          <div class="filter-group">
+
+            <h3>
+              Univers
+            </h3>
+
+            <div
+              class="filter-list"
+              id="universe-filters"
+            ></div>
+
+          </div>
+
+
+          <!-- PIERRES -->
+
+          <div class="filter-group">
+
+            <h3>
+              Pierre
+            </h3>
+
+            <select
+              id="stone-filter"
+              class="form-control"
+              onchange="applyShopFilters()"
+            >
+
+              <option value="">
+                Toutes les pierres
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- DISPONIBILITÉ -->
+
+          <div class="filter-group">
+
+            <h3>
+              Disponibilité
+            </h3>
+
+            <div
+              class="filter-list"
+              id="availability-filters"
+            ></div>
+
+          </div>
+
+
+          <!-- PRIX -->
+
+          <div class="filter-group">
+
+            <h3>
+              Prix
+            </h3>
+
+            <div class="price-row">
+
+              <input
+                type="number"
+                id="min-price"
+                class="form-control"
+                placeholder="Min €"
+                min="0"
+                onchange="applyShopFilters()"
+              >
+
+              <input
+                type="number"
+                id="max-price"
+                class="form-control"
+                placeholder="Max €"
+                min="0"
+                onchange="applyShopFilters()"
+              >
+
+            </div>
+
+          </div>
+
+
+          <button
+            class="btn reset-button"
+            type="button"
+            onclick="resetShopFilters()"
+          >
+            Réinitialiser les filtres
+          </button>
+
+        </aside>
+
+
+        <!-- =================================================
+             ZONE PRODUITS
+             ================================================= -->
+
+        <main class="shop-main">
+
+
+          <!-- RECHERCHE -->
+
+          <div class="shop-search">
+
+            <input
+              id="shop-search"
+              class="form-control"
+              type="search"
+              placeholder="Rechercher un bijou, une pierre, un univers..."
+              oninput="applyShopFilters()"
+            >
+
+          </div>
+
+
+          <!-- BARRE OUTILS -->
+
+          <div class="shop-toolbar">
+
+            <div class="shop-toolbar-left">
+
+              <strong id="result-count">
+                0 créations
+              </strong>
+
+              <span class="muted">
+                ·
+              </span>
+
+              <span
+                class="muted"
+                id="result-description"
+              >
+                Toute la boutique
+              </span>
+
+            </div>
+
+
+            <select
+              id="sort-products"
+              class="form-control"
+              style="max-width:230px"
+              onchange="applyShopFilters()"
+            >
+
+              <option value="default">
+                Notre sélection
+              </option>
+
+              <option value="new">
+                Nouveautés
+              </option>
+
+              <option value="bestseller">
+                Best-sellers
+              </option>
+
+              <option value="price-asc">
+                Prix croissant
+              </option>
+
+              <option value="price-desc">
+                Prix décroissant
+              </option>
+
+              <option value="name">
+                Nom A → Z
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- FILTRES ACTIFS -->
+
+          <div
+            class="active-filters"
+            id="active-filters"
+          ></div>
+
+
+          <!-- PRODUITS -->
+
+          <div
+            class="products-grid"
+            id="shop-grid"
+          ></div>
+
+        </main>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer class="footer">
+
+    <div class="wrap footer-grid">
+
+
+      <div>
+
+        <img
+          class="logo"
+          src="assets/images/logo-byssus.png"
+          alt="Byssus Tenebrarum"
+        >
+
+        <p>
+          Bijoux et parures corporelles artisanales
+          en micro-macramé.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Boutique
+        </h4>
+
+        <a href="shop.html">
+          Tous les bijoux
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="create.html">
+          Sur-mesure
+        </a>
+
+        <a href="cart.html">
+          Panier
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Aide
+        </h4>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+        <a href="legal.html">
+          CGV & mentions
+        </a>
+
+        <a href="legal.html#returns">
+          Retours
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          À propos
+        </h4>
+
+        <a href="about.html">
+          Notre histoire
+        </a>
+
+        <a href="about.html#atelier">
+          Notre atelier
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Rejoignez l’univers
+        </h4>
+
+        <p>
+          Recevez nouveautés, coulisses et inspirations.
+        </p>
+
+        <input
+          class="form-control"
+          type="email"
+          placeholder="Votre e-mail"
+        >
+
+        <button
+          class="btn btn-primary"
+          style="margin-top:8px"
+        >
+          S’inscrire
+        </button>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       SCRIPTS
+       ===================================================== -->
+
+  <script src="assets/js/products.js"></script>
+
+  <script src="assets/js/app.js"></script>
+
+
+  <script>
+
+    // =====================================================
+    // ÉTAT DES FILTRES
+    // =====================================================
+
+    let selectedAudience = "";
+
+
+
+    // =====================================================
+    // INITIALISATION
+    // =====================================================
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        buildDynamicFilters();
+
+        applyShopFilters();
+
+      }
+    );
+
+
+
+    // =====================================================
+    // CONSTRUCTION AUTOMATIQUE DES FILTRES
+    // DEPUIS PRODUCT_FILTERS
+    // =====================================================
+
+    function buildDynamicFilters() {
+
+      buildCheckboxFilter(
+        "category-filters",
+        PRODUCT_FILTERS.categories,
+        "category"
+      );
+
+
+      buildCheckboxFilter(
+        "audience-filters",
+        PRODUCT_FILTERS.audiences,
+        "audience"
+      );
+
+
+      buildCheckboxFilter(
+        "universe-filters",
+        PRODUCT_FILTERS.univers,
+        "universe"
+      );
+
+
+      buildCheckboxFilter(
+        "availability-filters",
+        PRODUCT_FILTERS.availability,
+        "availability"
+      );
+
+
+      const stoneSelect =
+        document.getElementById(
+          "stone-filter"
+        );
+
+
+      PRODUCT_FILTERS.stones
+        .forEach(stone => {
+
+          const option =
+            document.createElement(
+              "option"
+            );
+
+          option.value = stone;
+
+          option.textContent = stone;
+
+          stoneSelect.appendChild(
+            option
+          );
+
+        });
+
+    }
+
+
+
+    function buildCheckboxFilter(
+      containerId,
+      items,
+      name
+    ) {
+
+      const container =
+        document.getElementById(
+          containerId
+        );
+
+
+      container.innerHTML = "";
+
+
+      items.forEach(item => {
+
+        const label =
+          document.createElement(
+            "label"
+          );
+
+        label.className =
+          "filter-checkbox";
+
+
+        label.innerHTML = `
+          <input
+            type="checkbox"
+            name="${name}"
+            value="${item.id}"
+            onchange="applyShopFilters()"
+          >
+          <span>
+            ${item.label}
+          </span>
+        `;
+
+
+        container.appendChild(
+          label
+        );
+
+      });
+
+    }
+
+
+
+    // =====================================================
+    // FILTRE RAPIDE FEMME / HOMME / COUPLE
+    // =====================================================
+
+    function setAudienceFilter(
+      audience,
+      button
+    ) {
+
+      selectedAudience =
+        audience;
+
+
+      document
+        .querySelectorAll(
+          ".audience-tab"
+        )
+        .forEach(tab => {
+
+          tab.classList.remove(
+            "active"
+          );
+
+        });
+
+
+      button.classList.add(
+        "active"
+      );
+
+
+      document
+        .querySelectorAll(
+          'input[name="audience"]'
+        )
+        .forEach(input => {
+
+          input.checked =
+            audience
+              ? input.value === audience
+              : false;
+
+        });
+
+
+      applyShopFilters();
+
+    }
+
+
+
+    // =====================================================
+    // RÉCUPÉRER LES CHECKBOX COCHÉES
+    // =====================================================
+
+    function getCheckedValues(name) {
+
+      return [
+        ...document.querySelectorAll(
+          `input[name="${name}"]:checked`
+        )
+      ]
+        .map(
+          input => input.value
+        );
+
+    }
+
+
+
+    // =====================================================
+    // FILTRAGE PRINCIPAL
+    // =====================================================
+
+    function applyShopFilters() {
+
+      let products =
+        [...PRODUCTS];
+
+
+      const searchQuery =
+        document
+          .getElementById(
+            "shop-search"
+          )
+          .value
+          .trim();
+
+
+      const categories =
+        getCheckedValues(
+          "category"
+        );
+
+
+      const audiences =
+        getCheckedValues(
+          "audience"
+        );
+
+
+      const universes =
+        getCheckedValues(
+          "universe"
+        );
+
+
+      const availability =
+        getCheckedValues(
+          "availability"
+        );
+
+
+      const stone =
+        document
+          .getElementById(
+            "stone-filter"
+          )
+          .value;
+
+
+      const minPriceValue =
+        document
+          .getElementById(
+            "min-price"
+          )
+          .value;
+
+
+      const maxPriceValue =
+        document
+          .getElementById(
+            "max-price"
+          )
+          .value;
+
+
+      const minPrice =
+        minPriceValue !== ""
+          ? Number(minPriceValue)
+          : null;
+
+
+      const maxPrice =
+        maxPriceValue !== ""
+          ? Number(maxPriceValue)
+          : null;
+
+
+
+      // -----------------------------------------------
+      // RECHERCHE
+      // -----------------------------------------------
+
+      if (searchQuery) {
+
+        const foundIds =
+          new Set(
+            searchProducts(
+              searchQuery
+            )
+              .map(
+                product =>
+                  product.id
+              )
+          );
+
+
+        products =
+          products.filter(
+            product =>
+              foundIds.has(
+                product.id
+              )
+          );
+
+      }
+
+
+
+      // -----------------------------------------------
+      // CATÉGORIES
+      // -----------------------------------------------
+
+      if (categories.length) {
+
+        products =
+          products.filter(
+            product =>
+              categories.includes(
+                product.category
+              )
+          );
+
+      }
+
+
+
+      // -----------------------------------------------
+      // PUBLIC
+      // -----------------------------------------------
+
+      if (audiences.length) {
+
+        products =
+          products.filter(
+            product =>
+              audiences.some(
+                audience =>
+                  product.audience.includes(
+                    audience
+                  )
+              )
+          );
+
+      }
+      else if (selectedAudience) {
+
+        products =
+          products.filter(
+            product =>
+              product.audience.includes(
+                selectedAudience
+              )
+          );
+
+      }
+
+
+
+      // -----------------------------------------------
+      // UNIVERS
+      // -----------------------------------------------
+
+      if (universes.length) {
+
+        products =
+          products.filter(
+            product =>
+              universes.some(
+                universe =>
+                  product.univers.includes(
+                    universe
+                  )
+              )
+          );
+
+      }
+
+
+
+      // -----------------------------------------------
+      // PIERRE
+      // -----------------------------------------------
+
+      if (stone) {
+
+        products =
+          products.filter(
+            product =>
+              product.stones.includes(
+                stone
+              )
+          );
+
+      }
+
+
+
+      // -----------------------------------------------
+      // DISPONIBILITÉ
+      // -----------------------------------------------
+
+      if (availability.length) {
+
+        products =
+          products.filter(
+            product =>
+              availability.includes(
+                product.availability
+              )
+          );
+
+      }
+
+
+
+      // -----------------------------------------------
+      // PRIX
+      // -----------------------------------------------
+
+      if (minPrice !== null) {
+
+        products =
+          products.filter(
+            product =>
+              product.price >= minPrice
+          );
+
+      }
+
+
+      if (maxPrice !== null) {
+
+        products =
+          products.filter(
+            product =>
+              product.price <= maxPrice
+          );
+
+      }
+
+
+
+      // -----------------------------------------------
+      // TRI
+      // -----------------------------------------------
+
+      products =
+        sortProducts(
+          products
+        );
+
+
+
+      // -----------------------------------------------
+      // AFFICHAGE
+      // -----------------------------------------------
+
+      renderProducts(
+        products
+      );
+
+
+      renderActiveFilters();
+
+
+      updateResultCount(
+        products
+      );
+
+    }
+
+
+
+    // =====================================================
+    // TRI
+    // =====================================================
+
+    function sortProducts(products) {
+
+      const sort =
+        document
+          .getElementById(
+            "sort-products"
+          )
+          .value;
+
+
+      const sorted =
+        [...products];
+
+
+      switch (sort) {
+
+        case "price-asc":
+
+          sorted.sort(
+            (a, b) =>
+              a.price - b.price
+          );
+
+          break;
+
+
+        case "price-desc":
+
+          sorted.sort(
+            (a, b) =>
+              b.price - a.price
+          );
+
+          break;
+
+
+        case "name":
+
+          sorted.sort(
+            (a, b) =>
+              a.name.localeCompare(
+                b.name,
+                "fr"
+              )
+          );
+
+          break;
+
+
+        case "new":
+
+          sorted.sort(
+            (a, b) =>
+              Number(b.new)
+              -
+              Number(a.new)
+          );
+
+          break;
+
+
+        case "bestseller":
+
+          sorted.sort(
+            (a, b) =>
+              Number(b.bestseller)
+              -
+              Number(a.bestseller)
+          );
+
+          break;
+
+
+        default:
+
+          sorted.sort(
+            (a, b) =>
+              Number(b.featured)
+              -
+              Number(a.featured)
+          );
+
+      }
+
+
+      return sorted;
+
+    }
+
+
+
+    // =====================================================
+    // AFFICHER PRODUITS
+    // =====================================================
+
+    function renderProducts(products) {
+
+      const grid =
+        document.getElementById(
+          "shop-grid"
+        );
+
+
+      grid.innerHTML = "";
+
+
+      if (!products.length) {
+
+        grid.innerHTML = `
+          <div class="no-results">
+
+            <h2>
+              Aucune création trouvée
+            </h2>
+
+            <p class="muted">
+              Essaie de modifier ou
+              réinitialiser les filtres.
+            </p>
+
+            <button
+              class="btn btn-primary"
+              onclick="resetShopFilters()"
+            >
+              Voir toute la boutique
+            </button>
+
+          </div>
+        `;
+
+        return;
+
+      }
+
+
+      products.forEach(product => {
+
+        const card =
+          document.createElement(
+            "article"
+          );
+
+
+        card.className =
+          "product-card";
+
+
+        const badges = [];
+
+
+        if (product.new) {
+
+          badges.push(
+            `<span class="product-badge new">
+              Nouveau
+            </span>`
+          );
+
+        }
+
+
+        if (product.bestseller) {
+
+          badges.push(
+            `<span class="product-badge best">
+              Best-seller
+            </span>`
+          );
+
+        }
+
+
+        if (
+          product.availability
+          ===
+          "made-to-order"
+        ) {
+
+          badges.push(
+            `<span class="product-badge order">
+              Sur commande
+            </span>`
+          );
+
+        }
+
+
+        const audienceText =
+          product.audience
+            .map(
+              audience =>
+                capitalizeFirstLetter(
+                  audience
+                )
+            )
+            .join(" · ");
+
+
+        card.innerHTML = `
+
+          <div class="product-image-wrap">
+
+            <a
+              href="product.html?id=${encodeURIComponent(
+                product.id
+              )}"
+            >
+
+              <img
+                class="product-image"
+                src="${product.mainImage}"
+                alt="${escapeHtml(
+                  product.name
+                )}"
+                loading="lazy"
+                onerror="this.src='assets/images/logo-byssus.png'"
+              >
+
+            </a>
+
+
+            <div class="product-badges">
+              ${badges.join("")}
+            </div>
+
+          </div>
+
+
+          <div class="product-content">
+
+            <div class="product-category">
+
+              ${escapeHtml(
+                product.categoryLabel
+              )}
+
+              ·
+
+              ${escapeHtml(
+                audienceText
+              )}
+
+            </div>
+
+
+            <h3>
+
+              <a
+                href="product.html?id=${encodeURIComponent(
+                  product.id
+                )}"
+                style="
+                  color:inherit;
+                  text-decoration:none;
+                "
+              >
+
+                ${escapeHtml(
+                  product.name
+                )}
+
+              </a>
+
+            </h3>
+
+
+            <div class="product-meta">
+
+              ${escapeHtml(
+                product.stone
+              )}
+
+              ·
+
+              ${escapeHtml(
+                product.univers
+                  .slice(0, 2)
+                  .map(
+                    capitalizeFirstLetter
+                  )
+                  .join(" · ")
+              )}
+
+            </div>
+
+
+            <div class="product-footer">
+
+              <span class="product-price">
+
+                ${formatPrice(
+                  product.price
+                )}
+
+              </span>
+
+
+              <span class="muted">
+
+                ${
+                  product.madeToOrder
+                    ? "Sur commande"
+                    : product.stock > 0
+                      ? `${product.stock} dispo.`
+                      : "Indisponible"
+                }
+
+              </span>
+
+            </div>
+
+
+            <div class="product-actions">
+
+              <button
+                class="btn btn-primary"
+                type="button"
+                onclick="addProductToCart(
+                  '${product.id}'
+                )"
+              >
+
+                Ajouter au panier
+
+              </button>
+
+
+              <button
+                class="wish-button"
+                type="button"
+                title="Ajouter aux favoris"
+                onclick="toggleWishlist(
+                  '${product.id}',
+                  this
+                )"
+              >
+                ♡
+              </button>
+
+            </div>
+
+          </div>
+        `;
+
+
+        grid.appendChild(
+          card
+        );
+
+      });
+
+    }
+
+
+
+    // =====================================================
+    // AJOUT PANIER
+    // =====================================================
+
+    function addProductToCart(
+      productId
+    ) {
+
+      const product =
+        getProductById(
+          productId
+        );
+
+
+      if (!product) {
+        return;
+      }
+
+
+      // Si ton app.js possède déjà une fonction addToCart
+      // on l'utilise.
+
+      if (
+        typeof window.addToCart
+        ===
+        "function"
+      ) {
+
+        window.addToCart(
+          productId
+        );
+
+        return;
+
+      }
+
+
+      // Sinon fonctionnement de secours
+      // avec localStorage.
+
+      let cart =
+        JSON.parse(
+          localStorage.getItem(
+            "byssus-cart"
+          )
+          ||
+          "[]"
+        );
+
+
+      const existing =
+        cart.find(
+          item =>
+            item.id === productId
+        );
+
+
+      if (existing) {
+
+        existing.quantity += 1;
+
+      }
+      else {
+
+        cart.push({
+          id: productId,
+          quantity: 1
+        });
+
+      }
+
+
+      localStorage.setItem(
+        "byssus-cart",
+        JSON.stringify(cart)
+      );
+
+
+      refreshCartBadgeFallback();
+
+
+      alert(
+        `${product.name} a été ajouté au panier.`
+      );
+
+    }
+
+
+
+    // =====================================================
+    // BADGE PANIER DE SECOURS
+    // =====================================================
+
+    function refreshCartBadgeFallback() {
+
+      const cart =
+        JSON.parse(
+          localStorage.getItem(
+            "byssus-cart"
+          )
+          ||
+          "[]"
+        );
+
+
+      const count =
+        cart.reduce(
+          (sum, item) =>
+            sum
+            +
+            Number(
+              item.quantity || 0
+            ),
+          0
+        );
+
+
+      document
+        .querySelectorAll(
+          "[data-cart-count]"
+        )
+        .forEach(
+          badge => {
+
+            badge.textContent =
+              count;
+
+          }
+        );
+
+    }
+
+
+
+    // =====================================================
+    // FAVORIS
+    // =====================================================
+
+    function toggleWishlist(
+      productId,
+      button
+    ) {
+
+      let wishlist =
+        JSON.parse(
+          localStorage.getItem(
+            "byssus-wishlist"
+          )
+          ||
+          "[]"
+        );
+
+
+      if (
+        wishlist.includes(
+          productId
+        )
+      ) {
+
+        wishlist =
+          wishlist.filter(
+            id =>
+              id !== productId
+          );
+
+        button.textContent =
+          "♡";
+
+      }
+      else {
+
+        wishlist.push(
+          productId
+        );
+
+        button.textContent =
+          "♥";
+
+      }
+
+
+      localStorage.setItem(
+        "byssus-wishlist",
+        JSON.stringify(
+          wishlist
+        )
+      );
+
+    }
+
+
+
+    // =====================================================
+    // FILTRES ACTIFS
+    // =====================================================
+
+    function renderActiveFilters() {
+
+      const container =
+        document.getElementById(
+          "active-filters"
+        );
+
+
+      container.innerHTML = "";
+
+
+      addCheckedFilterChips(
+        container,
+        "category",
+        PRODUCT_FILTERS.categories
+      );
+
+
+      addCheckedFilterChips(
+        container,
+        "audience",
+        PRODUCT_FILTERS.audiences
+      );
+
+
+      addCheckedFilterChips(
+        container,
+        "universe",
+        PRODUCT_FILTERS.univers
+      );
+
+
+      addCheckedFilterChips(
+        container,
+        "availability",
+        PRODUCT_FILTERS.availability
+      );
+
+
+      const stone =
+        document
+          .getElementById(
+            "stone-filter"
+          )
+          .value;
+
+
+      if (stone) {
+
+        appendChip(
+          container,
+          stone,
+          () => {
+
+            document
+              .getElementById(
+                "stone-filter"
+              )
+              .value = "";
+
+            applyShopFilters();
+
+          }
+        );
+
+      }
+
+
+      const search =
+        document
+          .getElementById(
+            "shop-search"
+          )
+          .value
+          .trim();
+
+
+      if (search) {
+
+        appendChip(
+          container,
+          `Recherche : ${search}`,
+          () => {
+
+            document
+              .getElementById(
+                "shop-search"
+              )
+              .value = "";
+
+            applyShopFilters();
+
+          }
+        );
+
+      }
+
+    }
+
+
+
+    function addCheckedFilterChips(
+      container,
+      name,
+      source
+    ) {
+
+      const checked =
+        getCheckedValues(
+          name
+        );
+
+
+      checked.forEach(
+        value => {
+
+          const item =
+            source.find(
+              item =>
+                item.id === value
+            );
+
+
+          appendChip(
+            container,
+            item
+              ? item.label
+              : value,
+            () => {
+
+              const checkbox =
+                document.querySelector(
+                  `input[name="${name}"][value="${value}"]`
+                );
+
+
+              if (checkbox) {
+
+                checkbox.checked =
+                  false;
+
+              }
+
+
+              applyShopFilters();
+
+            }
+          );
+
+        }
+      );
+
+    }
+
+
+
+    function appendChip(
+      container,
+      label,
+      removeCallback
+    ) {
+
+      const chip =
+        document.createElement(
+          "span"
+        );
+
+
+      chip.className =
+        "filter-chip";
+
+
+      chip.innerHTML = `
+
+        <span>
+          ${escapeHtml(label)}
+        </span>
+
+        <button
+          type="button"
+          aria-label="Retirer"
+        >
+          ×
+        </button>
+      `;
+
+
+      chip
+        .querySelector(
+          "button"
+        )
+        .addEventListener(
+          "click",
+          removeCallback
+        );
+
+
+      container.appendChild(
+        chip
+      );
+
+    }
+
+
+
+    // =====================================================
+    // COMPTEUR
+    // =====================================================
+
+    function updateResultCount(
+      products
+    ) {
+
+      const count =
+        products.length;
+
+
+      document
+        .getElementById(
+          "result-count"
+        )
+        .textContent =
+        `${count} ${
+          count > 1
+            ? "créations"
+            : "création"
+        }`;
+
+    }
+
+
+
+    // =====================================================
+    // RESET
+    // =====================================================
+
+    function resetShopFilters() {
+
+      document
+        .querySelectorAll(
+          '.shop-sidebar input[type="checkbox"]'
+        )
+        .forEach(
+          input => {
+
+            input.checked =
+              false;
+
+          }
+        );
+
+
+      document
+        .getElementById(
+          "stone-filter"
+        )
+        .value = "";
+
+
+      document
+        .getElementById(
+          "shop-search"
+        )
+        .value = "";
+
+
+      document
+        .getElementById(
+          "min-price"
+        )
+        .value = "";
+
+
+      document
+        .getElementById(
+          "max-price"
+        )
+        .value = "";
+
+
+      document
+        .getElementById(
+          "sort-products"
+        )
+        .value =
+        "default";
+
+
+      selectedAudience =
+        "";
+
+
+      document
+        .querySelectorAll(
+          ".audience-tab"
+        )
+        .forEach(
+          tab => {
+
+            tab.classList.remove(
+              "active"
+            );
+
+          }
+        );
+
+
+      document
+        .querySelector(
+          '.audience-tab[data-audience=""]'
+        )
+        .classList.add(
+          "active"
+        );
+
+
+      applyShopFilters();
+
+    }
+
+
+
+    // =====================================================
+    // MOBILE
+    // =====================================================
+
+    function toggleMobileFilters() {
+
+      document
+        .getElementById(
+          "shop-sidebar"
+        )
+        .classList.toggle(
+          "open"
+        );
+
+    }
+
+
+
+    // =====================================================
+    // RECHERCHE
+    // =====================================================
+
+    function focusSearch() {
+
+      const input =
+        document.getElementById(
+          "shop-search"
+        );
+
+
+      input.focus();
+
+
+      input.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+    }
+
+
+
+    // =====================================================
+    // UTILITAIRES
+    // =====================================================
+
+    function capitalizeFirstLetter(
+      value
+    ) {
+
+      if (!value) {
+        return "";
+      }
+
+
+      return (
+        value.charAt(0).toUpperCase()
+        +
+        value.slice(1)
+      );
+
+    }
+
+
+
+    function escapeHtml(value) {
+
+      return String(value)
+        .replaceAll(
+          "&",
+          "&amp;"
+        )
+        .replaceAll(
+          "<",
+          "&lt;"
+        )
+        .replaceAll(
+          ">",
+          "&gt;"
+        )
+        .replaceAll(
+          '"',
+          "&quot;"
+        )
+        .replaceAll(
+          "'",
+          "&#039;"
+        );
+
+    }
+
+
+
+    // =====================================================
+    // BADGE PANIER AU CHARGEMENT
+    // =====================================================
+
+    window.addEventListener(
+      "load",
+      refreshCartBadgeFallback
+    );
+
+  </script>
+
+</body>
+
+</html>
