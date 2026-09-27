@@ -1,2 +1,2878 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Byssus Tenebrarum — bijoux de corps artisanaux en micro-macramé."><title>Produit · Byssus Tenebrarum</title><link rel="stylesheet" href="assets/css/style.css"></head><body><div class="topbar"><div class="wrap"><span>Bijoux faits main en micro-macramé · Atelier artisanal à Strasbourg</span><span>Livraison France & Europe · Emballage soigné</span></div></div>
-<header class="site-header"><div class="wrap nav"><a href="index.html"><img class="logo" src="assets/images/logo-byssus.png" alt="Byssus Tenebrarum"></a><nav class="navlinks"><a href="index.html">Accueil</a><a href="shop.html">Boutique</a><a href="collections.html">Collections</a><a href="create.html">Créer mon bijou</a><a href="about.html">À propos</a><a href="faq.html">FAQ</a></nav><div class="actions"><a class="iconbtn desktop-action" href="shop.html">⌕</a><a class="iconbtn desktop-action" href="account.html">♙</a><a class="iconbtn" href="cart.html">Panier <span class="cart-badge" data-cart-count>0</span></a><a class="btn btn-primary desktop-action" href="create.html">Sur-mesure</a></div></div></header><main id="product-detail" class="wrap"><section class="product-main"><div class="main-img"><img id="pd-image" src="assets/images/product-luna-large.jpg" alt="Produit"></div><div class="buy-box"><div class="eyebrow">Bijou artisanal</div><h1 id="pd-name" style="font-size:52px">Collier Luna</h1><p id="pd-stone" class="lead" style="font-size:20px">Labradorite · Micro-macramé</p><div id="pd-price" class="price" style="font-size:34px">79,00 €</div><p class="muted" id="pd-desc"></p><h3>Choix de la pierre</h3><div class="option-row"><button class="option selected">Labradorite</button><button class="option">Améthyste</button><button class="option">Onyx</button><button class="option">Pierre de lune</button></div><div class="product-actions" style="margin-top:20px"><button id="pd-add" class="btn btn-primary">Ajouter au panier</button><a class="btn btn-gold" href="cart.html">Acheter maintenant</a></div><div class="trust" style="margin-top:25px;grid-template-columns:1fr 1fr"><div><strong>Fait main</strong>Strasbourg</div><div><strong>Ajustable</strong>Confort prévu</div><div><strong>Pierres</strong>Naturelles</div><div><strong>Entretien</strong>Guide inclus</div></div></div></section><nav class="tabs"><a>Description</a><a>Matériaux & détails</a><a>Symbolique</a><a>Entretien</a><a>Livraison</a></nav><section class="content-card"><h2>Une création pensée pour être portée</h2><p>Micro-cordon ciré, pierre naturelle, apprêts sélectionnés, systèmes d’ajustement simples. Les pièces corporelles privilégient des lignes légères et modulables plutôt que des structures rigides.</p><div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:22px"><div><h3>Matériaux</h3><p class="muted">Micro-cordon résistant, pierre naturelle, apprêts sans nickel lorsque possible.</p></div><div><h3>Confort</h3><p class="muted">Liens ajustables, faible poids, zones de frottement limitées.</p></div><div><h3>Entretien</h3><p class="muted">Éviter eau, parfum et immersion. Nettoyage doux selon la pierre.</p></div></div></section><section class="section"><div class="section-title"><h2>Vous aimerez aussi</h2></div><div id="related" class="grid products"></div></section></main><footer class="footer"><div class="wrap footer-grid"><div><img class="logo" src="assets/images/logo-byssus.png" alt="Byssus Tenebrarum"><p>Bijoux et parures corporelles artisanales en micro-macramé.</p></div><div><h4>Boutique</h4><a href="shop.html">Tous les bijoux</a><a href="collections.html">Collections</a><a href="create.html">Sur-mesure</a><a href="cart.html">Panier</a></div><div><h4>Aide</h4><a href="faq.html">FAQ</a><a href="contact.html">Contact</a><a href="legal.html">CGV & mentions</a><a href="legal.html#returns">Retours</a></div><div><h4>À propos</h4><a href="about.html">Notre histoire</a><a href="about.html#atelier">Notre atelier</a><a href="journal.html">Journal</a></div><div><h4>Rejoignez l’univers</h4><p>Recevez nouveautés, coulisses et inspirations.</p><input class="form-control" placeholder="Votre e-mail"><button class="btn btn-primary" style="margin-top:8px">S’inscrire</button></div></div></footer><script src="assets/js/products.js"></script><script src="assets/js/app.js"></script></body></html>
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Découvrez les bijoux artisanaux Byssus Tenebrarum en micro-macramé, fabriqués à Strasbourg."
+  >
+
+  <title>
+    Produit · Byssus Tenebrarum
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="assets/css/style.css"
+  >
+
+  <style>
+
+    /* =====================================================
+       PRODUCT.HTML - STYLES SPÉCIFIQUES
+       ===================================================== */
+
+    .product-page {
+      padding: 42px 0 80px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+      font-size: 13px;
+      opacity: .72;
+    }
+
+    .breadcrumb a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      opacity: 1;
+    }
+
+    .product-layout {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1.12fr)
+        minmax(360px, .88fr);
+
+      gap: 46px;
+      align-items: start;
+    }
+
+    /* =====================================================
+       GALERIE
+       ===================================================== */
+
+    .product-gallery {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .product-thumbnails {
+      display: grid;
+      gap: 10px;
+    }
+
+    .product-thumb {
+      position: relative;
+
+      width: 100%;
+      aspect-ratio: 4 / 5;
+
+      overflow: hidden;
+
+      border-radius: 12px;
+      border: 1px solid var(--line);
+
+      background: #0b090d;
+
+      cursor: pointer;
+
+      transition:
+        border-color .2s ease,
+        transform .2s ease;
+    }
+
+    .product-thumb:hover {
+      transform: translateY(-2px);
+    }
+
+    .product-thumb.active {
+      border-color:
+        rgba(164, 96, 183, .9);
+    }
+
+    .product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-main-image-wrap {
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: 18px;
+      border: 1px solid var(--line);
+
+      background:
+        linear-gradient(
+          180deg,
+          #111015,
+          #08070a
+        );
+
+      min-height: 640px;
+    }
+
+    .product-main-image-wrap img {
+      width: 100%;
+      height: 100%;
+      min-height: 640px;
+      object-fit: cover;
+
+      display: block;
+    }
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(255,255,255,.18);
+
+      background:
+        rgba(9, 7, 11, .72);
+
+      color: white;
+
+      cursor: pointer;
+
+      transform: translateY(-50%);
+    }
+
+    .gallery-arrow:hover {
+      background:
+        rgba(80, 38, 96, .86);
+    }
+
+    .gallery-prev {
+      left: 16px;
+    }
+
+    .gallery-next {
+      right: 16px;
+    }
+
+    .gallery-counter {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+
+      padding: 6px 10px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(8, 7, 10, .76);
+
+      border:
+        1px solid rgba(255,255,255,.12);
+
+      font-size: 12px;
+    }
+
+    /* =====================================================
+       INFOS PRODUIT
+       ===================================================== */
+
+    .product-info {
+      position: sticky;
+      top: 108px;
+    }
+
+    .product-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      margin-bottom: 14px;
+    }
+
+    .product-badge {
+      display: inline-flex;
+
+      padding: 6px 10px;
+
+      border-radius: 999px;
+
+      border: 1px solid var(--line);
+
+      background:
+        rgba(84, 42, 99, .18);
+
+      font-size: 11px;
+
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .product-badge.best {
+      color: #d8b875;
+    }
+
+    .product-badge.new {
+      color: #d7a9df;
+    }
+
+    .product-badge.order {
+      color: #e0b3ca;
+    }
+
+    .product-title {
+      margin: 0 0 8px;
+
+      font-size:
+        clamp(40px, 5vw, 66px);
+
+      line-height: .98;
+    }
+
+    .product-subtitle {
+      margin-bottom: 18px;
+
+      font-size: 15px;
+      letter-spacing: .04em;
+
+      opacity: .75;
+    }
+
+    .product-price {
+      margin: 18px 0 8px;
+
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .product-stock {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 18px;
+
+      font-size: 13px;
+    }
+
+    .stock-dot {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background:
+        #78bd8b;
+    }
+
+    .stock-dot.order {
+      background:
+        #c793a9;
+    }
+
+    .stock-dot.out {
+      background:
+        #9c6666;
+    }
+
+    .product-description {
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .product-divider {
+      height: 1px;
+      margin: 22px 0;
+
+      background: var(--line);
+    }
+
+    /* =====================================================
+       OPTIONS
+       ===================================================== */
+
+    .option-section {
+      margin-bottom: 22px;
+    }
+
+    .option-section h3 {
+      margin: 0 0 12px;
+
+      font-size: 14px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .option-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .option-pill {
+      padding: 9px 12px;
+
+      border-radius: 10px;
+
+      border: 1px solid var(--line);
+
+      background:
+        rgba(255,255,255,.015);
+
+      font-size: 13px;
+    }
+
+    .option-pill.primary {
+      background:
+        rgba(104, 51, 121, .28);
+
+      border-color:
+        rgba(163, 92, 185, .55);
+    }
+
+    /* =====================================================
+       QUANTITÉ
+       ===================================================== */
+
+    .quantity-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      margin: 18px 0;
+    }
+
+    .quantity-control {
+      display: inline-grid;
+      grid-template-columns:
+        42px 48px 42px;
+
+      align-items: center;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 12px;
+
+      overflow: hidden;
+    }
+
+    .quantity-control button {
+      height: 42px;
+
+      border: 0;
+
+      background:
+        transparent;
+
+      color: inherit;
+
+      cursor: pointer;
+    }
+
+    .quantity-control button:hover {
+      background:
+        rgba(104, 51, 121, .18);
+    }
+
+    .quantity-value {
+      display: grid;
+      place-items: center;
+
+      height: 42px;
+
+      border-left:
+        1px solid var(--line);
+
+      border-right:
+        1px solid var(--line);
+    }
+
+    /* =====================================================
+       CTA
+       ===================================================== */
+
+    .purchase-actions {
+      display: grid;
+      gap: 10px;
+
+      margin-top: 18px;
+    }
+
+    .purchase-actions .btn {
+      width: 100%;
+
+      text-align: center;
+      justify-content: center;
+    }
+
+    .wishlist-product-btn {
+      width: 100%;
+    }
+
+    /* =====================================================
+       RÉASSURANCE
+       ===================================================== */
+
+    .reassurance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      gap: 10px;
+
+      margin-top: 24px;
+    }
+
+    .reassurance-card {
+      padding: 14px;
+
+      border: 1px solid var(--line);
+      border-radius: 12px;
+
+      background:
+        rgba(255,255,255,.015);
+    }
+
+    .reassurance-card strong {
+      display: block;
+
+      margin-bottom: 4px;
+      font-size: 12px;
+    }
+
+    .reassurance-card span {
+      font-size: 11px;
+      opacity: .7;
+    }
+
+    /* =====================================================
+       CONTENU INFÉRIEUR
+       ===================================================== */
+
+    .product-detail-sections {
+      margin-top: 72px;
+    }
+
+    .product-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      margin-bottom: 24px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .product-tab-btn {
+      padding: 12px 16px;
+
+      border: 0;
+      border-bottom:
+        2px solid transparent;
+
+      background:
+        transparent;
+
+      color: inherit;
+
+      cursor: pointer;
+
+      opacity: .7;
+    }
+
+    .product-tab-btn.active {
+      opacity: 1;
+
+      border-bottom-color:
+        rgba(164, 95, 184, .9);
+    }
+
+    .product-tab-panel {
+      display: none;
+    }
+
+    .product-tab-panel.active {
+      display: block;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .detail-card {
+      padding: 24px;
+
+      border: 1px solid var(--line);
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(57, 28, 67, .18),
+          rgba(255,255,255,.01)
+        );
+    }
+
+    .detail-card h3 {
+      margin-top: 0;
+    }
+
+    .detail-list {
+      padding-left: 18px;
+      margin-bottom: 0;
+    }
+
+    .detail-list li {
+      margin-bottom: 8px;
+    }
+
+    /* =====================================================
+       PRODUITS ASSOCIÉS
+       ===================================================== */
+
+    .related-section {
+      margin-top: 82px;
+    }
+
+    .related-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      gap: 16px;
+
+      margin-bottom: 22px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+      gap: 18px;
+    }
+
+    .related-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+
+      overflow: hidden;
+
+      background:
+        rgba(13, 10, 16, .82);
+    }
+
+    .related-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .related-card-content {
+      padding: 14px;
+    }
+
+    .related-card h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .related-card p {
+      margin: 0 0 12px;
+      font-size: 12px;
+      opacity: .7;
+    }
+
+    .related-price {
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    /* =====================================================
+       ÉTAT ERREUR
+       ===================================================== */
+
+    .product-not-found {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1050px) {
+
+      .product-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .product-info {
+        position: static;
+      }
+
+      .detail-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .related-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      .product-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .product-thumbnails {
+        grid-template-columns:
+          repeat(4, 1fr);
+
+        order: 2;
+      }
+
+      .product-main-image-wrap {
+        order: 1;
+        min-height: 430px;
+      }
+
+      .product-main-image-wrap img {
+        min-height: 430px;
+      }
+
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .reassurance-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- =====================================================
+       TOPBAR
+       ===================================================== -->
+
+  <div class="topbar">
+
+    <div class="wrap">
+
+      <span>
+        Bijoux faits main en micro-macramé ·
+        Atelier artisanal à Strasbourg
+      </span>
+
+      <span>
+        Livraison France & Europe
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header class="site-header">
+
+    <div class="wrap nav">
+
+      <a href="index.html">
+
+        <img
+          class="logo"
+          src="assets/images/logo-byssus.png"
+          alt="Byssus Tenebrarum"
+        >
+
+      </a>
+
+
+      <nav class="navlinks">
+
+        <a href="index.html">
+          Accueil
+        </a>
+
+        <a
+          href="shop.html"
+          class="active"
+        >
+          Boutique
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="create.html">
+          Créer mon bijou
+        </a>
+
+        <a href="about.html">
+          À propos
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+      </nav>
+
+
+      <div class="actions">
+
+        <a
+          class="iconbtn desktop-action"
+          href="account.html"
+        >
+          Compte
+        </a>
+
+        <a
+          class="iconbtn"
+          href="cart.html"
+        >
+
+          Panier
+
+          <span
+            data-cart-count
+            class="cart-badge"
+          >
+            0
+          </span>
+
+        </a>
+
+
+        <a
+          class="btn btn-primary desktop-action"
+          href="create.html"
+        >
+          Sur-mesure
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       CONTENEUR PRODUIT
+       ===================================================== -->
+
+  <main
+    class="product-page"
+    id="product-page"
+  >
+
+    <div class="wrap">
+
+      <!-- =================================================
+           BREADCRUMB
+           ================================================= -->
+
+      <nav
+        class="breadcrumb"
+        id="breadcrumb"
+      ></nav>
+
+
+      <!-- =================================================
+           PRODUIT
+           ================================================= -->
+
+      <div
+        class="product-layout"
+        id="product-layout"
+      >
+
+        <!-- Galerie injectée en JS -->
+
+      </div>
+
+
+      <!-- =================================================
+           DÉTAILS
+           ================================================= -->
+
+      <section
+        class="product-detail-sections"
+        id="product-detail-sections"
+      ></section>
+
+
+      <!-- =================================================
+           PRODUITS ASSOCIÉS
+           ================================================= -->
+
+      <section
+        class="related-section"
+        id="related-section"
+      ></section>
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer class="footer">
+
+    <div class="wrap footer-grid">
+
+
+      <div>
+
+        <img
+          class="logo"
+          src="assets/images/logo-byssus.png"
+          alt="Byssus Tenebrarum"
+        >
+
+        <p>
+          Bijoux et parures corporelles
+          artisanales en micro-macramé.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Boutique
+        </h4>
+
+        <a href="shop.html">
+          Tous les bijoux
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="create.html">
+          Sur-mesure
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Aide
+        </h4>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+        <a href="legal.html">
+          CGV
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          À propos
+        </h4>
+
+        <a href="about.html">
+          Notre histoire
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Newsletter
+        </h4>
+
+        <p>
+          Nouveautés, coulisses
+          et inspirations.
+        </p>
+
+        <input
+          class="form-control"
+          type="email"
+          placeholder="Votre e-mail"
+        >
+
+        <button
+          class="btn btn-primary"
+          style="margin-top:8px"
+        >
+          S’inscrire
+        </button>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       SCRIPTS
+       ===================================================== -->
+
+  <script src="assets/js/products.js"></script>
+
+  <script src="assets/js/app.js"></script>
+
+
+  <script>
+
+    // =====================================================
+    // VARIABLES
+    // =====================================================
+
+    let currentProduct = null;
+
+    let currentGalleryIndex = 0;
+
+    let currentQuantity = 1;
+
+
+
+    // =====================================================
+    // INITIALISATION
+    // =====================================================
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        loadProduct();
+
+        refreshCartBadgeFallback();
+
+      }
+    );
+
+
+
+    // =====================================================
+    // CHARGER LE PRODUIT DEPUIS URL
+    // product.html?id=collier-elise
+    // =====================================================
+
+    function loadProduct() {
+
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+
+      const productId =
+        params.get("id");
+
+
+      if (!productId) {
+
+        renderProductNotFound();
+
+        return;
+
+      }
+
+
+      currentProduct =
+        getProductById(
+          productId
+        );
+
+
+      if (!currentProduct) {
+
+        renderProductNotFound();
+
+        return;
+
+      }
+
+
+      document.title =
+        `${currentProduct.name} · Byssus Tenebrarum`;
+
+
+      renderBreadcrumb();
+
+      renderProduct();
+
+      renderProductDetails();
+
+      renderRelatedProducts();
+
+    }
+
+
+
+    // =====================================================
+    // BREADCRUMB
+    // =====================================================
+
+    function renderBreadcrumb() {
+
+      const breadcrumb =
+        document.getElementById(
+          "breadcrumb"
+        );
+
+
+      breadcrumb.innerHTML = `
+
+        <a href="index.html">
+          Accueil
+        </a>
+
+        <span>›</span>
+
+        <a href="shop.html">
+          Boutique
+        </a>
+
+        <span>›</span>
+
+        <span>
+          ${escapeHtml(
+            currentProduct.categoryLabel
+          )}
+        </span>
+
+        <span>›</span>
+
+        <strong>
+          ${escapeHtml(
+            currentProduct.name
+          )}
+        </strong>
+
+      `;
+
+    }
+
+
+
+    // =====================================================
+    // PRODUIT PRINCIPAL
+    // =====================================================
+
+    function renderProduct() {
+
+      const layout =
+        document.getElementById(
+          "product-layout"
+        );
+
+
+      const badges = [];
+
+
+      if (currentProduct.new) {
+
+        badges.push(
+          `
+          <span class="product-badge new">
+            Nouveau
+          </span>
+          `
+        );
+
+      }
+
+
+      if (currentProduct.bestseller) {
+
+        badges.push(
+          `
+          <span class="product-badge best">
+            Best-seller
+          </span>
+          `
+        );
+
+      }
+
+
+      if (currentProduct.madeToOrder) {
+
+        badges.push(
+          `
+          <span class="product-badge order">
+            Sur commande
+          </span>
+          `
+        );
+
+      }
+
+
+
+      const stockInfo =
+        getStockDisplay(
+          currentProduct
+        );
+
+
+      layout.innerHTML = `
+
+        <!-- ===============================
+             GALERIE
+             =============================== -->
+
+        <section class="product-gallery">
+
+          <div
+            class="product-thumbnails"
+            id="product-thumbnails"
+          >
+          </div>
+
+
+          <div class="product-main-image-wrap">
+
+            <img
+              id="product-main-image"
+              src="${currentProduct.images[0]}"
+              alt="${escapeHtml(
+                currentProduct.name
+              )}"
+              onerror="this.src='assets/images/logo-byssus.png'"
+            >
+
+
+            <button
+              class="gallery-arrow gallery-prev"
+              type="button"
+              onclick="previousImage()"
+              aria-label="Image précédente"
+            >
+              ‹
+            </button>
+
+
+            <button
+              class="gallery-arrow gallery-next"
+              type="button"
+              onclick="nextImage()"
+              aria-label="Image suivante"
+            >
+              ›
+            </button>
+
+
+            <div
+              class="gallery-counter"
+              id="gallery-counter"
+            >
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ===============================
+             INFOS
+             =============================== -->
+
+        <section class="product-info">
+
+          <div class="product-badges">
+
+            ${badges.join("")}
+
+          </div>
+
+
+          <div class="eyebrow">
+
+            ${escapeHtml(
+              currentProduct.categoryLabel
+            )}
+
+          </div>
+
+
+          <h1 class="product-title">
+
+            ${escapeHtml(
+              currentProduct.name
+            )}
+
+          </h1>
+
+
+          <div class="product-subtitle">
+
+            ${escapeHtml(
+              currentProduct.stone
+            )}
+
+            ·
+
+            ${escapeHtml(
+              currentProduct.univers
+                .slice(0, 3)
+                .map(capitalizeFirstLetter)
+                .join(" · ")
+            )}
+
+          </div>
+
+
+          <div class="product-price">
+
+            ${formatPrice(
+              currentProduct.price
+            )}
+
+          </div>
+
+
+          <div class="product-stock">
+
+            <span
+              class="stock-dot ${stockInfo.className}"
+            ></span>
+
+            <span>
+              ${stockInfo.label}
+            </span>
+
+          </div>
+
+
+          <p class="product-description">
+
+            ${escapeHtml(
+              currentProduct.description
+            )}
+
+          </p>
+
+
+          <div class="product-divider"></div>
+
+
+          <!-- PIERRES -->
+
+          <div class="option-section">
+
+            <h3>
+              Pierre
+            </h3>
+
+            <div class="option-pills">
+
+              ${
+                currentProduct.stones
+                  .map(
+                    (stone, index) => `
+                      <span
+                        class="option-pill ${
+                          index === 0
+                            ? "primary"
+                            : ""
+                        }"
+                      >
+                        ${escapeHtml(stone)}
+                      </span>
+                    `
+                  )
+                  .join("")
+              }
+
+            </div>
+
+          </div>
+
+
+          <!-- COULEURS -->
+
+          <div class="option-section">
+
+            <h3>
+              Couleurs
+            </h3>
+
+            <div class="option-pills">
+
+              ${
+                currentProduct.colors
+                  .map(
+                    color => `
+                      <span class="option-pill">
+                        ${escapeHtml(color)}
+                      </span>
+                    `
+                  )
+                  .join("")
+              }
+
+            </div>
+
+          </div>
+
+
+          <!-- TAILLE -->
+
+          <div class="option-section">
+
+            <h3>
+              Taille
+            </h3>
+
+            <div class="option-pills">
+
+              <span class="option-pill primary">
+
+                ${escapeHtml(
+                  currentProduct.size
+                )}
+
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- QUANTITÉ -->
+
+          <div class="quantity-row">
+
+            <strong>
+              Quantité
+            </strong>
+
+
+            <div class="quantity-control">
+
+              <button
+                type="button"
+                onclick="changeQuantity(-1)"
+              >
+                −
+              </button>
+
+
+              <div
+                class="quantity-value"
+                id="quantity-value"
+              >
+                1
+              </div>
+
+
+              <button
+                type="button"
+                onclick="changeQuantity(1)"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- ACTIONS -->
+
+          <div class="purchase-actions">
+
+            <button
+              class="btn btn-primary"
+              type="button"
+              onclick="addCurrentProductToCart()"
+            >
+              Ajouter au panier
+            </button>
+
+
+            <button
+              class="btn"
+              type="button"
+              onclick="buyCurrentProductNow()"
+            >
+              Acheter maintenant
+            </button>
+
+
+            <button
+              class="btn wishlist-product-btn"
+              id="wishlist-product-btn"
+              type="button"
+              onclick="toggleProductWishlist()"
+            >
+              ♡ Ajouter aux favoris
+            </button>
+
+          </div>
+
+
+          <!-- RÉASSURANCE -->
+
+          <div class="reassurance-grid">
+
+            <div class="reassurance-card">
+
+              <strong>
+                Fait main à Strasbourg
+              </strong>
+
+              <span>
+                Fabrication artisanale
+              </span>
+
+            </div>
+
+
+            <div class="reassurance-card">
+
+              <strong>
+                Pierres naturelles
+              </strong>
+
+              <span>
+                Sélectionnées avec soin
+              </span>
+
+            </div>
+
+
+            <div class="reassurance-card">
+
+              <strong>
+                Paiement sécurisé
+              </strong>
+
+              <span>
+                Carte bancaire & PayPal
+              </span>
+
+            </div>
+
+
+            <div class="reassurance-card">
+
+              <strong>
+                Livraison suivie
+              </strong>
+
+              <span>
+                France & Europe
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="product-divider"></div>
+
+
+          <p class="muted">
+
+            ${escapeHtml(
+              currentProduct.leadTime
+            )}
+
+          </p>
+
+        </section>
+
+      `;
+
+
+      renderGallery();
+
+      updateWishlistButton();
+
+    }
+
+
+
+    // =====================================================
+    // GALERIE
+    // =====================================================
+
+    function renderGallery() {
+
+      const container =
+        document.getElementById(
+          "product-thumbnails"
+        );
+
+
+      container.innerHTML = "";
+
+
+      currentProduct.images
+        .forEach(
+          (image, index) => {
+
+            const button =
+              document.createElement(
+                "button"
+              );
+
+
+            button.className =
+              `product-thumb ${
+                index === currentGalleryIndex
+                  ? "active"
+                  : ""
+              }`;
+
+
+            button.type =
+              "button";
+
+
+            button.innerHTML = `
+
+              <img
+                src="${image}"
+                alt="${escapeHtml(
+                  currentProduct.name
+                )} - vue ${index + 1}"
+                onerror="this.src='assets/images/logo-byssus.png'"
+              >
+
+            `;
+
+
+            button.addEventListener(
+              "click",
+              () => {
+
+                setGalleryImage(
+                  index
+                );
+
+              }
+            );
+
+
+            container.appendChild(
+              button
+            );
+
+          }
+        );
+
+
+      updateGalleryDisplay();
+
+    }
+
+
+
+    function setGalleryImage(index) {
+
+      currentGalleryIndex =
+        index;
+
+
+      updateGalleryDisplay();
+
+    }
+
+
+
+    function nextImage() {
+
+      currentGalleryIndex++;
+
+      if (
+        currentGalleryIndex
+        >=
+        currentProduct.images.length
+      ) {
+
+        currentGalleryIndex =
+          0;
+
+      }
+
+
+      updateGalleryDisplay();
+
+    }
+
+
+
+    function previousImage() {
+
+      currentGalleryIndex--;
+
+      if (
+        currentGalleryIndex
+        <
+        0
+      ) {
+
+        currentGalleryIndex =
+          currentProduct.images.length
+          -
+          1;
+
+      }
+
+
+      updateGalleryDisplay();
+
+    }
+
+
+
+    function updateGalleryDisplay() {
+
+      const mainImage =
+        document.getElementById(
+          "product-main-image"
+        );
+
+
+      if (mainImage) {
+
+        mainImage.src =
+          currentProduct.images[
+            currentGalleryIndex
+          ];
+
+      }
+
+
+      document
+        .querySelectorAll(
+          ".product-thumb"
+        )
+        .forEach(
+          (thumb, index) => {
+
+            thumb.classList.toggle(
+              "active",
+              index ===
+              currentGalleryIndex
+            );
+
+          }
+        );
+
+
+      const counter =
+        document.getElementById(
+          "gallery-counter"
+        );
+
+
+      if (counter) {
+
+        counter.textContent =
+          `${
+            currentGalleryIndex + 1
+          } / ${
+            currentProduct.images.length
+          }`;
+
+      }
+
+    }
+
+
+
+    // =====================================================
+    // QUANTITÉ
+    // =====================================================
+
+    function changeQuantity(amount) {
+
+      currentQuantity += amount;
+
+
+      if (
+        currentQuantity < 1
+      ) {
+
+        currentQuantity = 1;
+
+      }
+
+
+      if (
+        !currentProduct.madeToOrder
+        &&
+        currentProduct.stock > 0
+        &&
+        currentQuantity
+        >
+        currentProduct.stock
+      ) {
+
+        currentQuantity =
+          currentProduct.stock;
+
+      }
+
+
+      document
+        .getElementById(
+          "quantity-value"
+        )
+        .textContent =
+        currentQuantity;
+
+    }
+
+
+
+    // =====================================================
+    // AJOUT PANIER
+    // =====================================================
+
+    function addCurrentProductToCart() {
+
+      if (!currentProduct) {
+        return;
+      }
+
+
+      let cart =
+        JSON.parse(
+          localStorage.getItem(
+            "byssus-cart"
+          )
+          ||
+          "[]"
+        );
+
+
+      const existing =
+        cart.find(
+          item =>
+            item.id ===
+            currentProduct.id
+        );
+
+
+      if (existing) {
+
+        existing.quantity +=
+          currentQuantity;
+
+      }
+      else {
+
+        cart.push({
+          id:
+            currentProduct.id,
+
+          quantity:
+            currentQuantity
+        });
+
+      }
+
+
+      localStorage.setItem(
+        "byssus-cart",
+        JSON.stringify(cart)
+      );
+
+
+      refreshCartBadgeFallback();
+
+
+      alert(
+        `${currentProduct.name} a été ajouté au panier.`
+      );
+
+    }
+
+
+
+    // =====================================================
+    // ACHETER MAINTENANT
+    // =====================================================
+
+    function buyCurrentProductNow() {
+
+      addCurrentProductToCart();
+
+      window.location.href =
+        "cart.html";
+
+    }
+
+
+
+    // =====================================================
+    // FAVORIS
+    // =====================================================
+
+    function toggleProductWishlist() {
+
+      let wishlist =
+        JSON.parse(
+          localStorage.getItem(
+            "byssus-wishlist"
+          )
+          ||
+          "[]"
+        );
+
+
+      const index =
+        wishlist.indexOf(
+          currentProduct.id
+        );
+
+
+      if (index >= 0) {
+
+        wishlist.splice(
+          index,
+          1
+        );
+
+      }
+      else {
+
+        wishlist.push(
+          currentProduct.id
+        );
+
+      }
+
+
+      localStorage.setItem(
+        "byssus-wishlist",
+        JSON.stringify(
+          wishlist
+        )
+      );
+
+
+      updateWishlistButton();
+
+    }
+
+
+
+    function updateWishlistButton() {
+
+      const button =
+        document.getElementById(
+          "wishlist-product-btn"
+        );
+
+
+      if (!button) {
+        return;
+      }
+
+
+      const wishlist =
+        JSON.parse(
+          localStorage.getItem(
+            "byssus-wishlist"
+          )
+          ||
+          "[]"
+        );
+
+
+      const exists =
+        wishlist.includes(
+          currentProduct.id
+        );
+
+
+      button.textContent =
+        exists
+          ? "♥ Dans mes favoris"
+          : "♡ Ajouter aux favoris";
+
+    }
+
+
+
+    // =====================================================
+    // DÉTAILS
+    // =====================================================
+
+    function renderProductDetails() {
+
+      const container =
+        document.getElementById(
+          "product-detail-sections"
+        );
+
+
+      container.innerHTML = `
+
+        <div class="product-tabs">
+
+          <button
+            class="product-tab-btn active"
+            data-tab="description"
+            onclick="openProductTab('description')"
+          >
+            Description
+          </button>
+
+
+          <button
+            class="product-tab-btn"
+            data-tab="materials"
+            onclick="openProductTab('materials')"
+          >
+            Matériaux & détails
+          </button>
+
+
+          <button
+            class="product-tab-btn"
+            data-tab="symbolism"
+            onclick="openProductTab('symbolism')"
+          >
+            Symbolique
+          </button>
+
+
+          <button
+            class="product-tab-btn"
+            data-tab="care"
+            onclick="openProductTab('care')"
+          >
+            Entretien
+          </button>
+
+
+          <button
+            class="product-tab-btn"
+            data-tab="shipping"
+            onclick="openProductTab('shipping')"
+          >
+            Livraison
+          </button>
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <div
+          class="product-tab-panel active"
+          id="tab-description"
+        >
+
+          <div class="detail-grid">
+
+            <div class="detail-card">
+
+              <h3>
+                La création
+              </h3>
+
+              <p>
+
+                ${escapeHtml(
+                  currentProduct.description
+                )}
+
+              </p>
+
+            </div>
+
+
+            <div class="detail-card">
+
+              <h3>
+                Pour qui ?
+              </h3>
+
+              <p>
+
+                ${
+                  currentProduct.audience
+                    .map(capitalizeFirstLetter)
+                    .join(" · ")
+                }
+
+              </p>
+
+            </div>
+
+
+            <div class="detail-card">
+
+              <h3>
+                Fabrication
+              </h3>
+
+              <p>
+
+                ${
+                  currentProduct.madeToOrder
+                    ? "Création fabriquée à la commande dans l’atelier."
+                    : "Création disponible en petite série ou en stock limité."
+                }
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- MATÉRIAUX -->
+
+        <div
+          class="product-tab-panel"
+          id="tab-materials"
+        >
+
+          <div class="detail-grid">
+
+            <div class="detail-card">
+
+              <h3>
+                Matériaux
+              </h3>
+
+              <ul class="detail-list">
+
+                ${
+                  currentProduct.materials
+                    .map(
+                      material => `
+                        <li>
+                          ${escapeHtml(material)}
+                        </li>
+                      `
+                    )
+                    .join("")
+                }
+
+              </ul>
+
+            </div>
+
+
+            <div class="detail-card">
+
+              <h3>
+                Pierre
+              </h3>
+
+              <p>
+
+                ${escapeHtml(
+                  currentProduct.stone
+                )}
+
+              </p>
+
+            </div>
+
+
+            <div class="detail-card">
+
+              <h3>
+                Taille
+              </h3>
+
+              <p>
+
+                ${escapeHtml(
+                  currentProduct.size
+                )}
+
+              </p>
+
+              <p class="muted">
+
+                ${
+                  currentProduct.adjustable
+                    ? "Modèle ajustable."
+                    : "Taille fixe."
+                }
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- SYMBOLIQUE -->
+
+        <div
+          class="product-tab-panel"
+          id="tab-symbolism"
+        >
+
+          <div class="detail-card">
+
+            <h3>
+              Symbolique
+            </h3>
+
+            <p>
+
+              ${escapeHtml(
+                currentProduct.symbolism
+              )}
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- ENTRETIEN -->
+
+        <div
+          class="product-tab-panel"
+          id="tab-care"
+        >
+
+          <div class="detail-card">
+
+            <h3>
+              Conseils d’entretien
+            </h3>
+
+            <p>
+
+              ${escapeHtml(
+                currentProduct.care
+              )}
+
+            </p>
+
+
+            <ul class="detail-list">
+
+              <li>
+                Éviter les parfums directement sur le bijou.
+              </li>
+
+              <li>
+                Éviter l’immersion prolongée dans l’eau.
+              </li>
+
+              <li>
+                Ranger le bijou à plat ou dans son pochon.
+              </li>
+
+              <li>
+                Manipuler les pierres et fils avec douceur.
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+
+        <!-- LIVRAISON -->
+
+        <div
+          class="product-tab-panel"
+          id="tab-shipping"
+        >
+
+          <div class="detail-grid">
+
+            <div class="detail-card">
+
+              <h3>
+                Délai
+              </h3>
+
+              <p>
+
+                ${escapeHtml(
+                  currentProduct.leadTime
+                )}
+
+              </p>
+
+            </div>
+
+
+            <div class="detail-card">
+
+              <h3>
+                Expédition
+              </h3>
+
+              <p>
+                Livraison suivie en France
+                et dans l’Union européenne.
+              </p>
+
+            </div>
+
+
+            <div class="detail-card">
+
+              <h3>
+                Emballage
+              </h3>
+
+              <p>
+                Chaque pièce est préparée
+                avec soin dans un écrin
+                adapté à son format.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }
+
+
+
+    // =====================================================
+    // TABS
+    // =====================================================
+
+    function openProductTab(tabName) {
+
+      document
+        .querySelectorAll(
+          ".product-tab-btn"
+        )
+        .forEach(
+          button => {
+
+            button.classList.toggle(
+              "active",
+              button.dataset.tab
+              ===
+              tabName
+            );
+
+          }
+        );
+
+
+      document
+        .querySelectorAll(
+          ".product-tab-panel"
+        )
+        .forEach(
+          panel => {
+
+            panel.classList.remove(
+              "active"
+            );
+
+          }
+        );
+
+
+      const panel =
+        document.getElementById(
+          `tab-${tabName}`
+        );
+
+
+      if (panel) {
+
+        panel.classList.add(
+          "active"
+        );
+
+      }
+
+    }
+
+
+
+    // =====================================================
+    // PRODUITS ASSOCIÉS
+    // =====================================================
+
+    function renderRelatedProducts() {
+
+      const container =
+        document.getElementById(
+          "related-section"
+        );
+
+
+      let related =
+        PRODUCTS.filter(
+          product =>
+            product.id
+            !==
+            currentProduct.id
+        );
+
+
+      related.sort(
+        (a, b) => {
+
+          let scoreA = 0;
+          let scoreB = 0;
+
+
+          if (
+            a.category
+            ===
+            currentProduct.category
+          ) {
+            scoreA += 3;
+          }
+
+
+          if (
+            b.category
+            ===
+            currentProduct.category
+          ) {
+            scoreB += 3;
+          }
+
+
+          if (
+            a.stones.some(
+              stone =>
+                currentProduct.stones.includes(
+                  stone
+                )
+            )
+          ) {
+            scoreA += 2;
+          }
+
+
+          if (
+            b.stones.some(
+              stone =>
+                currentProduct.stones.includes(
+                  stone
+                )
+            )
+          ) {
+            scoreB += 2;
+          }
+
+
+          if (
+            a.univers.some(
+              universe =>
+                currentProduct.univers.includes(
+                  universe
+                )
+            )
+          ) {
+            scoreA += 1;
+          }
+
+
+          if (
+            b.univers.some(
+              universe =>
+                currentProduct.univers.includes(
+                  universe
+                )
+            )
+          ) {
+            scoreB += 1;
+          }
+
+
+          return scoreB - scoreA;
+        }
+      );
+
+
+      related =
+        related.slice(
+          0,
+          4
+        );
+
+
+      container.innerHTML = `
+
+        <div class="related-header">
+
+          <div>
+
+            <div class="eyebrow">
+              Sélection
+            </div>
+
+            <h2>
+              Vous aimerez aussi
+            </h2>
+
+          </div>
+
+
+          <a
+            class="btn"
+            href="shop.html"
+          >
+            Voir toute la boutique
+          </a>
+
+        </div>
+
+
+        <div class="related-grid">
+
+          ${
+            related
+              .map(
+                product => `
+
+                  <article class="related-card">
+
+                    <a
+                      href="product.html?id=${encodeURIComponent(
+                        product.id
+                      )}"
+                    >
+
+                      <img
+                        src="${product.mainImage}"
+                        alt="${escapeHtml(
+                          product.name
+                        )}"
+                        loading="lazy"
+                        onerror="this.src='assets/images/logo-byssus.png'"
+                      >
+
+                    </a>
+
+
+                    <div class="related-card-content">
+
+                      <h3>
+
+                        <a
+                          href="product.html?id=${encodeURIComponent(
+                            product.id
+                          )}"
+                          style="
+                            color:inherit;
+                            text-decoration:none;
+                          "
+                        >
+                          ${escapeHtml(
+                            product.name
+                          )}
+                        </a>
+
+                      </h3>
+
+
+                      <p>
+
+                        ${escapeHtml(
+                          product.stone
+                        )}
+
+                        ·
+
+                        ${escapeHtml(
+                          product.univers
+                            .slice(0, 1)
+                            .map(
+                              capitalizeFirstLetter
+                            )
+                            .join("")
+                        )}
+
+                      </p>
+
+
+                      <div class="related-price">
+
+                        ${formatPrice(
+                          product.price
+                        )}
+
+                      </div>
+
+
+                      <button
+                        class="btn btn-primary"
+                        type="button"
+                        onclick="addRelatedProductToCart(
+                          '${product.id}'
+                        )"
+                      >
+                        Ajouter au panier
+                      </button>
+
+                    </div>
+
+                  </article>
+
+                `
+              )
+              .join("")
+          }
+
+        </div>
+
+      `;
+
+    }
+
+
+
+    // =====================================================
+    // AJOUT PRODUIT ASSOCIÉ
+    // =====================================================
+
+    function addRelatedProductToCart(
+      productId
+    ) {
+
+      const product =
+        getProductById(
+          productId
+        );
+
+
+      if (!product) {
+        return;
+      }
+
+
+      let cart =
+        JSON.parse(
+          localStorage.getItem(
+            "byssus-cart"
+          )
+          ||
+          "[]"
+        );
+
+
+      const existing =
+        cart.find(
+          item =>
+            item.id ===
+            productId
+        );
+
+
+      if (existing) {
+
+        existing.quantity += 1;
+
+      }
+      else {
+
+        cart.push({
+          id: productId,
+          quantity: 1
+        });
+
+      }
+
+
+      localStorage.setItem(
+        "byssus-cart",
+        JSON.stringify(cart)
+      );
+
+
+      refreshCartBadgeFallback();
+
+
+      alert(
+        `${product.name} a été ajouté au panier.`
+      );
+
+    }
+
+
+
+    // =====================================================
+    // PANIER BADGE
+    // =====================================================
+
+    function refreshCartBadgeFallback() {
+
+      const cart =
+        JSON.parse(
+          localStorage.getItem(
+            "byssus-cart"
+          )
+          ||
+          "[]"
+        );
+
+
+      const count =
+        cart.reduce(
+          (sum, item) =>
+            sum
+            +
+            Number(
+              item.quantity || 0
+            ),
+          0
+        );
+
+
+      document
+        .querySelectorAll(
+          "[data-cart-count]"
+        )
+        .forEach(
+          badge => {
+
+            badge.textContent =
+              count;
+
+          }
+        );
+
+    }
+
+
+
+    // =====================================================
+    // STOCK
+    // =====================================================
+
+    function getStockDisplay(
+      product
+    ) {
+
+      if (
+        product.madeToOrder
+      ) {
+
+        return {
+          className: "order",
+          label:
+            "Fabrication sur commande"
+        };
+
+      }
+
+
+      if (
+        product.stock > 0
+      ) {
+
+        return {
+          className: "",
+          label:
+            `${product.stock} ${
+              product.stock > 1
+                ? "pièces disponibles"
+                : "pièce disponible"
+            }`
+        };
+
+      }
+
+
+      return {
+        className: "out",
+        label:
+          "Indisponible"
+      };
+
+    }
+
+
+
+    // =====================================================
+    // PRODUIT INTROUVABLE
+    // =====================================================
+
+    function renderProductNotFound() {
+
+      const page =
+        document.getElementById(
+          "product-page"
+        );
+
+
+      page.innerHTML = `
+
+        <div
+          class="wrap product-not-found"
+        >
+
+          <h1>
+            Création introuvable
+          </h1>
+
+          <p class="muted">
+
+            Le bijou demandé n’existe pas
+            ou n’est plus disponible.
+
+          </p>
+
+          <a
+            class="btn btn-primary"
+            href="shop.html"
+          >
+            Retour à la boutique
+          </a>
+
+        </div>
+
+      `;
+
+    }
+
+
+
+    // =====================================================
+    // UTILS
+    // =====================================================
+
+    function capitalizeFirstLetter(
+      value
+    ) {
+
+      if (!value) {
+        return "";
+      }
+
+
+      return (
+        value
+          .charAt(0)
+          .toUpperCase()
+        +
+        value
+          .slice(1)
+      );
+
+    }
+
+
+
+    function escapeHtml(value) {
+
+      return String(value)
+        .replaceAll(
+          "&",
+          "&amp;"
+        )
+        .replaceAll(
+          "<",
+          "&lt;"
+        )
+        .replaceAll(
+          ">",
+          "&gt;"
+        )
+        .replaceAll(
+          '"',
+          "&quot;"
+        )
+        .replaceAll(
+          "'",
+          "&#039;"
+        );
+
+    }
+
+  </script>
+
+</body>
+
+</html>
