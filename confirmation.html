@@ -1,0 +1,2067 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Confirmation de votre commande Byssus Tenebrarum."
+  >
+
+  <title>
+    Commande confirmée · Byssus Tenebrarum
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="assets/css/style.css"
+  >
+
+  <style>
+
+    /* =====================================================
+       CONFIRMATION.HTML
+       ===================================================== */
+
+    .confirmation-page {
+      padding: 55px 0 90px;
+    }
+
+    /* =====================================================
+       HERO CONFIRMATION
+       ===================================================== */
+
+    .confirmation-hero {
+      position: relative;
+
+      max-width: 900px;
+
+      margin:
+        0 auto 45px;
+
+      padding:
+        48px 35px;
+
+      text-align: center;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 22px;
+
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(92, 42, 109, .28),
+          transparent 55%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(48, 24, 58, .28),
+          rgba(8, 7, 10, .96)
+        );
+
+      overflow: hidden;
+    }
+
+    .confirmation-symbol {
+      width: 76px;
+      height: 76px;
+
+      margin:
+        0 auto 22px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      border:
+        1px solid
+        rgba(165, 99, 186, .6);
+
+      background:
+        rgba(98, 47, 115, .22);
+
+      font-size: 34px;
+    }
+
+    .confirmation-hero h1 {
+      margin:
+        8px 0 15px;
+
+      font-size:
+        clamp(42px, 6vw, 70px);
+
+      line-height: 1;
+    }
+
+    .confirmation-lead {
+      max-width: 650px;
+
+      margin:
+        0 auto;
+
+      line-height: 1.7;
+    }
+
+    .order-number-box {
+      display: inline-flex;
+
+      flex-direction: column;
+
+      gap: 4px;
+
+      margin-top: 26px;
+
+      padding:
+        13px 20px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 12px;
+
+      background:
+        rgba(255,255,255,.025);
+    }
+
+    .order-number-box span {
+      font-size: 11px;
+
+      opacity: .65;
+
+      text-transform: uppercase;
+
+      letter-spacing: .08em;
+    }
+
+    .order-number-box strong {
+      font-size: 19px;
+
+      letter-spacing: .05em;
+    }
+
+    /* =====================================================
+       PROGRESSION
+       ===================================================== */
+
+    .confirmation-progress {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+
+      max-width: 900px;
+
+      margin:
+        0 auto 42px;
+    }
+
+    .confirmation-step {
+      padding:
+        14px 10px;
+
+      text-align: center;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 12px;
+
+      font-size: 12px;
+
+      opacity: .6;
+    }
+
+    .confirmation-step.done {
+      opacity: 1;
+
+      border-color:
+        rgba(125, 77, 143, .55);
+
+      background:
+        rgba(83, 44, 97, .18);
+    }
+
+    .confirmation-step.current {
+      opacity: 1;
+
+      border-color:
+        rgba(165, 97, 187, .85);
+
+      background:
+        rgba(103, 49, 121, .3);
+    }
+
+    .confirmation-step strong {
+      display: block;
+
+      margin-bottom: 3px;
+    }
+
+    /* =====================================================
+       LAYOUT
+       ===================================================== */
+
+    .confirmation-layout {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.2fr)
+        minmax(300px, .8fr);
+
+      gap: 28px;
+
+      align-items: start;
+    }
+
+    /* =====================================================
+       CARDS
+       ===================================================== */
+
+    .confirmation-card {
+      margin-bottom: 20px;
+
+      padding: 24px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(54, 27, 65, .16),
+          rgba(255,255,255,.01)
+        );
+    }
+
+    .confirmation-card h2 {
+      margin:
+        0 0 20px;
+
+      font-size: 24px;
+    }
+
+    .confirmation-card h3 {
+      margin:
+        0 0 8px;
+
+      font-size: 16px;
+    }
+
+    /* =====================================================
+       PRODUITS
+       ===================================================== */
+
+    .confirmation-products {
+      display: grid;
+
+      gap: 14px;
+    }
+
+    .confirmation-product {
+      display: grid;
+
+      grid-template-columns:
+        92px 1fr auto;
+
+      gap: 14px;
+
+      align-items: center;
+
+      padding-bottom: 14px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .confirmation-product:last-child {
+      padding-bottom: 0;
+
+      border-bottom: 0;
+    }
+
+    .confirmation-product-image {
+      width: 92px;
+
+      aspect-ratio: 4 / 5;
+
+      overflow: hidden;
+
+      border-radius: 10px;
+
+      border:
+        1px solid var(--line);
+
+      background: #0a090c;
+    }
+
+    .confirmation-product-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .confirmation-product-name {
+      margin-bottom: 5px;
+
+      font-weight: 600;
+    }
+
+    .confirmation-product-meta {
+      font-size: 12px;
+
+      opacity: .66;
+
+      line-height: 1.6;
+    }
+
+    .confirmation-product-price {
+      font-weight: 600;
+
+      white-space: nowrap;
+    }
+
+    /* =====================================================
+       INFOS CLIENT
+       ===================================================== */
+
+    .info-grid {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 20px;
+    }
+
+    .info-block p {
+      margin:
+        0;
+
+      line-height: 1.7;
+
+      font-size: 14px;
+    }
+
+    .info-label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 11px;
+
+      letter-spacing: .08em;
+
+      text-transform: uppercase;
+
+      opacity: .62;
+    }
+
+    /* =====================================================
+       RÉCAPITULATIF
+       ===================================================== */
+
+    .order-summary {
+      position: sticky;
+
+      top: 108px;
+    }
+
+    .summary-line {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      margin-bottom: 12px;
+
+      font-size: 14px;
+    }
+
+    .summary-line.total {
+      margin-top: 18px;
+
+      padding-top: 18px;
+
+      border-top:
+        1px solid var(--line);
+
+      font-size: 21px;
+
+      font-weight: 600;
+    }
+
+    .summary-divider {
+      height: 1px;
+
+      margin:
+        18px 0;
+
+      background:
+        var(--line);
+    }
+
+    .payment-status {
+      display: flex;
+
+      gap: 10px;
+
+      align-items: center;
+
+      margin-top: 18px;
+
+      padding:
+        13px;
+
+      border-radius: 11px;
+
+      background:
+        rgba(65, 108, 77, .12);
+
+      border:
+        1px solid
+        rgba(97, 153, 112, .25);
+
+      font-size: 12px;
+    }
+
+    .payment-status-dot {
+      width: 9px;
+      height: 9px;
+
+      border-radius: 50%;
+
+      background:
+        #7ac18c;
+    }
+
+    /* =====================================================
+       PROCHAINES ÉTAPES
+       ===================================================== */
+
+    .next-steps {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 16px;
+
+      margin-top: 42px;
+    }
+
+    .next-step-card {
+      padding: 22px;
+
+      border:
+        1px solid var(--line);
+
+      border-radius: 16px;
+
+      text-align: center;
+    }
+
+    .next-step-number {
+      width: 36px;
+      height: 36px;
+
+      margin:
+        0 auto 12px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 50%;
+
+      border:
+        1px solid
+        rgba(150, 89, 170, .55);
+
+      background:
+        rgba(92, 46, 107, .22);
+    }
+
+    .next-step-card h3 {
+      margin:
+        0 0 8px;
+    }
+
+    .next-step-card p {
+      margin: 0;
+
+      font-size: 13px;
+
+      opacity: .7;
+
+      line-height: 1.6;
+    }
+
+    /* =====================================================
+       ACTIONS
+       ===================================================== */
+
+    .confirmation-actions {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+
+      margin-top: 42px;
+    }
+
+    /* =====================================================
+       ERREUR
+       ===================================================== */
+
+    .confirmation-error {
+      max-width: 720px;
+
+      margin: 0 auto;
+
+      padding:
+        70px 25px;
+
+      text-align: center;
+
+      border:
+        1px dashed var(--line);
+
+      border-radius: 18px;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 950px) {
+
+      .confirmation-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .order-summary {
+        position: static;
+      }
+
+      .next-steps {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 650px) {
+
+      .confirmation-progress {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .confirmation-product {
+        grid-template-columns:
+          72px 1fr;
+      }
+
+      .confirmation-product-price {
+        grid-column: 2;
+
+        justify-self: start;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- =====================================================
+       TOPBAR
+       ===================================================== -->
+
+  <div class="topbar">
+
+    <div class="wrap">
+
+      <span>
+        Bijoux faits main en micro-macramé ·
+        Atelier artisanal à Strasbourg
+      </span>
+
+      <span>
+        Livraison France & Europe
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header class="site-header">
+
+    <div class="wrap nav">
+
+      <a href="index.html">
+
+        <img
+          class="logo"
+          src="assets/images/logo-byssus.png"
+          alt="Byssus Tenebrarum"
+        >
+
+      </a>
+
+
+      <nav class="navlinks">
+
+        <a href="index.html">
+          Accueil
+        </a>
+
+        <a href="shop.html">
+          Boutique
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="create.html">
+          Créer mon bijou
+        </a>
+
+        <a href="about.html">
+          À propos
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+      </nav>
+
+
+      <div class="actions">
+
+        <a
+          class="iconbtn"
+          href="account.html"
+        >
+          Compte
+        </a>
+
+        <a
+          class="iconbtn"
+          href="cart.html"
+        >
+
+          Panier
+
+          <span
+            data-cart-count
+            class="cart-badge"
+          >
+            0
+          </span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       PAGE
+       ===================================================== -->
+
+  <main class="confirmation-page">
+
+    <div
+      class="wrap"
+      id="confirmation-content"
+    >
+
+      <!--
+        Tout le contenu
+        est généré en JavaScript.
+      -->
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer class="footer">
+
+    <div class="wrap footer-grid">
+
+
+      <div>
+
+        <img
+          class="logo"
+          src="assets/images/logo-byssus.png"
+          alt="Byssus Tenebrarum"
+        >
+
+        <p>
+          Bijoux et parures corporelles
+          artisanales en micro-macramé.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Boutique
+        </h4>
+
+        <a href="shop.html">
+          Tous les bijoux
+        </a>
+
+        <a href="collections.html">
+          Collections
+        </a>
+
+        <a href="create.html">
+          Sur-mesure
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Aide
+        </h4>
+
+        <a href="faq.html">
+          FAQ
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+        <a href="legal.html">
+          CGV
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          À propos
+        </h4>
+
+        <a href="about.html">
+          Notre histoire
+        </a>
+
+        <a href="journal.html">
+          Journal
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h4>
+          Newsletter
+        </h4>
+
+        <p>
+          Nouveautés, coulisses
+          et inspirations.
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       SCRIPTS
+       ===================================================== -->
+
+  <script src="assets/js/products.js"></script>
+
+  <script src="assets/js/app.js"></script>
+
+
+  <script>
+
+    // =====================================================
+    // CONFIG
+    // =====================================================
+
+    const CHECKOUT_KEY =
+      "byssus-checkout";
+
+    const LAST_ORDER_KEY =
+      "byssus-last-order";
+
+    const CART_KEY =
+      "byssus-cart";
+
+    const CART_OPTIONS_KEY =
+      "byssus-cart-options";
+
+    const PROMO_KEY =
+      "byssus-promo";
+
+
+    let order = null;
+
+
+
+    // =====================================================
+    // INITIALISATION
+    // =====================================================
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        loadConfirmation();
+
+      }
+    );
+
+
+
+    // =====================================================
+    // CHARGER COMMANDE
+    // =====================================================
+
+    function loadConfirmation() {
+
+      order =
+        readStorageObject(
+          CHECKOUT_KEY
+        );
+
+
+      /*
+       * Si checkout est vide,
+       * essayer la dernière commande.
+       */
+
+      if (
+        !order
+        ||
+        !order.orderId
+      ) {
+
+        order =
+          readStorageObject(
+            LAST_ORDER_KEY
+          );
+
+      }
+
+
+      if (
+        !order
+        ||
+        !order.orderId
+      ) {
+
+        renderNoOrder();
+
+        return;
+
+      }
+
+
+      document.title =
+        `${order.orderId} · Commande confirmée · Byssus Tenebrarum`;
+
+
+      /*
+       * Archivage de la commande.
+       */
+
+      localStorage.setItem(
+        LAST_ORDER_KEY,
+        JSON.stringify(
+          order
+        )
+      );
+
+
+      renderConfirmation();
+
+
+      /*
+       * Une confirmation signifie
+       * normalement que le paiement
+       * a réussi.
+       *
+       * On peut donc vider le panier.
+       */
+
+      clearCompletedCart();
+
+    }
+
+
+
+    // =====================================================
+    // AFFICHAGE PRINCIPAL
+    // =====================================================
+
+    function renderConfirmation() {
+
+      const container =
+        document.getElementById(
+          "confirmation-content"
+        );
+
+
+      const customer =
+        order.customer || {};
+
+
+      const shippingAddress =
+        order.shippingAddress || {};
+
+
+      const delivery =
+        order.delivery || {};
+
+
+      const totals =
+        order.totals || {};
+
+
+      const items =
+        Array.isArray(order.items)
+          ? order.items
+          : [];
+
+
+      const firstName =
+        customer.firstname
+        ||
+        "";
+
+
+      container.innerHTML = `
+
+        <!-- ===============================================
+             HERO
+             =============================================== -->
+
+        <section class="confirmation-hero">
+
+          <div class="confirmation-symbol">
+            ✓
+          </div>
+
+
+          <div class="eyebrow">
+            Commande confirmée
+          </div>
+
+
+          <h1>
+
+            Merci
+            ${
+              firstName
+                ? escapeHtml(firstName)
+                : ""
+            }.
+
+          </h1>
+
+
+          <p class="confirmation-lead">
+
+            Votre commande a bien été enregistrée.
+
+            L’atelier Byssus Tenebrarum
+            va maintenant préparer votre sélection
+            avec le soin accordé à chaque création.
+
+          </p>
+
+
+          <div class="order-number-box">
+
+            <span>
+              Numéro de commande
+            </span>
+
+            <strong>
+              ${escapeHtml(
+                order.orderId
+              )}
+            </strong>
+
+          </div>
+
+        </section>
+
+
+        <!-- ===============================================
+             PROGRESSION
+             =============================================== -->
+
+        <div class="confirmation-progress">
+
+          <div class="confirmation-step done">
+
+            <strong>
+              1. Panier
+            </strong>
+
+            Sélection validée
+
+          </div>
+
+
+          <div class="confirmation-step done">
+
+            <strong>
+              2. Livraison
+            </strong>
+
+            Coordonnées enregistrées
+
+          </div>
+
+
+          <div class="confirmation-step done">
+
+            <strong>
+              3. Paiement
+            </strong>
+
+            Paiement validé
+
+          </div>
+
+
+          <div class="confirmation-step current">
+
+            <strong>
+              4. Confirmation
+            </strong>
+
+            Commande enregistrée
+
+          </div>
+
+        </div>
+
+
+        <!-- ===============================================
+             LAYOUT
+             =============================================== -->
+
+        <div class="confirmation-layout">
+
+
+          <!-- =============================================
+               COLONNE GAUCHE
+               ============================================= -->
+
+          <section>
+
+
+            <!-- PRODUITS -->
+
+            <div class="confirmation-card">
+
+              <h2>
+                Votre sélection
+              </h2>
+
+
+              <div
+                class="confirmation-products"
+                id="confirmation-products"
+              >
+
+                ${renderOrderProducts(items)}
+
+              </div>
+
+            </div>
+
+
+            <!-- COORDONNÉES -->
+
+            <div class="confirmation-card">
+
+              <h2>
+                Livraison
+              </h2>
+
+
+              <div class="info-grid">
+
+
+                <div class="info-block">
+
+                  <span class="info-label">
+                    Client
+                  </span>
+
+                  <p>
+
+                    ${escapeHtml(
+                      customer.firstname || ""
+                    )}
+
+                    ${escapeHtml(
+                      customer.lastname || ""
+                    )}
+
+                    <br>
+
+                    ${escapeHtml(
+                      customer.email || ""
+                    )}
+
+                    <br>
+
+                    ${escapeHtml(
+                      customer.phone || ""
+                    )}
+
+                  </p>
+
+                </div>
+
+
+                <div class="info-block">
+
+                  <span class="info-label">
+                    Adresse
+                  </span>
+
+                  <p>
+
+                    ${escapeHtml(
+                      shippingAddress.address
+                      ||
+                      ""
+                    )}
+
+                    ${
+                      shippingAddress.address2
+                        ? `<br>${escapeHtml(
+                            shippingAddress.address2
+                          )}`
+                        : ""
+                    }
+
+                    <br>
+
+                    ${escapeHtml(
+                      shippingAddress.postalCode
+                      ||
+                      ""
+                    )}
+
+                    ${escapeHtml(
+                      shippingAddress.city
+                      ||
+                      ""
+                    )}
+
+                    <br>
+
+                    ${escapeHtml(
+                      formatCountry(
+                        shippingAddress.country
+                      )
+                    )}
+
+                  </p>
+
+                </div>
+
+
+                <div class="info-block">
+
+                  <span class="info-label">
+                    Mode de livraison
+                  </span>
+
+                  <p>
+
+                    ${escapeHtml(
+                      delivery.name
+                      ||
+                      "Livraison suivie"
+                    )}
+
+                    <br>
+
+                    <span class="muted">
+
+                      ${escapeHtml(
+                        delivery.delay
+                        ||
+                        ""
+                      )}
+
+                    </span>
+
+                  </p>
+
+                </div>
+
+
+                <div class="info-block">
+
+                  <span class="info-label">
+                    Paiement
+                  </span>
+
+                  <p>
+
+                    ${escapeHtml(
+                      formatPaymentMethod(
+                        order.paymentMethod
+                      )
+                    )}
+
+                  </p>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            ${
+              order.note
+                ? `
+
+                  <div class="confirmation-card">
+
+                    <h2>
+                      Votre message à l’atelier
+                    </h2>
+
+                    <p>
+
+                      ${escapeHtml(
+                        order.note
+                      )}
+
+                    </p>
+
+                  </div>
+
+                `
+                : ""
+            }
+
+          </section>
+
+
+          <!-- =============================================
+               RÉCAP DROITE
+               ============================================= -->
+
+          <aside>
+
+            <div class="confirmation-card order-summary">
+
+              <h2>
+                Récapitulatif
+              </h2>
+
+
+              <div class="summary-line">
+
+                <span>
+                  Sous-total
+                </span>
+
+                <strong>
+
+                  ${formatPrice(
+                    totals.subtotal
+                    ||
+                    0
+                  )}
+
+                </strong>
+
+              </div>
+
+
+              <div class="summary-line">
+
+                <span>
+                  Livraison
+                </span>
+
+                <strong>
+
+                  ${
+                    Number(
+                      totals.shipping || 0
+                    ) === 0
+                      ? "Offerte"
+                      : formatPrice(
+                          totals.shipping
+                          ||
+                          0
+                        )
+                  }
+
+                </strong>
+
+              </div>
+
+
+              ${
+                Number(
+                  totals.giftPrice || 0
+                ) > 0
+                  ? `
+
+                    <div class="summary-line">
+
+                      <span>
+                        Emballage cadeau
+                      </span>
+
+                      <strong>
+
+                        ${formatPrice(
+                          totals.giftPrice
+                        )}
+
+                      </strong>
+
+                    </div>
+
+                  `
+                  : ""
+              }
+
+
+              ${
+                Number(
+                  totals.discount || 0
+                ) > 0
+                  ? `
+
+                    <div class="summary-line">
+
+                      <span>
+                        Réduction
+                      </span>
+
+                      <strong>
+
+                        −${formatPrice(
+                          totals.discount
+                        )}
+
+                      </strong>
+
+                    </div>
+
+                  `
+                  : ""
+              }
+
+
+              <div class="summary-line total">
+
+                <span>
+                  Total TTC
+                </span>
+
+                <strong>
+
+                  ${formatPrice(
+                    totals.total
+                    ||
+                    0
+                  )}
+
+                </strong>
+
+              </div>
+
+
+              <div class="payment-status">
+
+                <span class="payment-status-dot"></span>
+
+                <span>
+
+                  Commande validée
+
+                  <br>
+
+                  <small>
+
+                    ${escapeHtml(
+                      formatPaymentMethod(
+                        order.paymentMethod
+                      )
+                    )}
+
+                  </small>
+
+                </span>
+
+              </div>
+
+
+              <div class="summary-divider"></div>
+
+
+              <div class="summary-line">
+
+                <span>
+                  Commande
+                </span>
+
+                <strong>
+                  ${escapeHtml(
+                    order.orderId
+                  )}
+                </strong>
+
+              </div>
+
+
+              <div class="summary-line">
+
+                <span>
+                  Date
+                </span>
+
+                <strong>
+
+                  ${escapeHtml(
+                    formatOrderDate(
+                      order.createdAt
+                    )
+                  )}
+
+                </strong>
+
+              </div>
+
+            </div>
+
+          </aside>
+
+        </div>
+
+
+        <!-- ===============================================
+             PROCHAINES ÉTAPES
+             =============================================== -->
+
+        <section class="next-steps">
+
+
+          <article class="next-step-card">
+
+            <div class="next-step-number">
+              1
+            </div>
+
+            <h3>
+              Préparation
+            </h3>
+
+            <p>
+
+              Les pièces disponibles sont préparées
+              à l’atelier.
+
+              Les créations sur commande entrent
+              en fabrication.
+
+            </p>
+
+          </article>
+
+
+          <article class="next-step-card">
+
+            <div class="next-step-number">
+              2
+            </div>
+
+            <h3>
+              Contrôle & emballage
+            </h3>
+
+            <p>
+
+              Chaque bijou est vérifié,
+              nettoyé et conditionné avec soin
+              avant son départ.
+
+            </p>
+
+          </article>
+
+
+          <article class="next-step-card">
+
+            <div class="next-step-number">
+              3
+            </div>
+
+            <h3>
+              Expédition
+            </h3>
+
+            <p>
+
+              Vous recevrez votre suivi
+              dès que votre colis quittera
+              l’atelier.
+
+            </p>
+
+          </article>
+
+
+        </section>
+
+
+        <!-- ===============================================
+             ACTIONS
+             =============================================== -->
+
+        <div class="confirmation-actions">
+
+          <a
+            class="btn btn-primary"
+            href="shop.html"
+          >
+            Continuer mes découvertes
+          </a>
+
+
+          <a
+            class="btn"
+            href="account.html"
+          >
+            Mon compte
+          </a>
+
+
+          <a
+            class="btn"
+            href="contact.html"
+          >
+            Contacter l’atelier
+          </a>
+
+        </div>
+
+      `;
+
+    }
+
+
+
+    // =====================================================
+    // PRODUITS
+    // =====================================================
+
+    function renderOrderProducts(items) {
+
+      if (
+        !items
+        ||
+        !items.length
+      ) {
+
+        return `
+
+          <p class="muted">
+            Aucun article enregistré.
+          </p>
+
+        `;
+
+      }
+
+
+      return items
+        .map(
+          item => {
+
+            const product =
+              getProductById(
+                item.id
+              );
+
+
+            if (!product) {
+
+              return "";
+
+            }
+
+
+            const quantity =
+              Number(
+                item.quantity
+                ||
+                1
+              );
+
+
+            const lineTotal =
+              product.price
+              *
+              quantity;
+
+
+            return `
+
+              <article class="confirmation-product">
+
+                <div class="confirmation-product-image">
+
+                  <img
+                    src="${product.mainImage}"
+                    alt="${escapeHtml(
+                      product.name
+                    )}"
+                    onerror="this.src='assets/images/logo-byssus.png'"
+                  >
+
+                </div>
+
+
+                <div>
+
+                  <div class="confirmation-product-name">
+
+                    ${escapeHtml(
+                      product.name
+                    )}
+
+                  </div>
+
+
+                  <div class="confirmation-product-meta">
+
+                    ${escapeHtml(
+                      product.stone
+                    )}
+
+                    <br>
+
+                    Quantité :
+                    ${quantity}
+
+                    ${
+                      product.madeToOrder
+                        ? "<br>Fabrication sur commande"
+                        : ""
+                    }
+
+                  </div>
+
+                </div>
+
+
+                <div class="confirmation-product-price">
+
+                  ${formatPrice(
+                    lineTotal
+                  )}
+
+                </div>
+
+              </article>
+
+            `;
+
+          }
+        )
+        .join("");
+
+    }
+
+
+
+    // =====================================================
+    // NETTOYER PANIER TERMINÉ
+    // =====================================================
+
+    function clearCompletedCart() {
+
+      localStorage.removeItem(
+        CART_KEY
+      );
+
+
+      localStorage.removeItem(
+        CART_OPTIONS_KEY
+      );
+
+
+      localStorage.removeItem(
+        PROMO_KEY
+      );
+
+
+      /*
+       * On conserve :
+       *
+       * byssus-checkout
+       * byssus-last-order
+       *
+       * pour que la confirmation
+       * reste consultable.
+       */
+
+
+      updateCartBadge();
+
+    }
+
+
+
+    // =====================================================
+    // BADGE PANIER
+    // =====================================================
+
+    function updateCartBadge() {
+
+      document
+        .querySelectorAll(
+          "[data-cart-count]"
+        )
+        .forEach(
+          badge => {
+
+            badge.textContent =
+              "0";
+
+          }
+        );
+
+    }
+
+
+
+    // =====================================================
+    // AUCUNE COMMANDE
+    // =====================================================
+
+    function renderNoOrder() {
+
+      const container =
+        document.getElementById(
+          "confirmation-content"
+        );
+
+
+      container.innerHTML = `
+
+        <section class="confirmation-error">
+
+          <div class="eyebrow">
+            Aucune commande trouvée
+          </div>
+
+
+          <h1>
+            Rien à confirmer pour le moment.
+          </h1>
+
+
+          <p class="muted">
+
+            Cette page s’affiche normalement
+            après la validation d’une commande.
+
+          </p>
+
+
+          <div class="confirmation-actions">
+
+            <a
+              class="btn btn-primary"
+              href="shop.html"
+            >
+              Découvrir la boutique
+            </a>
+
+
+            <a
+              class="btn"
+              href="cart.html"
+            >
+              Voir mon panier
+            </a>
+
+          </div>
+
+        </section>
+
+      `;
+
+    }
+
+
+
+    // =====================================================
+    // PAYS
+    // =====================================================
+
+    function formatCountry(code) {
+
+      const countries = {
+
+        FR: "France",
+        DE: "Allemagne",
+        BE: "Belgique",
+        LU: "Luxembourg",
+        NL: "Pays-Bas",
+        ES: "Espagne",
+        IT: "Italie",
+        "OTHER-EU":
+          "Union européenne"
+
+      };
+
+
+      return (
+        countries[code]
+        ||
+        code
+        ||
+        ""
+      );
+
+    }
+
+
+
+    // =====================================================
+    // PAIEMENT
+    // =====================================================
+
+    function formatPaymentMethod(
+      method
+    ) {
+
+      const methods = {
+
+        card:
+          "Carte bancaire",
+
+        paypal:
+          "PayPal"
+
+      };
+
+
+      return (
+        methods[method]
+        ||
+        "Paiement sécurisé"
+      );
+
+    }
+
+
+
+    // =====================================================
+    // DATE
+    // =====================================================
+
+    function formatOrderDate(
+      dateString
+    ) {
+
+      if (!dateString) {
+
+        return "";
+
+      }
+
+
+      try {
+
+        const date =
+          new Date(
+            dateString
+          );
+
+
+        return new Intl.DateTimeFormat(
+          "fr-FR",
+          {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+          }
+        )
+          .format(
+            date
+          );
+
+      }
+      catch {
+
+        return dateString;
+
+      }
+
+    }
+
+
+
+    // =====================================================
+    // STORAGE
+    // =====================================================
+
+    function readStorageObject(key) {
+
+      try {
+
+        const value =
+          JSON.parse(
+            localStorage.getItem(
+              key
+            )
+            ||
+            "{}"
+          );
+
+
+        if (
+          value
+          &&
+          typeof value
+          ===
+          "object"
+        ) {
+
+          return value;
+
+        }
+
+
+        return {};
+
+      }
+      catch {
+
+        return {};
+
+      }
+
+    }
+
+
+
+    // =====================================================
+    // ESCAPE HTML
+    // =====================================================
+
+    function escapeHtml(value) {
+
+      return String(
+        value ?? ""
+      )
+        .replaceAll(
+          "&",
+          "&amp;"
+        )
+        .replaceAll(
+          "<",
+          "&lt;"
+        )
+        .replaceAll(
+          ">",
+          "&gt;"
+        )
+        .replaceAll(
+          '"',
+          "&quot;"
+        )
+        .replaceAll(
+          "'",
+          "&#039;"
+        );
+
+    }
+
+  </script>
+
+</body>
+
+</html>
